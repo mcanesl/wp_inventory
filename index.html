@@ -1,0 +1,40 @@
+<head>
+    <link rel="stylesheet" href="ion.tabs-master/css/ion.tabs.css" />
+    <link rel="stylesheet" href="ion.tabs-master/css/ion.tabs.skinBordered.css" />
+    <link rel="stylesheet" href="css/normalize.css" />
+</head>
+<script src="jquery/jquery-2.1.0.min.js"></script>
+<script src="ion.tabs-master/js/ion-tabs/ion.tabs.min.js "></script>
+
+<body>
+
+
+
+<div class="ionTabs" id="tabs_1" data-name="Tabs_Group_name">
+    <ul class="ionTabs__head">
+        <li class="ionTabs__tab" data-target="Tab_1_name">Tab 1 name</li>
+        <li class="ionTabs__tab" data-target="Tab_2_name">Tab 2 name</li>
+        <li class="ionTabs__tab" data-target="Tab_3_name">Tab 3 name</li>
+    </ul>
+    <div class="ionTabs__body">
+        <div class="ionTabs__item" data-name="Tab_1_name">
+		<iframe src="http://www.tsc.uc3m.es" width="740" height="600"></iframe>	
+        </div>
+        <div class="ionTabs__item" data-name="Tab_2_name">
+            Tab 2 content
+        </div>
+        <div class="ionTabs__item" data-name="Tab_3_name">
+            Tab 3 content
+        </div>
+
+        <div class="ionTabs__preloader"></div>
+    </div>
+</div>
+
+<script>
+
+$.ionTabs("#tabs_1");                       // one tabs group
+
+</script>
+
+</body>
