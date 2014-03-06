@@ -15,6 +15,8 @@ add_shortcode( 'gestion', 'gestion_inventario' );
 add_action('wp_head', AddStyle);
 add_action('wp_head', AddJS);
 
+require_once("classes/class.InventoryAuth.php");
+
 session_start();
 
 function AddJS (){
@@ -221,7 +223,7 @@ function gestion_inventario(){
 		<table id='login_gestion_inventario_table'>
 		  <tr>
 		    <td><p>Usuario</p></td>
-		    <td><input type='text' id='usuario' name='usuario'></td>
+		    <td><input type='text' id='user' name='user'></td>
 		  </tr>
 		  <tr>
 		    <td><p>Password</p></td>
@@ -230,8 +232,18 @@ function gestion_inventario(){
 		</table>";
 
 		if(isset($_POST['login'])){
-		  if ($_POST['usuario'] == 'mcanes' && $_POST['password'] == '1234'){
-		    $_SESSION['user'] = $_POST['usuario'];
+		  $ldap_c = new InventoryAuth ( get_option('server'), get_option('user'), get_option('gts_group'), get_option('gts_group_admin') );
+		  $r = $ldap_c -> userInGroup ( $_POST['user'], $_POST['password'], get_option('gts_group'));
+		 
+		  if ($r >0){
+		    $_SESSION['user'] = $_POST['user'];
+		    $r = $ldap_c -> userInGroup ( $_POST['user'], $_POST['password'], get_option('gts_group_admin') );
+		    if($r >0){
+		      $_SESSION['admin'] = 1;
+		      echo "<p style='color:red'>Logueado como admin.</p>";
+		    }else{
+		       echo "<p style='color:red'>Logueado como usuario normal.</p>";
+		    }   
 		  }else{
 		    echo "<p style='color:red'>Fallo en la autenticación. Revíse sus datos de acceso.</p>";
 		  }
@@ -248,7 +260,61 @@ function gestion_inventario(){
 	if(isset($_POST['salir'])) {  
 	  session_unset();
 	  session_destroy();
+	  header('Location: '.$_SERVER['PHP_SELF']);  
 	} 
 }
+
+// create custom plugin settings menu
+add_action('admin_menu', 'create_options_menu');
+
+function create_options_menu() {
+
+	add_menu_page('WP Inventory', 'WP Inventory', 'administrator', __FILE__, 'options_page',plugins_url('/images/icon.png', __FILE__));
+	
+	add_action( 'admin_init', 'register_options' );
+}
+
+
+function register_options() {
+	register_setting( 'options-group', 'server' );
+	register_setting( 'options-group', 'user' );
+	register_setting( 'options-group', 'gts_group' );
+	register_setting( 'options-group', 'gts_group_admin' );
+}
+
+function options_page() {
+?>
+<div class="wrap">
+<h2>WP Inventory</h2>
+
+<form method="post" action="options.php">
+    <?php settings_fields( 'options-group' ); ?>
+    <p>Some information about this admin page.</p>
+    <table class="form-table">
+        <tr valign="top">
+        <th scope="row">LDAP Server</th>
+        <td><input type="text" name="server" value="<?php echo get_option('server'); ?>" /></td>
+        </tr>
+        <tr valign="top">
+        <th scope="row">DN User</th>
+        <td><input type="text" name="user" value="<?php echo get_option('user'); ?>" /></td>
+        </tr>
+        <th scope="row">DN GTS Group</th>
+        <td><input type="text" name="gts_group" value="<?php echo get_option('gts_group'); ?>" /></td>
+        </tr>
+        <tr valign="top">
+        <th scope="row">DN GTS Group Admin</th>
+        <td><input type="text" name="gts_group_admin" value="<?php echo get_option('gts_group_admin'); ?>" /></td>
+        </tr>
+       
+    </table>
+    
+    <p class="submit">
+    <input type="submit" class="button-primary" value="<?php _e('Save') ?>" />
+    </p>
+
+</form>
+</div>
+<?php } 
 		
 ?>

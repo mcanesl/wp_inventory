@@ -43,7 +43,7 @@
 		
 
 		function userInGroup ( $login, $passwd, $group ) {
-		
+
 			$salida = -1;
 			if ( $this -> connect ( $login, $passwd ) ) {
 				$sr=ldap_search($this -> ds,$group, "memberuid=$login");
