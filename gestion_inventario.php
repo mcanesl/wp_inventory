@@ -27,9 +27,11 @@ function AddJS (){
 function AddStyle (){
 	echo "
 	  <link rel='stylesheet' href= '"; echo plugin_dir_url( __FILE__ ) . "js/ion.tabs-master/css/ion.tabs.css"; echo "'/>
+	  <link rel='stylesheet' href= '"; echo plugin_dir_url( __FILE__ ) . "css/hover-min.css "; echo "'/>
+	  <link rel='stylesheet' href= '"; echo plugin_dir_url( __FILE__ ) . "css/wp_inventory.css"; echo "'/>
 	  <link rel='stylesheet' href= '"; echo plugin_dir_url( __FILE__ ) . "js/ion.tabs-master/css/ion.skinBordered.css"; echo "'/>
-	  <link rel='stylesheet' href= '"; echo plugin_dir_url( __FILE__ ) . "css/normalize.css"; echo "'/>";
-
+	  <link rel='stylesheet' href= '"; echo plugin_dir_url( __FILE__ ) . "css/normalize.css";echo "'/>";
+	  
 }
 
 function gestion_inventario(){
@@ -66,18 +68,23 @@ function gestion_inventario(){
 		
 		if ( $_SESSION['login'] ) {
 			echo '
-				<iframe src="' . plugin_dir_url( __FILE__ ) . 'mostrar.php" seamless target="parent"></iframe>
+				<iframe src="' . plugin_dir_url( __FILE__ ) . 'mostrar.php" seamless height="900px" width="100%"></iframe>
 			      ';
 
 		} else {
 			echo '
 				<form method="post"
 					      enctype="application/x-www-form-urlencoded"
-					      action="#">
+					      action="#"
+					      name="loginfrm">
 					 <p><label>login: <input name=login required></label></p>
 			 		 <p><label>passwd: <input name= passwd required type=password></label></p>
-			 		  <p><button>Go !!!!</button></p>
+			 		  <p><button  class="button pulse">Go !!!!</button></p>
+
+
+
 				</form>';
+
 		}
 }
 

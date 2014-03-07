@@ -10,37 +10,10 @@
 
 
 
-<div class="ionTabs" id="tabs_1" data-name="Tabs_Group_name">
-    <ul class="ionTabs__head">
-        <li class="ionTabs__tab" data-target="Tab_1_name">Tab 1 name</li>
-        <li class="ionTabs__tab" data-target="Tab_2_name">Tab 2 name</li>
-        <li class="ionTabs__tab" data-target="Tab_3_name">Tab 3 name</li>
-    </ul>
-    <div class="ionTabs__body">
-        <div class="ionTabs__item" data-name="Tab_1_name">
-	      <iframe src="./list_items.php" seamless ></iframe>
-        </div>
-        <div class="ionTabs__item" data-name="Tab_2_name">
-            <iframe src="' . plugin_dir_url( __FILE__ ) . 'list_asignations.php" seamless ></iframe>
-        </div>
-        <div class="ionTabs__item" data-name="Tab_3_name">
-            Tab 3 content
-        </div>
-
-        <div class="ionTabs__preloader"></div>
-    </div>
-</div>
 
 <script>
 // one tabs group
 $.ionTabs("#tabs_1");  
-
-
-var form = document.getElementById("form-id");
-
-document.getElementById("go").addEventListener("click", function () {
-  window.parent.location.href= "google.com";
-});
 
 </script>
 
@@ -53,13 +26,42 @@ document.getElementById("go").addEventListener("click", function () {
 			echo 'Bienvenido ' . $_SESSION['login'] . '<br>';
 			if ( $_SESSION['admin'] ) {
 				echo 'wow eres admin...';
+				echo '
+				      <div class="ionTabs" id="tabs_1" data-name="Tabs_Group_name">
+					  <ul class="ionTabs__head">
+					      <li class="ionTabs__tab" data-target="Tab_1_name">Listado de items:</li>
+					      <li class="ionTabs__tab" data-target="Tab_2_name">Listado de asignaciones:</li>
+					      <li class="ionTabs__tab" data-target="Tab_3_name">Operaciones</li>
+					  </ul>
+					  <div class="ionTabs__body">
+					      <div class="ionTabs__item" data-name="Tab_1_name">
+						    <iframe src="./list_items.php" height="600px" width="100%" seamless ></iframe>
+					      </div>
+					      <div class="ionTabs__item" data-name="Tab_2_name">
+						    <iframe src="./list_asignations.php" height="600px" width="100%" seamless ></iframe>
+					      </div>
+					      <div class="ionTabs__item" data-name="Tab_3_name">
+      						  <iframe src="www.google.es" seamless ></iframe>
+					      </div>
+
+					      <div class="ionTabs__preloader"></div>
+					  </div>
+				      </div>
+				      ';
+				 echo '
+					<script>
+					    $.ionTabs("#tabs_1"); // one tabs group
+					</script>
+				      ';	
 			}
 		}else {
-			echo 'No se quien eres... ';
+			echo 'Usuario no registrado en el sistema... ';
 		}
 		if ( $_POST ['exit'] ) {
 			session_destroy();
-			header ("Location: " . network_home_url() ); 
+			header ("Location: " . network_home_url() );
+			#header ("Location: http://localhost/wordpress" ); 
+			
 			
 		}
 		
@@ -71,7 +73,6 @@ document.getElementById("go").addEventListener("click", function () {
 		<input type="hidden" name="exit" value="true">
  		<p><button id="go">exit</button></p>
  	</form>
-	<a target="_parent" href="http://localhost/wordpress">link</a>
 	
 
 
