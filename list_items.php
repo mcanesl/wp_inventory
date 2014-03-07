@@ -1,0 +1,1 @@
+<p>lista de inventario</p>
