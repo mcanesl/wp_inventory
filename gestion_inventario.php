@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Gestion inventario
+Plugin Name: WP Inventory
 Plugin URI: 
 Description: Plugin para la gestión de inventario. Permite añadir, modificar, eliminar y visualizar asignaciones usuario-item.
 Author: Marta Canes
@@ -9,13 +9,24 @@ Author URI:
 */
 
 //Plugin shortcode
-add_shortcode( 'gestion', 'gestion_inventario' );
+add_shortcode( 'gestion', 'wp_inventory');
+
+// run the install scripts upon plugin activation
+register_activation_hook(__FILE__,'wp_inventory_install');
+
+// run the uninstall script upon plugin deletion
+register_uninstall_hook(__FILE__,'wp_inventory_uninstall');
+
+// create custom plugin settings menu
+add_action('admin_menu', 'create_options_menu');
 
 //Plugin style and js
 add_action('wp_head', AddStyle);
 add_action('wp_head', AddJS);
 
 require_once("classes/class.InventoryAuth.php");
+require_once("classes/class.Database.php");
+require_once("classes/class.Items.php");
 
 session_start();
 
@@ -34,13 +45,27 @@ function AddStyle (){
 	  
 }
 
-function gestion_inventario(){
+ 				
+function wp_inventory_install() {
+  $db	= new Database ();
+  $db -> createInitialDatabase();
+ 
+}
+
+function wp_inventory_uninstall() {
+  $db	= new Database ();
+  $db -> dropDatabase();
+ 
+}
+
+function wp_inventory(){
 		//Estos valores deberian estar en la configuracion del wordpress:
 		$userbind 	= 'uid = --login--, ou=People, dc=tsc, dc=uc3m,dc=es';
 		$gtsuser	= 'cn=gts, ou=Group,DC=tsc,DC=uc3m,DC=es';
 		$gtsadmin	= 'cn=gts, ou=Group,DC=tsc,DC=uc3m,DC=es';
 		$server		= 'umbriel.tsc.uc3m.es';
 
+		
 	
 		if ( $_POST ['login'] and $_POST ['passwd'] and ! $_SESSION['login']) {
 			$ldap_c	= new InventoryAuth ( $server, $userbind, $gtsuser, $gtsadmin );
@@ -73,23 +98,24 @@ function gestion_inventario(){
 
 		} else {
 			echo '
-				<form method="post"
-					      enctype="application/x-www-form-urlencoded"
-					      action="#"
-					      name="loginfrm">
-					 <p><label>login: <input name=login required></label></p>
-			 		 <p><label>passwd: <input name= passwd required type=password></label></p>
-			 		  <p><button  class="button pulse">Go !!!!</button></p>
-
-
-
+				<form id="login_form" method="post" enctype="application/x-www-form-urlencoded" action="#">
+				  <table id=login_table"">
+				    <tr>
+				      <td><p>User</p></td>
+				      <td><input type="text" name="login" required></td>
+				    </tr>
+				    <tr>
+				      <td><p>Password</p></td>
+				      <td><input type="password" name="passwd" required></td>
+				    </tr>
+				    <tr>
+				      <td><p><button  class="button pulse">Enviar</button></p></td>
+				    </tr>
+				  </table>
 				</form>';
 
 		}
 }
-
-// create custom plugin settings menu
-add_action('admin_menu', 'create_options_menu');
 
 function create_options_menu() {
 

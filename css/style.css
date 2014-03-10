@@ -120,6 +120,18 @@ padding:50px 0 20px 25px;
   transform: scale(1.1);
 }
 
+body {
+  font: 90%/1.45em "Helvetica Neue", HelveticaNeue, Verdana, Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  background-color: #fff;
+}
+
+#list_items_table{
+  font: 90%/1.45em "Helvetica Neue", HelveticaNeue, Verdana, Arial, Helvetica, sans-serif;
+}
+
 
 </style>
 

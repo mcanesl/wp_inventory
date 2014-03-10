@@ -8,15 +8,30 @@
 
 <body>
 
-
-
-
 <script>
 // one tabs group
 $.ionTabs("#tabs_1");  
-
 </script>
 
+<script type="text/javascript">
+  function iframeLoadedItems() {
+      var iFrameID = document.getElementById('list_items_frame');
+      if(iFrameID) {
+            // here you can make the height, I delete it first, then I make it again
+            iFrameID.height = "";
+            iFrameID.height = iFrameID.contentWindow.document.body.scrollHeight + "px";
+      }   
+  }
+  
+    function iframeLoadedUsers() {
+      var iFrameID = document.getElementById('list_users_frame');
+      if(iFrameID) {
+            // here you can make the height, I delete it first, then I make it again
+            iFrameID.height = "";
+            iFrameID.height = iFrameID.contentWindow.document.body.scrollHeight + "px";
+      }   
+  }
+</script> 
 
 
 
@@ -31,19 +46,14 @@ $.ionTabs("#tabs_1");
 					  <ul class="ionTabs__head">
 					      <li class="ionTabs__tab" data-target="Tab_1_name">Listado de items:</li>
 					      <li class="ionTabs__tab" data-target="Tab_2_name">Listado de asignaciones:</li>
-					      <li class="ionTabs__tab" data-target="Tab_3_name">Operaciones</li>
 					  </ul>
 					  <div class="ionTabs__body">
 					      <div class="ionTabs__item" data-name="Tab_1_name">
-						    <iframe src="./list_items.php" height="600px" width="100%" seamless ></iframe>
+						    <iframe id="list_items_frame" onload="iframeLoadedItems()" src="./list_items.php" width="100%" seamless frameborder="0"></iframe>
 					      </div>
 					      <div class="ionTabs__item" data-name="Tab_2_name">
-						    <iframe src="./list_asignations.php" height="600px" width="100%" seamless ></iframe>
+						    <iframe id="list_users_frame" onload="iframeLoadedUsers()" src="./list_users.php" width="100%" seamless frameborder="0"></iframe>
 					      </div>
-					      <div class="ionTabs__item" data-name="Tab_3_name">
-      						  <iframe src="www.google.es" seamless ></iframe>
-					      </div>
-
 					      <div class="ionTabs__preloader"></div>
 					  </div>
 				      </div>
