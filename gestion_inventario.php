@@ -40,7 +40,6 @@ function AddStyle (){
 	  <link rel='stylesheet' href= '"; echo plugin_dir_url( __FILE__ ) . "js/ion.tabs-master/css/ion.tabs.css"; echo "'/>
 	  <link rel='stylesheet' href= '"; echo plugin_dir_url( __FILE__ ) . "css/hover-min.css "; echo "'/>
 	  <link rel='stylesheet' href= '"; echo plugin_dir_url( __FILE__ ) . "css/wp_inventory.css"; echo "'/>
-	  <link rel='stylesheet' href= '"; echo plugin_dir_url( __FILE__ ) . "js/ion.tabs-master/css/ion.skinBordered.css"; echo "'/>
 	  <link rel='stylesheet' href= '"; echo plugin_dir_url( __FILE__ ) . "css/normalize.css";echo "'/>";
 	  
 }
@@ -65,21 +64,20 @@ function wp_inventory(){
 		$gtsadmin	= 'cn=gts, ou=Group,DC=tsc,DC=uc3m,DC=es';
 		$server		= 'umbriel.tsc.uc3m.es';
 
-		
 	
-		if ( $_POST ['login'] and $_POST ['passwd'] and ! $_SESSION['login']) {
+		if ( $_POST ['username'] and $_POST ['password'] and ! $_SESSION['login']) {
 			$ldap_c	= new InventoryAuth ( $server, $userbind, $gtsuser, $gtsadmin );
-			$r = $ldap_c -> userInGroup ( $_POST ['login'], $_POST ['passwd'], $gtsuser );	
+			$r = $ldap_c -> userInGroup ( $_POST ['username'], $_POST ['password'], $gtsuser );	
 			if ( $r  > 0) {
-				$_SESSION['login'] = $_POST ['login'];
+				$_SESSION['login'] = $_POST ['username'];
 				#header ("Location: mostrar.php");
 
 			} else {
 				$error = true;
 			}
 			
-			$r = $ldap_c -> userInGroup ( $_POST ['login'], $_POST ['passwd'], $gtsadmin );	
-			$r = $ldap_c -> userInGroup ( $_POST ['login'], $_POST ['passwd'], $gtsadmin );	
+			$r = $ldap_c -> userInGroup ( $_POST ['username'], $_POST ['password'], $gtsadmin );	
+			$r = $ldap_c -> userInGroup ( $_POST ['username'], $_POST ['password'], $gtsadmin );	
 			if ( $r  > 0) {
 				$_SESSION['admin'] =  true;
 			}
@@ -88,7 +86,7 @@ function wp_inventory(){
 		
 		
 		if ( $error ) {
-			echo 'Usuario incorrecto';
+			echo '<div class="error_msg">Sorry, invalid user or password...</div>';
 		}
 		
 		if ( $_SESSION['login'] ) {
@@ -98,21 +96,19 @@ function wp_inventory(){
 
 		} else {
 			echo '
-				<form id="login_form" method="post" enctype="application/x-www-form-urlencoded" action="#">
-				  <table id=login_table"">
-				    <tr>
-				      <td><p>User</p></td>
-				      <td><input type="text" name="login" required></td>
-				    </tr>
-				    <tr>
-				      <td><p>Password</p></td>
-				      <td><input type="password" name="passwd" required></td>
-				    </tr>
-				    <tr>
-				      <td><p><button  class="button pulse">Enviar</button></p></td>
-				    </tr>
-				  </table>
-				</form>';
+				<form id="login" method="post" enctype="application/x-www-form-urlencoded" action="#">
+					<fieldset id="inputs">
+						<input id="username" name="username" type="text" placeholder="Username" autofocus required>   
+						<input id="password" name="password" type="password" placeholder="Password" required>
+					</fieldset>
+					<fieldset id="actions">
+						<input type="submit" id="submit" value="Log in">
+						<a href="https://www.tsc.uc3m.es/incidencias">Need support?</a>
+					 </fieldset>
+				 </form>
+				'
+				;
+
 
 		}
 }

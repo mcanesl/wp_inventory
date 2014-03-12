@@ -33,9 +33,11 @@
             margin-top: 0;
             padding: 12px 25px 11px;
             background: #fff;
-            color: #d71410;
-            border-top-color: #d71410;
-            border-bottom: 1px solid #fff;
+            /*color: #d71410;*/
+            /*border-top-color: #d71410;*/
+            border-top-color: #40648a;
+            color:#40648a;
+            border-bottom: 5px solid #fff;
         }
 
     .ionTabs__body {

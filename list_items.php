@@ -85,48 +85,46 @@ $(document).ready(function() {
 	     
 	$db	= new Items ();
 	$items = $db -> recoverItems();
-	//print_r ($items);
+	if ($items != null){	
+		      echo '
+		      <a href="#dialog_new_item" name="modal"><img src="images/add.png" width="24px" height="24px"></img> Nuevo item</a>
+		      <p style="margin-top: 10px; margin-bottom: 20px; border: 1px solid black"></p>
+		      <table id="list_items_table" class="display" width="100%">
+			<thead>
+			  <tr>
+			    <th>ID Item</th>
+			    <th>Name</th>
+			    <th>Description</th>
+			    <th>Manufacturer</th>
+			    <th>Quantity</th>
+			    <th>Operations</th>
+			  </tr>
+			</thead>
+			<tbody>';
 	
-	if ($items != null){
-	
-      echo '
-      <a href="#dialog_new_item" name="modal"><img src="images/add.png" width="24px" height="24px"></img> Nuevo item</a>
-      <p style="margin-top: 10px; margin-bottom: 20px; border: 1px solid black"></p>
-      <table id="list_items_table" class="display" width="100%">
-	<thead>
-	  <tr>
-	    <th>ID Item</th>
-	    <th>Name</th>
-	    <th>Description</th>
-	    <th>Manufacturer</th>
-	    <th>Quantity</th>
-	    <th>Operations</th>
-	  </tr>
-	</thead>
-	<tbody>';
-	
-	foreach ($items as $key => $value) {
-	    echo '
-	  <tr>
-	    <td>'.$value->id_item.'</td>
-	    <td>'.$value->name.'</td>
-	    <td>'.$value->description.'</td>
-	    <td>'.$value->manufacturer.'</td>
-	    <td>'.$value->quantity.'</td>
-	    <td>
-		<a href="#dialog_delete_item" name="modal"><img src="images/delete.png" width="24px" height="24px"></img></a>
-	    </td>
-	  </tr>';
-	  }
-	  echo '
-	</tbody>
-      </table>';
+				foreach ($items as $key => $value) {
+				    echo '
+					  <tr>
+						    <td>'.$value->id_item.'</td>
+						    <td>'.$value->name.'</td>
+						    <td>'.$value->description.'</td>
+						    <td>'.$value->manufacturer.'</td>
+						    <td>'.$value->quantity.'</td>
+						    <td>
+							<a href="#dialog_delete_item" name="modal"><img src="images/delete.png" width="24px" height="24px"></img></a>
+						    </td>
+					  </tr>';
+				}
+			 echo '
+				</tbody>
+			  </table>';
+	}else{
+		echo '<p>No items found... <b>Use the menu to insert new one.</b></p>';
+      	}
       }else{
-	echo '<p>No hay ningún item en la base de datos.</p>
-	<button id="add_item">Añadir nuevo</button>';
-      }
-      }else{
-	echo 'Usuario incorrecto';
+		echo '<div class="error_msg">
+				User not registered in the system.  Go to login window.
+		       </div>';
       }
      ?>
      
