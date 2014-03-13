@@ -241,6 +241,12 @@ fieldset
 
 }
 
+#frame_princ {
+	border:0px;
+	width:100%;
+	height:auto;
+}
+
 
 /**** Cuadro about *****/
 #about {
@@ -291,5 +297,12 @@ fieldset
 #about  li a:hover {
   font-size: 20px;
   background: #f6f6f6;
+}
+
+
+/**** Tabs *****/
+
+#list_items_frame {
+	height: 350px !important;
 }
 

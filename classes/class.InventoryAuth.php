@@ -20,7 +20,30 @@
 		}
 		
 		
-	
+		function UsersInGroup ( $group ) {
+			$ldapconn = ldap_connect( $this -> server ) or die("Could not connect to {$this -> server}");
+
+			if ($ldapconn) {
+
+				// binding anonymously
+				$ldapbind = ldap_bind($ldapconn);
+
+				if ($ldapbind) {
+
+					$filter = "memberuid=*";
+					$justthese = array("memberuid");
+
+					$sr = ldap_search( $ldapconn,$group, $filter, $justthese );
+					
+					$data =  ldap_get_entries ($ldapconn, $sr );
+					return ( $data[0]["memberuid"] );
+				} else {
+					return null;
+				}
+
+			}			
+		
+		}
 		
 		function connect ( $login, $passwd ) {
 			

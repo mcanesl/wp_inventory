@@ -90,7 +90,7 @@ function wp_inventory(){
 		
 		if ( $_SESSION['login'] ) {
 			echo '
-				<iframe src="' . plugin_dir_url( __FILE__ ) . 'mostrar.php" seamless height="900px" width="100%"></iframe>
+				<iframe id="frame_operacionesxx" src="' . plugin_dir_url( __FILE__ ) . 'mostrar.php" seamless height="900px" width="100%"></iframe>
 			      ';
 
 		} else {

@@ -14,7 +14,7 @@
 
 	<?php
 		session_start(); 
-		if ( $_SESSION['login'] and (! $_GET ['exit']) ) {
+		if ( $_SESSION['login'] and (! isset ($_GET ['exit']) )) {
 			echo '
 				<div id="toolbar">
 					<nav>
@@ -47,7 +47,7 @@
 					User not registered in the system.  Go to login window.
 			       </div>';
 		}
-		if ( $_GET ['exit'] ) {
+		if ( isset ( $_GET ['exit']) ) {
 			require_once('../../../wp-config.php');
 			require_once('../../../wp-includes/wp-db.php');
 			session_destroy();			

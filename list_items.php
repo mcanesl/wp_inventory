@@ -9,6 +9,7 @@
     <link href="css/normalize.css" rel="stylesheet" type="text/css" />
     <script src="js/Datatables/media/js/jquery.js"></script>
     <script src="js/Datatables/media/js/jquery.dataTables.js"></script>
+    <link rel="stylesheet" href="css/wp_inventory.css" />
     
 <script>
 
@@ -119,7 +120,9 @@ $(document).ready(function() {
 				</tbody>
 			  </table>';
 	}else{
-		echo '<p>No items found... <b>Use the menu to insert new one.</b></p>';
+			echo '<div class="error_msg">
+					No items found... <b>Use the menu to insert new one.</b>
+			       </div>';
       	}
       }else{
 		echo '<div class="error_msg">
@@ -127,28 +130,7 @@ $(document).ready(function() {
 		       </div>';
       }
      ?>
-     
-
-
-      <div id="boxes">
-	<div id="dialog_new_item" class="window">
-	  <a href="#"class="close"/>Close it</a>
-	  <div style="margin-top:10px;">
-	    <iframe src="./new_item.php" width="100%" height="400px" frameborder="0"></iframe>
-	  </div>
-	</div>
-	
-	<div id="dialog_delete_item" class="window">
-	  <a href="#"class="close"/>Close it</a>
-	  <div style="margin-top:10px;">
-	    <iframe src="./delete_item.php" width="100%" height="175px" frameborder="0"></iframe>
-	  </div>
-	</div>
-
-	<div id="mask"></div>
-      </div>
-
-
+  
     </div>
   </body>
 </html>
