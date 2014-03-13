@@ -2,12 +2,14 @@ a {color:#333; text-decoration:none}
 a:hover {color:#ccc; text-decoration:none}
 
 #mask {
+height:60px !important;
 position:absolute;
 left:0;
 top:0;
 z-index:9000;
 background-color:#000;
 display:none;
+
 }
 
 #boxes .window {

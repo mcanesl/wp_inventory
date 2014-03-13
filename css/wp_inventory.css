@@ -196,6 +196,11 @@ fieldset
 
 
 
+/***** fondo para todas ****/
+
+/*body {background-color:#f6f6f6;}*/
+
+
 /****** Toolbar menu principal *************/
 #toolbar {
     border: 1px solid #ccc;
@@ -209,4 +214,82 @@ fieldset
 }
 
 
+#toolbar_button {
+    margin-top:40px;
+    height: 48px;
+    border-top:0px;
+    border-bottom: 0px solid #ccc;
+    margin-bottom:20px;
+    
+}
+
+#msgstatus {
+	position: relative;
+	padding-top: 15px;
+	padding-right: 9px;
+	float:right;
+
+}
+
+
+/**** Frame principal ****/
+
+#frame_operaciones {
+	border:0px;
+	width:100%;
+	min-height:500px;
+
+}
+
+
+/**** Cuadro about *****/
+#about {
+
+}
+#about img {
+	float:right;
+}
+
+.texto {
+  padding-top:50px;
+  width: 10px;
+  font: 200 20px/1.5 Helvetica, Verdana, sans-serif;
+  text-align: center;
+
+}
+
+#about ul {
+  float:left;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  margin-top:20px;
+}
+
+#about li {
+  font: 200 15px/1.5 Helvetica, Verdana, sans-serif;
+  border-bottom: 1px solid #ccc;
+}
+
+#about  li:last-child {
+  border: none;
+}
+
+#about  li a {
+  text-decoration: none;
+  color: #000;
+  display: block;
+  width: 200px;
+
+  -webkit-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -moz-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -o-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -ms-transition: font-size 0.3s ease, background-color 0.3s ease;
+  transition: font-size 0.3s ease, background-color 0.3s ease;
+}
+
+#about  li a:hover {
+  font-size: 20px;
+  background: #f6f6f6;
+}
 

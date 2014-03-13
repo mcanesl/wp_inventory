@@ -38,7 +38,6 @@ function AddJS (){
 function AddStyle (){
 	echo "
 	  <link rel='stylesheet' href= '"; echo plugin_dir_url( __FILE__ ) . "js/ion.tabs-master/css/ion.tabs.css"; echo "'/>
-	  <link rel='stylesheet' href= '"; echo plugin_dir_url( __FILE__ ) . "css/hover-min.css "; echo "'/>
 	  <link rel='stylesheet' href= '"; echo plugin_dir_url( __FILE__ ) . "css/wp_inventory.css"; echo "'/>
 	  <link rel='stylesheet' href= '"; echo plugin_dir_url( __FILE__ ) . "css/normalize.css";echo "'/>";
 	  
