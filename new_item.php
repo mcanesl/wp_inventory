@@ -6,8 +6,8 @@
     <meta charset=utf-8 />
    
     <link href="css/wp_inventory.css" rel="stylesheet" type="text/css" />
-    <link href="css/normalize.css" rel="stylesheet" type="text/css" />
     <link href="css/uploadbar.css" rel="stylesheet" type="text/css" />
+    <link href="css/hover-min.css" rel="stylesheet" type="text/css" />
     <script src="js/uploadbar.js"></script>
   </head>
   <body>
@@ -20,7 +20,7 @@
       if ($_SESSION['login']){
       echo '
 	<form id="upload_form" enctype="multipart/form-data" method="post" action="#">
-	  <h3>New item</h3>
+	  <h3> New item</h3>
 	  <p>Introduce the information of the new item.</p>
 	  <fieldset id="inputs">
 	  <table id = "new_item_table">
@@ -58,47 +58,44 @@
 	  <p style="border: 1px solid black"></p>
 	  
 	  <div>
-	    <p>Select an image file.</p>
+	    <p><img src="images/image.png"> Select an image file.</p>
 	  <div><input type="file" name="image_file" id="image_file" onchange="fileSelected();" /></div>
-	                    </div>
-	                    <div>
-	                        <input type="button" value="Upload" onclick="startUploading()" />
-	                    </div>
-	                    <div id="fileinfo">
-	                        <div id="filename"></div>
-	                        <div id="filesize"></div>
-	                        <div id="filetype"></div>
-	                        <div id="filedim"></div>
-	                    </div>
-	                    <div id="error">You should select valid image files only!</div>
-	                    <div id="error2">An error occurred while uploading the file</div>
-	                    <div id="abort">The upload has been canceled by the user or the browser dropped the connection</div>
-	                    <div id="warnsize">Your file is very big. We cant accept it. Please select more small file</div>
-	 
-	                    <div id="progress_info">
-	                        <div id="progress"></div>
-	                        <div id="progress_percent">&nbsp;</div>
-	                        <div class="clear_both"></div>
-	                        <div>
-	                            <div id="speed">&nbsp;</div>
-	                            <div id="remaining">&nbsp;</div>
-	                            <div id="b_transfered">&nbsp;</div>
-	                            <div class="clear_both"></div>
-	                        </div>
-	                        <div id="upload_response"></div>
-	                    </div>
-	  <input type="submit" class="button-primary" id="save" name="save" value="Guardar">
-	  <input type="reset" class="button-primary" id="reset" name="reset" value="Reset">
+	      </div>
+	      <div>
+		  <input type="button" class= "button wobble-to-top-right" value="Upload" onclick="startUploading()" />
+	      </div>
+	      <div id="fileinfo">
+		  <div id="filename"></div>
+		  <div id="filesize"></div>
+		  <div id="filetype"></div>
+		  <div id="filedim"></div>
+	      </div>
+	      <div id="error">You should select valid image files only!</div>
+	      <div id="error2">An error occurred while uploading the file</div>
+	      <div id="abort">The upload has been canceled by the user or the browser dropped the connection</div>
+	      <div id="warnsize">Your file is very big. We cant accept it. Please select more small file</div>
+
+	      <div id="progress_info">
+		  <div id="progress"></div>
+		  <div id="progress_percent">&nbsp;</div>
+		  <div class="clear_both"></div>
+		  <div>
+		      <div id="speed">&nbsp;</div>
+		      <div id="remaining">&nbsp;</div>
+		      <div id="b_transfered">&nbsp;</div>
+		      <div class="clear_both"></div>
+		  </div>
+		  <div id="upload_response"></div>
+	      </div>
+	                    
+	  <input type="submit" class="button wobble-to-top-right" id="save" name="save" value="Guardar">
+	  <input type="reset" class="button wobble-to-top-right" id="reset" name="reset" value="Reset">
 	</form>';
 	
       }else{
 	echo 'Usuario incorrecto';
       }
-      
-      	function bytesToSize1024($bytes, $precision = 2) {
-	    $unit = array('B','KB','MB');
-	    return @round($bytes / pow(1024, ($i = floor(log($bytes, 1024)))), $precision).' '.$unit[$i];
-	}
+     
       
       if (isset($_POST['save'])){
      
@@ -107,15 +104,19 @@
 	$sFileType = $_FILES['image_file']['type'];
 	$sFileSize = bytesToSize1024($_FILES['image_file']['size'], 1);
 
-	echo <<<EOF
+	echo '
 	<p>Your file: {$sFileName} has been successfully received.</p>
 	<p>Type: {$sFileType}</p>
-	<p>Size: {$sFileSize}</p>
-	EOF;
+	<p>Size: {$sFileSize}</p>';
 
 	$db	= new Items ();
-	$items = $db -> insertItem($_POST['name'], $_POST['description'], $_POST['manufacturer'], $_POST['quantity'], $_POST['serial'], $_POST['id_uc3m'], $_FILES['image_file']);
+	$items = $db -> insertItem($_POST['name'], $_POST['description'], $_POST['manufacturer'], $_POST['quantity'], $_POST['serial'], $_POST['id_uc3m'], file_get_contents($_FILES['image_file']['tmp_name']));
       }
+      
+      function bytesToSize1024($bytes, $precision = 2) {
+	    $unit = array('B','KB','MB');
+	    return @round($bytes / pow(1024, ($i = floor(log($bytes, 1024)))), $precision).' '.$unit[$i];
+	}
      ?>
 
 

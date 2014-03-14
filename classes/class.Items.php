@@ -21,7 +21,7 @@
 		    global $wpdb;
 		    $available = $quantity;
 		    $wpdb->insert('wp_inventory_item',  
-		    array('name' => $name, 'description' => $description, 'manufacturer' => $manufacturer, 'quantity' => $quantity, 'available' => $available, 'serial' => $serial, 'id_uc3m' => $id_uc3m, $image), 
+		    array('name' => $name, 'description' => $description, 'manufacturer' => $manufacturer, 'quantity' => $quantity, 'available' => $available, 'serial' => $serial, 'id_uc3m' => $id_uc3m, 'image' => $image), 
 		    array( '%s', '%s', '%s','%d', '%d','%d') );
 
 		}	

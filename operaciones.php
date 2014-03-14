@@ -40,6 +40,8 @@
 		session_start ();
 		if ( $_SESSION['login']) {
 			echo '
+			      <h3> Information lists</h3>
+			      <p>Select a determinated data list.</p>
 			      <div class="ionTabs" id="tabs_1" data-name="Tabs_Group_name" >
 				  <ul class="ionTabs__head">
 				      <li class="ionTabs__tab" data-target="Tab_1_name">Listado de items:</li>

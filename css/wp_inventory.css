@@ -198,7 +198,11 @@ fieldset
 
 /***** fondo para todas ****/
 
-/*body {background-color:#f6f6f6;}*/
+body {
+    font: 200 16px/1.5 Helvetica, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
 
 
 /****** Toolbar menu principal *************/
@@ -215,6 +219,7 @@ fieldset
 
 
 #toolbar_button {
+    font: 90%/1.45em "Helvetica Neue", HelveticaNeue, Verdana, Arial, Helvetica, sans-serif;
     margin-top:40px;
     height: 48px;
     border-top:0px;
@@ -335,21 +340,27 @@ fieldset
 	text-align:center;
 }
 
-.new_item_container{
-  text-align: center;
-  padding:auto;
-margin:auto;
-}
 
 /**** New item table ****/
+#new_item_table {
+  text-align: center;
+  margin: auto;
+}
+
 #new_item_table td {
   text-align: center;
-  font-size: 12px;
+  font-size: 14px;
+  padding: 10px 10px 10px 10px;
 }
 
 #new_item_table input {
-  font-size: 12px;
+  background: none;
+  font-size: 14px;
   width: 275px;
+}
+
+#list_items_table{
+      font: 200 12px/1.5 Helvetica, Verdana, sans-serif;
 }
 
 

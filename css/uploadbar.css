@@ -32,27 +32,7 @@
 .clear_both {
     clear:both;
 }
-input {
-    border-radius:10px;
-    -moz-border-radius:10px;
-    -ms-border-radius:10px;
-    -o-border-radius:10px;
-    -webkit-border-radius:10px;
 
-    border:1px solid #ccc;
-    font-size:12pt;
-    padding:5px 10px;
-}
-input[type=button] {
-    background: -moz-linear-gradient(#ffffff, #dfdfdf);
-    background: -ms-linear-gradient(#ffffff, #dfdfdf);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(100%, #dfdfdf));
-    background: -webkit-linear-gradient(#ffffff, #dfdfdf);
-    background: -o-linear-gradient(#ffffff, #dfdfdf);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#dfdfdf');
-    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#dfdfdf')";
-    background: linear-gradient(#ffffff, #dfdfdf);
-}
 #image_file {
     width:400px;
 }

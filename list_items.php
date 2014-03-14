@@ -5,7 +5,6 @@
     <meta charset=utf-8 />
     
     <link href="js/Datatables/media/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
     <link href="css/normalize.css" rel="stylesheet" type="text/css" />
     <script src="js/Datatables/media/js/jquery.js"></script>
     <script src="js/Datatables/media/js/jquery.dataTables.js"></script>
@@ -88,7 +87,7 @@ $(document).ready(function() {
 	$items = $db -> recoverItems();
 	if ($items != null){	
 		      echo '
-		      <a href="#dialog_new_item" name="modal"><img src="images/add.png" width="24px" height="24px"></img> Nuevo item</a>
+		      <img src="images/add.png"></img>
 		      <p style="margin-top: 10px; margin-bottom: 20px; border: 1px solid black"></p>
 		      <table id="list_items_table" class="display" width="100%">
 			<thead>
@@ -112,7 +111,7 @@ $(document).ready(function() {
 						    <td>'.$value->manufacturer.'</td>
 						    <td>'.$value->quantity.'</td>
 						    <td>
-							<a href="#dialog_delete_item" name="modal"><img src="images/delete.png" width="24px" height="24px"></img></a>
+							<img src="images/delete.png"></img>
 						    </td>
 					  </tr>';
 				}

@@ -1,6 +1,5 @@
 <html>
 <head>
-    <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/wp_inventory.css" />
     <link rel="stylesheet" href="css/toolbar.css" />
     <link rel="stylesheet" href="css/hover-min.css " />
