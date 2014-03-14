@@ -307,6 +307,7 @@ fieldset
 
 
 
+
 /****** Ventana de salir ****/
 
 #exit {
@@ -333,3 +334,22 @@ fieldset
 	position:absolute;
 	text-align:center;
 }
+
+.new_item_container{
+  text-align: center;
+  padding:auto;
+margin:auto;
+}
+
+/**** New item table ****/
+#new_item_table td {
+  text-align: center;
+  font-size: 12px;
+}
+
+#new_item_table input {
+  font-size: 12px;
+  width: 275px;
+}
+
+

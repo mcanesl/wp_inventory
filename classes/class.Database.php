@@ -13,8 +13,10 @@
 		    description VARCHAR(50) NOT NULL,
 		    manufacturer VARCHAR(15) NOT NULL,
 		    quantity INTEGER NOT NULL,
+		    available INTEGER NOT NULL,
 		    serial INTEGER NOT NULL,
 		    id_uc3m INTEGER NOT NULL,
+		    image MEDIUMBLOB,
 		    PRIMARY KEY (id_item)
 		  )";
 		  
