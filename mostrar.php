@@ -15,7 +15,7 @@
 	<?php
 		session_start(); 
 		if ( $_SESSION['login'] and (! isset ($_GET ['exit']) )) {
-			echo '
+			/*echo '
 				<div id="toolbar">
 					<nav>
 						  <ul>
@@ -27,14 +27,14 @@
 						  </ul>
 						  
 					</nav>				
-				 </div>';
+				 </div>';*/
 				 
 			echo '
 				<nav id="toolbar_button">
 					<a href="operaciones.php" target="frame_operaciones" class="button hollow"><b>list</b></a>
 					<a href="new_item.php" target="frame_operaciones" class="button hollow"><b>new</b></a>
 					<a href="about.php" target="frame_operaciones"><p class="button hollow"><b>about</b></p></a>
-					<a href="?exit=true" class="button hollow"><b>exit()</b></a>
+					<a href="exit.php" target="frame_operaciones" class="button hollow"><b>exit()</b></a>
 					<p id="msgstatus">login as <b>'. $_SESSION['login'] .'	</b></p>
 				 </nav>';
 				 
@@ -47,12 +47,12 @@
 					User not registered in the system.  Go to login window.
 			       </div>';
 		}
-		if ( isset ( $_GET ['exit']) ) {
+/*		if ( isset ( $_GET ['exit']) ) {
 			require_once('../../../wp-config.php');
 			require_once('../../../wp-includes/wp-db.php');
 			session_destroy();			
 			//header ("Location: " . network_home_url() );			
-		}
+		}*/
 		
 
 	?>

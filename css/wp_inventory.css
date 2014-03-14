@@ -241,10 +241,9 @@ fieldset
 
 }
 
-#frame_princ {
+#frame_principal {
 	border:0px;
-	width:100%;
-	height:auto;
+	height:700px;;
 }
 
 
@@ -306,3 +305,31 @@ fieldset
 	height: 350px !important;
 }
 
+
+
+/****** Ventana de salir ****/
+
+#exit {
+
+  margin-top:100px;
+
+}
+
+#msg_exit {
+
+  position:absolute;
+  display:block;
+  margin-left:150px;
+  margin-top:10px;
+  font: 200 22px/1.5 Helvetica, Verdana, sans-serif;
+}
+#exit img {
+	float:left;
+}
+
+#msg_confirm {
+	margin-top:120px;
+	width:90%;
+	position:absolute;
+	text-align:center;
+}
