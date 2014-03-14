@@ -17,10 +17,11 @@
 		    return ($items);
 		}
 
-		function insertItem ($name, $description, $manufacturer, $quantity, $serial, $id_uc3m){
+		function insertItem ($name, $description, $manufacturer, $quantity, $serial, $id_uc3m, $image){
 		    global $wpdb;
+		    $available = $quantity;
 		    $wpdb->insert('wp_inventory_item',  
-		    array('name' => $name, 'description' => $description, 'manufacturer' => $manufacturer, 'quantity' => $quantity, 'serial' => $serial, 'id_uc3m' => $id_uc3m), 
+		    array('name' => $name, 'description' => $description, 'manufacturer' => $manufacturer, 'quantity' => $quantity, 'available' => $available, 'serial' => $serial, 'id_uc3m' => $id_uc3m, $image), 
 		    array( '%s', '%s', '%s','%d', '%d','%d') );
 
 		}	
