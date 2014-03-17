@@ -16,20 +16,25 @@
 		    $items = $wpdb->get_results($query);
 		    return ($items);
 		}
+		
+		function recoverItemByID ($id_item){
+		    global $wpdb;
+		    $query = "SELECT * FROM wp_inventory_item WHERE id_item = ".$id_item;
+		    $item = $wpdb->get_results($query);
+		    return ($item);
+		}
 
 		function insertItem ($name, $description, $manufacturer, $quantity, $serial, $id_uc3m, $image){
 		    global $wpdb;
 		    $available = $quantity;
 		    $wpdb->insert('wp_inventory_item',  
 		    array('name' => $name, 'description' => $description, 'manufacturer' => $manufacturer, 'quantity' => $quantity, 'available' => $available, 'serial' => $serial, 'id_uc3m' => $id_uc3m, 'image' => $image), 
-		    array( '%s', '%s', '%s','%d', '%d','%d') );
-
+		    array( '%s', '%s', '%s','%d', '%d','%d', '%d', '%s') );
 		}	
 		
-		function deleteItem ($id_item){
+		function deleteItemByID ($id_item){
 		    global $wpdb;
 		    $query ="DELETE FROM wp_inventory_item WHERE id_item =".$id_item;
-		    echo $query;
 		    $wpdb->query( $wpdb->prepare($query));
 		}
 	}

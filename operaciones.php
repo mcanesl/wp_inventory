@@ -44,9 +44,9 @@
 			      <p>Select a determinated data list.</p>
 			      <div class="ionTabs" id="tabs_1" data-name="Tabs_Group_name" >
 				  <ul class="ionTabs__head">
-				      <li class="ionTabs__tab" data-target="Tab_1_name">Listado de items:</li>
-				      <li class="ionTabs__tab" data-target="Tab_2_name">Listado prestamos:</li>
-				      <li class="ionTabs__tab" data-target="Tab_3_name">Listado de usuarios:</li>
+				      <li class="ionTabs__tab" data-target="Tab_1_name">Items list</li>
+				      <li class="ionTabs__tab" data-target="Tab_2_name">Asignations list</li>
+				      <li class="ionTabs__tab" data-target="Tab_3_name">Users list</li>
 				  </ul>
 				  <div class="ionTabs__body">
 				      <div class="ionTabs__item" data-name="Tab_1_name">

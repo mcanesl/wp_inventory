@@ -30,10 +30,10 @@
 				 
 			echo '
 				<nav id="toolbar_button">
-					<a href="operaciones.php" target="frame_operaciones" class="button hollow"><b>list</b></a>
-					<a href="new_item.php" target="frame_operaciones" class="button hollow"><b>new</b></a>
-					<a href="about.php" target="frame_operaciones"><p class="button hollow"><b>about</b></p></a>
-					<a href="exit.php" target="frame_operaciones" class="button hollow"><b>exit()</b></a>
+					<a href="operaciones.php" target="frame_operaciones" class="button hollow"><b><img src="images/list.png" width="24px" height="24px"></img></b></a>
+					<a href="new_item.php" target="frame_operaciones" class="button hollow"><b><img src="images/compose-3.png" width="24px" height="24px"></img></b></a>
+					<a href="about.php" target="frame_operaciones"><p class="button hollow"><b><img src="images/envelope.png" width="24px" height="24px"></img></b></p></a>
+					<a href="exit.php" target="frame_operaciones" class="button hollow"><b><img src="images/out.png" width="24px" height="24px"></img></b></a>
 					<p id="msgstatus">login as <b>'. $_SESSION['login'] .'	</b></p>
 				 </nav>';
 				 

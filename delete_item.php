@@ -2,38 +2,56 @@
   <head>
   
   <?php require_once("classes/class.Items.php");?>
-  
     <meta charset=utf-8 />
    
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/normalize.css" rel="stylesheet" type="text/css" />
+    <link href="css/hover-min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="css/wp_inventory.css" />
   </head>
-  <body>
-
-    <div class="container_modal">
+    
+     <body>
+    <div class="container">
     
       <?php
-      	session_start(); 
-
-      if ($_SESSION['login']){
-      echo '
-	<form id="new_item_form" method="post" action="#">
-	  <h3>Borrar dispositivo</h3>
-	  <p>¿Estás seguro de que deseas eliminar este dispositivo de la base de datos?</p>
-	  <input type="submit" name="delete" value="Eliminar">
-	  <input type="reset" name="cancel" value="Cancelar">
-	</form>';
-	
-      }else{
-	echo 'Usuario incorrecto';
-      }
+      		session_start(); 
       
-      if (isset($_POST['delete'])){
-		$db	= new Items ();
-		$items = $db -> deleteItem(39);
+	
+	
+      if ($_SESSION['login']){
+      
+      	$db	= new Items ();
+	$item = $db -> recoverItemByID($_GET['id_item']);
+	
+	echo '<h3> Delete item</h3>';
+	
+	if (isset($_POST['delete'])){
+	  $db	= new Items ();
+	  $item = $db -> deleteItemByID($_GET['id_item']);
+	  
+	  echo '<div class="success_msg">
+	    The item has been deleted successfully.
+	  </div>
+	  <a href="list_items.php" target="list_items_frame">Back</a>';
+	}else{
+	
+	  echo '
+	<p>You are going to delete the item: </p>
+	<p><b>'.$item[0]->id_item.' - '.$item[0]->name.'</b></p>
+	<p>Are you sure do you want to delete it?.</p>
+	  <form id="delete_item" method="post" action="#">
+	    <input type="hidden" name="id_item" value="'.$_GET['id_item'].'">
+	    <input class = "button wobble-to-top-right" type="submit" id="delete" name="delete" value="Yes, delete">
+	    <a href="operaciones.php" target="frame_operaciones">Back</a>
+	  </form>';
+	
+	}
+      }else{
+		echo '<div class="error_msg">
+				User not registered in the system.  Go to login window.
+		       </div>';
       }
      ?>
-
-
+  
     </div>
   </body>
 </html>

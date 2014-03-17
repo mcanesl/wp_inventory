@@ -21,7 +21,43 @@
       echo '
 	<form id="upload_form" enctype="multipart/form-data" method="post" action="#">
 	  <h3> New item</h3>
-	  <p>Introduce the information of the new item.</p>
+	  <p>Introduce the information of the new item.</p>';
+	  
+	  if (isset($_POST['save'])){
+      
+	    if (empty($_POST['item']) || empty($_POST['description']) || empty($_POST['manufacturer']) || empty($_POST['quantity']) || empty($_POST['serial']) || empty($_POST['id_uc3m']) ){
+	      echo '<div class="error_msg">
+		      Sorry, we need you fill in all the required gaps... <b>Check the information provided.</b>
+	      </div>';
+	      
+	    }else if (!is_numeric($_POST['quantity'])) {
+		echo '<div class="error_msg">
+		      Sorry, <i>quantity</i> field has to be a numberic value... <b>Check the information provided.</b>
+	      </div>';
+	    }else if (!is_numeric($_POST['serial'])) {
+		echo '<div class="error_msg">
+		      Sorry, <i>serial</i> field has to be a numberic value... <b>Check the information provided.</b>
+	      </div>';
+	    }else if (!is_numeric($_POST['id_uc3m'])) {
+		echo '<div class="error_msg">
+		      Sorry, <i>ID UC3M</i> field has to be a numberic value... <b>Check the information provided.</b>
+	      </div>';
+	    }else if (strpos($_FILES['image_file']['type'], 'image')) {
+		echo '<div class="error_msg">
+		      Sorry, the file uploaded has to be an image... <b>Check the type of the image file selected.</b>
+	      </div>';
+	    }else{
+	      $db	= new Items ();
+	      $items = $db -> insertItem($_POST['item'], $_POST['description'], $_POST['manufacturer'], $_POST['quantity'], $_POST['serial'], $_POST['id_uc3m'], file_get_contents($_FILES['image_file']['tmp_name']));
+	      
+	      echo '<div class="success_msg">
+		      The new item has been uploaded with success.
+	      </div>';
+	}
+      }
+	  
+	  
+	  echo '
 	  <fieldset id="inputs">
 	  <table id = "new_item_table">
 	    <tr>
@@ -38,19 +74,15 @@
 	    </tr>
 	    <tr>
 	      <td><p>Quantity</p></td>
-	      <td><input id="quantity" name="quantity" type="text" placeholder="Quantity" autofocus required>  </td>
+	      <td><input id="quantity" name="quantity" type="number" placeholder="Quantity" autofocus required>  </td>
 	    </tr>
 	    <tr>
 	      <td><p>Serial</p></td>
-	      <td><input id="serial" name="serial" type="text" placeholder="Serial" autofocus required>  </td>
+	      <td><input id="serial" name="serial" type="number" placeholder="Serial" autofocus required>  </td>
 	    </tr>
 	    <tr>
 	      <td><p>ID UC3M</p></td>
-	      <td><input id="id_uc3m" name="id_uc3m" type="text" placeholder="ID UC3M" autofocus required>  </td>
-	    </tr>
-	    <tr>
-	      <td><p>Image</p></td>
-	      <td><input id="image" name="image" type="text" placeholder="Image" autofocus required>  </td>
+	      <td><input id="id_uc3m" name="id_uc3m" type="number" placeholder="ID UC3M" autofocus required>  </td>
 	    </tr>
 	  </table>
 	  </fieldset>
@@ -59,11 +91,9 @@
 	  
 	  <div>
 	    <p><img src="images/image.png"> Select an image file.</p>
-	  <div><input type="file" name="image_file" id="image_file" onchange="fileSelected();" /></div>
-	      </div>
-	      <div>
-		  <input type="button" class= "button wobble-to-top-right" value="Upload" onclick="startUploading()" />
-	      </div>
+	    <div>
+	      <input type="file" name="image_file" id="image_file" onchange="fileSelected();" /></div>
+	    </div>
 	      <div id="fileinfo">
 		  <div id="filename"></div>
 		  <div id="filesize"></div>
@@ -87,31 +117,17 @@
 		  </div>
 		  <div id="upload_response"></div>
 	      </div>
-	                    
-	  <input type="submit" class="button wobble-to-top-right" id="save" name="save" value="Guardar">
-	  <input type="reset" class="button wobble-to-top-right" id="reset" name="reset" value="Reset">
+	               
+	  <div id="buttons">
+	    <input type="submit" class="button wobble-to-top-right" id="save" name="save" value="Guardar">
+	    <input type="reset" class="button wobble-to-top-right" id="reset" name="reset" value="Reset">
+	  </div>
 	</form>';
 	
       }else{
 	echo 'Usuario incorrecto';
       }
      
-      
-      if (isset($_POST['save'])){
-     
-
-	$sFileName = $_FILES['image_file']['name'];
-	$sFileType = $_FILES['image_file']['type'];
-	$sFileSize = bytesToSize1024($_FILES['image_file']['size'], 1);
-
-	echo '
-	<p>Your file: {$sFileName} has been successfully received.</p>
-	<p>Type: {$sFileType}</p>
-	<p>Size: {$sFileSize}</p>';
-
-	$db	= new Items ();
-	$items = $db -> insertItem($_POST['name'], $_POST['description'], $_POST['manufacturer'], $_POST['quantity'], $_POST['serial'], $_POST['id_uc3m'], file_get_contents($_FILES['image_file']['tmp_name']));
-      }
       
       function bytesToSize1024($bytes, $precision = 2) {
 	    $unit = array('B','KB','MB');

@@ -194,6 +194,13 @@ fieldset
 	  padding: 10px 10px 10px 38px;
 }
 
+.success_msg {
+	background: #B5D9AD 15px 50% no-repeat;
+	  border-radius: 6px;
+	  border: 1px solid #BBDCAC;
+	  color: #000;
+	  padding: 10px 10px 10px 38px;
+}
 
 
 /***** fondo para todas ****/
@@ -242,13 +249,26 @@ body {
 #frame_operaciones {
 	border:0px;
 	width:100%;
-	min-height:500px;
+	min-height:200px;
+	height:700 !important;
+
+}
+
+
+
+.container {
+	height:900px !important;
+ 
+}
+
+#list_items_frame {
+	height:900px !important;
 
 }
 
 #frame_principal {
 	border:0px;
-	height:700px;;
+	height:900px !important;
 }
 
 
@@ -306,9 +326,7 @@ body {
 
 /**** Tabs *****/
 
-#list_items_frame {
-	height: 350px !important;
-}
+
 
 
 
@@ -330,14 +348,14 @@ body {
   font: 200 22px/1.5 Helvetica, Verdana, sans-serif;
 }
 #exit img {
-	float:left;
+  float:left;
 }
 
 #msg_confirm {
-	margin-top:120px;
-	width:90%;
-	position:absolute;
-	text-align:center;
+  margin-top:120px;
+  width:90%;
+  position:absolute;
+  text-align:center;
 }
 
 
@@ -359,8 +377,43 @@ body {
   width: 275px;
 }
 
-#list_items_table{
-      font: 200 12px/1.5 Helvetica, Verdana, sans-serif;
+#details_table {
+  text-align: center;
+  margin: auto;
 }
 
+#details_table td {
+  text-align: center;
+  font-size: 14px;
+  padding: 10px 10px 10px 10px;
+}
 
+#details_table input {
+  background: none;
+  font-size: 14px;
+  width: 275px;
+}
+
+#item_table{
+  text-align: center;
+  margin: auto;
+}
+
+#item_table td{
+  padding: 20px 20px 20px 20px;
+}
+
+#list_items_table{
+  font: 200 12px/1.5 Helvetica, Verdana, sans-serif;
+}
+
+#buttons{
+  text-align: center;
+}
+
+/*****   Sobreescribimos el tema******/
+
+/*  */
+.entry-content {
+  /*height: 2000px !important;*/
+}
