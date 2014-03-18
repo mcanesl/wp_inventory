@@ -72,13 +72,6 @@
 					User not registered in the system.  Go to login window.
 			       </div>';
 		}
-/*		if ( $_GET ['exit'] ) {
-			session_destroy();
-			header ("Location: " . network_home_url() );
-			#header ("Location: http://localhost/wordpress" ); 
-			
-			
-		}*/
 		
 
 	?>

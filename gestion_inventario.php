@@ -15,7 +15,7 @@ add_shortcode( 'gestion', 'wp_inventory');
 register_activation_hook(__FILE__,'wp_inventory_install');
 
 // run the uninstall script upon plugin deletion
-register_uninstall_hook(__FILE__,'wp_inventory_uninstall');
+register_deactivation_hook(__FILE__,'wp_inventory_uninstall');
 
 // create custom plugin settings menu
 add_action('admin_menu', 'create_options_menu');
@@ -60,7 +60,7 @@ function wp_inventory(){
 		//Estos valores deberian estar en la configuracion del wordpress:
 		$userbind 	= 'uid = --login--, ou=People, dc=tsc, dc=uc3m,dc=es';
 		$gtsuser	= 'cn=gts, ou=Group,DC=tsc,DC=uc3m,DC=es';
-		$gtsadmin	= 'cn=gts, ou=Group,DC=tsc,DC=uc3m,DC=es';
+		$gtsadmin	= 'cn=sysadmin, ou=Group,DC=tsc,DC=uc3m,DC=es';
 		$server		= 'umbriel.tsc.uc3m.es';
 
 	
@@ -155,7 +155,7 @@ function options_page() {
     </table>
     
     <p class="submit">
-    <input type="submit" class="button-primary" value="<?php _e('Save') ?>" />
+    <input type="submit" name="submit" class="button-primary" value="<?php _e('Save') ?>" />
     </p>
 
 </form>

@@ -2,6 +2,7 @@
   <head>
   
   <?php require_once("classes/class.Items.php");?>
+  <?php require_once("classes/class.Asignations.php");?>
     <meta charset=utf-8 />
    
     <link href="css/normalize.css" rel="stylesheet" type="text/css" />
@@ -17,30 +18,30 @@
       
 	
 	
-      if ($_SESSION['admin']){
+      if ($_SESSION['login']){
       
       	$db	= new Items ();
 	$item = $db -> recoverItemByID($_GET['id_item']);
 	
-	echo '<h3> Delete item</h3>';
+	echo '<h3> Return Item</h3>';
 	
-	if (isset($_POST['delete'])){
-	  $db	= new Items ();
-	  $item = $db -> deleteItemByID($_GET['id_item']);
+	if (isset($_POST['return'])){
+	  $db	= new Asignations ();
+	  $item = $db -> returnItemByID($_SESSION['login'], $_GET['id_item']);
 	  
 	  echo '<div class="success_msg">
-	    <img src="images/bin-3.png" width="16px" height="16px"></img>  The item has been deleted successfully.
+	    <img src="images/outgoing-2.png" width="16px" height="16px"></img>  The item has been returned successfully.
 	  </div>
 	  <a href="operaciones.php" target="frame_operaciones">Back</a>';
 	}else{
 	
 	  echo '
-	<p>You are going to delete the item: </p>
+	<p>You are going to return the item: </p>
 	<p><b>'.$item[0]->id_item.' - '.$item[0]->name.'</b></p>
-	<p>Are you sure do you want to delete it?.</p>
-	  <form id="delete_item" method="post" action="#">
+	<p>Are you sure do you want to return it?.</p>
+	  <form id="return_item" method="post" action="#">
 	    <input type="hidden" name="id_item" value="'.$_GET['id_item'].'">
-	    <input class = "button wobble-to-top-right" type="submit" id="delete" name="delete" value="Yes, delete">
+	    <input class = "button wobble-to-top-right" type="submit" id="return" name="return" value="Yes, return">
 	    <a href="operaciones.php" target="frame_operaciones">Back</a>
 	  </form>';
 	

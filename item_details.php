@@ -71,7 +71,6 @@
 	  
 	  <p style="border: 1px solid black"></p>
 	  
-	  <div class="container">
 	    <p><img src="images/book-lines.png"> Asignations history.</p>
 	    
 	    <table id="list_items_table" class="display" width="100%">
@@ -106,8 +105,6 @@
 				</tbody>
 			  </table>
 	    
-	 
-	  </div>
 	  ';
       }else{
 		echo '<div class="error_msg">

@@ -74,7 +74,7 @@ $(document).ready(function() {
   </head>
     
      <body>
-    <div class="container">
+    <div class="list_container">
     
       <?php
       		session_start(); 
@@ -109,9 +109,15 @@ $(document).ready(function() {
 						    <td>'.$value->manufacturer.'</td>
 						    <td>'.$value->quantity.'</td>
 						    <td>
-							<a href="item_details.php?id_item='.$value->id_item.'", target="frame_operaciones"><img src="images/zoom-in-2.png" width="16px" height="16px"></img></a>
-						    	<a href="edit_item.php?id_item='.$value->id_item.'", target="frame_operaciones"><img src="images/pencil.png" width="16px" height="16px"></img></a>
-							<a href="delete_item.php?id_item='.$value->id_item.'", target="frame_operaciones"><img src="images/bin-3.png" width="16px" height="16px"></img></a>
+							<a href="item_details.php?id_item='.$value->id_item.'", target="frame_operaciones"><img src="images/zoom-in-2.png" width="16px" height="16px"></img></a>';
+						    	
+						    	if ($_SESSION['admin']){
+							  echo '<a href="edit_item.php?id_item='.$value->id_item.'", target="frame_operaciones"><img src="images/pencil.png" width="16px" height="16px"></img></a>
+							  <a href="delete_item.php?id_item='.$value->id_item.'", target="frame_operaciones"><img src="images/bin-3.png" width="16px" height="16px"></img></a>';
+							}
+							
+							echo '
+							<a href="asign_item.php?id_item='.$value->id_item.'", target="frame_operaciones"><img src="images/locked.png" width="16px" height="16px"></img></a>
 						    </td>
 					  </tr>';
 				}

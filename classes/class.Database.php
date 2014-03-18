@@ -20,24 +20,12 @@
 		    PRIMARY KEY (id_item)
 		  )";
 		  
-		  $query_user = "CREATE TABLE IF NOT EXISTS wp_inventory_user (
-		    user VARCHAR(15) NOT NULL,
-		    name VARCHAR(15) NOT NULL,
-		    surname VARCHAR(15) NOT NULL,
-		    email VARCHAR(20) NOT NULL,
-		    office VARCHAR(15) NOT NULL,
-		    telephone VARCHAR(15) NOT NULL,
-		    PRIMARY KEY (user)
-		  )";
-		  
 		  $query_asignation = "CREATE TABLE IF NOT EXISTS wp_inventory_asignation (
 		    id_asignation INTEGER NOT NULL AUTO_INCREMENT,
 		    user VARCHAR(15) NOT NULL,
 		    id_item INTEGER NOT NULL,
-		    asignation_date DATE NOT NULL,
-		    expiry_date DATE NOT NULL,
+		    asignation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
 		    PRIMARY KEY(id_asignation),
-		    FOREIGN KEY (user) REFERENCES wp_inventory_user(user),
 		    FOREIGN KEY (id_item) REFERENCES wp_inventory_item(id_item)
 		  )";
 		  

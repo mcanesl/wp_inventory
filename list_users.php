@@ -15,10 +15,11 @@
       });
     </script>
     
-    <div class="container">
+    <div class="list_container">
     
     <?php
 	require_once("classes/class.InventoryAuth.php");
+	require_once("classes/class.Users.php");
 	
 	session_start ();
     	if ($_SESSION['login']){

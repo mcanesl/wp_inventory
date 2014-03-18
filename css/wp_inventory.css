@@ -258,6 +258,7 @@ body {
 
 .container {
 	height:900px !important;
+	padding: 20px 20px 20px 20px;
  
 }
 
@@ -404,6 +405,10 @@ body {
 }
 
 #list_items_table{
+  font: 200 12px/1.5 Helvetica, Verdana, sans-serif;
+}
+
+#list_asignations_table{
   font: 200 12px/1.5 Helvetica, Verdana, sans-serif;
 }
 

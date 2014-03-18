@@ -12,12 +12,12 @@
   </head>
   <body>
 
-    <div class="new_item_container">
+    <div class="container">
     
       <?php
       	session_start(); 
 
-      if ($_SESSION['login']){
+      if ($_SESSION['admin']){
       echo '
 	<form id="upload_form" enctype="multipart/form-data" method="post" action="#">
 	  <h3> New item</h3>
@@ -51,7 +51,7 @@
 	      $items = $db -> insertItem($_POST['item'], $_POST['description'], $_POST['manufacturer'], $_POST['quantity'], $_POST['serial'], $_POST['id_uc3m'], file_get_contents($_FILES['image_file']['tmp_name']));
 	      
 	      echo '<div class="success_msg">
-		      The new item has been uploaded with success.
+		     <img src="images/plus.png" width="16px" height="16px"></img>   The new item has been uploaded with success.
 	      </div>';
 	}
       }
@@ -117,6 +117,7 @@
 		  </div>
 		  <div id="upload_response"></div>
 	      </div>
+	      
 	               
 	  <div id="buttons">
 	    <input type="submit" class="button wobble-to-top-right" id="save" name="save" value="Guardar">
@@ -125,7 +126,9 @@
 	</form>';
 	
       }else{
-	echo 'Usuario incorrecto';
+		echo '<div class="error_msg">
+				User not registered in the system.  Go to login window.
+		       </div>';
       }
      
       
