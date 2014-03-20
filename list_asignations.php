@@ -28,27 +28,21 @@
 <table cellpadding="0" cellspacing="0" border="0" class="display" id="example">
         <thead>
                 <tr>
-                        <th width="20%">wordid</th>
-                        <th width="25%">lemma</th>
-                        <th width="25%">synsetid</th>
-                        <th width="15%">sensekey</th>
+                        <th>id_asignation</th>
+                        <th>user</th>
+                        <th>id_item</th>
+                        <th>asignation_date</th>
+                        <th>item details</th>
+
                 </tr>
         </thead>
         <tbody>
                 <tr>
-                        <td colspan="5" class="dataTables_empty">Loading data from server</td>
+                        <td class="dataTables_empty">Loading data from server</td>
                 </tr>
         </tbody>
-        <tfoot>
-                <tr>
-                        <th>wordid</th>
-                        <th>lemma</th>
-			<th>synsetid</th>
-                        <th>sensekey</th>
-                </tr>
-        </tfoot>
-</table>
 
+</table>
 
 </html>
 
