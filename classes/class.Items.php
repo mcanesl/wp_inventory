@@ -1,8 +1,8 @@
 <?php
 	class Items {
 		private $database;
-
 		function __construct(  ) {
+		
 		    global $wpdb, $table_prefix;
 		    if(!isset($wpdb)){
 		      require_once('../../../wp-config.php');
@@ -76,4 +76,3 @@
 	}
 
 ?>
-

@@ -30,7 +30,7 @@
 				 </nav>';
 				 
 			echo '
-				<iframe id="frame_operaciones" name="frame_operaciones" src="operaciones.php" seamless></iframe>';
+				<iframe id="frame_operaciones" name="frame_operaciones" src="operaciones.php"  seamless></iframe>';
 				 							
 		}else {
 

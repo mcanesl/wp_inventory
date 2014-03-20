@@ -89,8 +89,9 @@ function wp_inventory(){
 		}
 		
 		if ( $_SESSION['login'] ) {
-			echo '
-				<iframe id="frame_principal" name="frame_principal" src="' . plugin_dir_url( __FILE__ ) . 'mostrar.php" seamless height="900px" width="100%"></iframe>
+			echo '<div style="width:700px; margin-top:-55px;">
+				<iframe id="frame_principal" name="frame_principal" src="' . plugin_dir_url( __FILE__ ) . 'mostrar.php" seamless height="100px" width="100%"></iframe>
+				</div>
 			      ';
 
 		} else {

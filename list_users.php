@@ -51,7 +51,14 @@
 			}
 			echo'		
 			      </tbody>
-			    </table>';
+			    <tfoot>
+				<tr>
+		                        <th>.</th>
+        		        </tr>
+        		     </tfoot>			    
+   			    </table>
+			    ';
+
 		}else{
 			echo
 				'<div class="error_msg">

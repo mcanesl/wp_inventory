@@ -1,7 +1,11 @@
 <html>
   <head>
   
-  <?php require_once("classes/class.Items.php");?>
+  <?php 
+  	require_once("classes/class.Items.php");
+	require_once("classes/class.Asignations.php");
+  	
+  ?>
     <meta charset=utf-8 />
    
     <link href="css/normalize.css" rel="stylesheet" type="text/css" />
@@ -23,12 +27,21 @@
       	$db	= new Items ();
 	$item = $db -> recoverItemByID($_GET['id_item']);
 	
+	$fp = fopen('/tmp/img.64', 'w');
+	fwrite($fp, $item[0]->image );
+	fclose($fp);
+	
+      	$asig			= new Asignations();
+	$item_asignations 	= $asig -> recoverAsignationsByItem (  $item[0]->id_item );
+
+	
+
 	echo '<h3> Item details</h3>
 	<p>Details about selected item.</p>
 	<table id="item_table">
 	<tr>
 	  <td>
-	    <div style= "width: 150px; height:150px; background-color: red"> <img sc="'.$item[0]->image.'"></img> </div>
+	    <div style= "width: 150px; height:150px;"> <img src="get_image.php?id=' . $item[0]->id_item . ' width="120px" height="120px"></img> </div>
 	  </td>
 	  <td>
 	  <table id = "details_table">
@@ -78,22 +91,20 @@
 			  <tr>
 			    <th>ID Asignation</th>
 			    <th>User</th>
-			    <th>Item</th>
 			    <th>Asignation date</th>
-			    <th>Expiry date</th>
+    			    <th>Expiry date</th>
 			    <th>Operations</th>
 			  </tr>
 			</thead>
 			<tbody>';
 	
-				foreach ($items as $key => $value) {
+				foreach ($item_asignations as $a ) {
 				    echo '
 					  <tr>
-						    <td>'.$value->id_item.'</td>
-						    <td>'.$value->name.'</td>
-						    <td>'.$value->description.'</td>
-						    <td>'.$value->manufacturer.'</td>
-						    <td>'.$value->quantity.'</td>
+						    <td>'.$a->id_asignation.'</td>
+    						    <td>'.$a->user.'</td>
+ 						    <td>'.$a->asignation_date.'</td>
+     						    <td>'. '-------'.'</td>
 						    <td>
 							<a href="item_details.php", target="frame_operaciones"><img src="images/zoom-in-2.png" width="16px" height="16px"></img></a>
 						    	<img src="images/pencil.png" width="16px" height="16px"></img>

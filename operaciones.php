@@ -40,23 +40,21 @@
 		session_start ();
 		if ( $_SESSION['login']) {
 			echo '
-			      <h3> Information lists</h3>
-			      <p>Select a determinated data list.</p>
-			      <div class="ionTabs" id="tabs_1" data-name="Tabs_Group_name" >
+			      <div class="ionTabs" id="tabs_1" data-name="Tabs_Group_name">
 				  <ul class="ionTabs__head">
 				      <li class="ionTabs__tab" data-target="Tab_1_name">Items list</li>
 				      <li class="ionTabs__tab" data-target="Tab_2_name">Asignations list</li>
 				      <li class="ionTabs__tab" data-target="Tab_3_name">Users list</li>
 				  </ul>
-				  <div class="ionTabs__body">
+				  <div class="ionTabs__body" style="height:435px;">
 				      <div class="ionTabs__item" data-name="Tab_1_name">
-					    <iframe id="list_items_frame" onload="iframeLoadedItems()" src="./list_items.php" width="100%" seamless frameborder="0"></iframe>
+					    <iframe id="list_items_frame" onload="iframeLoadedItems()" src="./list_items.php" width="100%" seamless height="450px"frameborder="0"></iframe>
 				      </div>
-      				      <div class="ionTabs__item" data-name="Tab_3_name">
-					    <iframe id="list_items_frame" onload="iframeLoadedItems()" src="./list_users.php" width="100%" seamless frameborder="0"></iframe>
+      				      <div class="ionTabs__item" data-name="Tab_2_name" >
+					    <iframe id="list_items_frame" onload="iframeLoadedUsers()" src="./list_asignations.php" width="100%" seamless height="450px" frameborder="0"></iframe>
 				      </div>				      
       				      <div class="ionTabs__item" data-name="Tab_3_name">
-					    <iframe id="list_items_frame" onload="iframeLoadedItems()" src="./list_users.php" width="100%" seamless frameborder="0"></iframe>
+					    <iframe id="list_items_frame" onload="iframeLoadedUsers()" src="./list_users.php" width="100%" seamless frameborder="0" height="450px"></iframe>
 				      </div>
 				      <div class="ionTabs__preloader"></div>
 				  </div>
