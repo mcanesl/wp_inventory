@@ -19,7 +19,6 @@
     
     <?php
 	require_once("classes/class.InventoryAuth.php");
-	require_once("classes/class.Users.php");
 	
 	session_start ();
     	if ($_SESSION['login']){

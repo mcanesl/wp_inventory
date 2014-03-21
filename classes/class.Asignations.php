@@ -17,11 +17,11 @@
 		    array( '%s', '%d', '%d','%d') );
 		}
 		
-		/*function returnItemByID ($user, $id_item){
+		function returnItemByID ($user, $id_item){
 		    global $wpdb;
 		    $query = "DELETE FROM wp_inventory_asignation WHERE user = '" .$user. "' AND id_item = ".$id_item;
 		    $wpdb->query($query);
-		}*/
+		}
 		
 		function recoverAsignationsByItem  ($item) {
 		    global $wpdb;

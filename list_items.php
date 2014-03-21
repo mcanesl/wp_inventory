@@ -37,9 +37,9 @@
 			  <tr>
 			    <th>ID Item</th>
 			    <th>Name</th>
-			    <th>Description</th>
 			    <th>Manufacturer</th>
 			    <th>Quantity</th>
+			    <th>Available</th>
 			    <th>Operations</th>
 			  </tr>
 			</thead>
@@ -50,9 +50,9 @@
 					  <tr>
 						    <td>'.$value->id_item.'</td>
 						    <td>'.$value->name.'</td>
-						    <td>'.$value->description.'</td>
 						    <td>'.$value->manufacturer.'</td>
 						    <td>'.$value->quantity.'</td>
+						    <td>'.$value->available.'</td>
 						    <td>
 							<a href="item_details.php?id_item='.$value->id_item.'", target="frame_operaciones"><img src="images/zoom-in-2.png" width="16px" height="16px"></img></a>';
 						    	

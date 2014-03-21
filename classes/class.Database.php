@@ -10,13 +10,14 @@
 		  $query_item = "CREATE TABLE IF NOT EXISTS wp_inventory_item (
 		    id_item INTEGER NOT NULL AUTO_INCREMENT,
 		    name VARCHAR(15) NOT NULL,
-		    description VARCHAR(50) NOT NULL,
+		    description VARCHAR(50),
 		    manufacturer VARCHAR(15) NOT NULL,
 		    quantity INTEGER NOT NULL,
-		    available INTEGER NOT NULL,
-		    serial INTEGER NOT NULL,
-		    id_uc3m INTEGER NOT NULL,
+		    available INTEGER,
+		    serial INTEGER,
+		    id_uc3m INTEGER,
 		    image MEDIUMBLOB,
+		    issues VARCHAR(50),
 		    PRIMARY KEY (id_item)
 		  )";
 		  

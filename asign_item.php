@@ -20,19 +20,31 @@
 	
       if ($_SESSION['login']){
       
-      	$db	= new Items ();
-	$item = $db -> recoverItemByID($_GET['id_item']);
+      	$db_i	= new Items ();
+	$item = $db_i -> recoverItemByID($_GET['id_item']);
 	
 	echo '<h3> Asign item</h3>';
 	
 	if (isset($_POST['asign'])){
-	  $db	= new Asignations ();
-	  $item = $db -> asignItemByID($_SESSION['login'], $_GET['id_item']);
-	  
-	  echo '<div class="success_msg">
-	    <img src="images/locked.png" width="16px" height="16px"></img>  The item has been asigned to you successfully.
-	  </div>
-	  <a href="operaciones.php" target="frame_operaciones">Back</a>';
+	
+	  if ($item[0]->available <=0){
+	    echo '<div class="error_msg">
+	      Sorry, there is no available item units.
+	    </div>
+	    <a href="operaciones.php" target="frame_operaciones">Back</a>';
+	  }else{
+	    $db_a	= new Asignations ();
+	    $asignation = $db_a -> asignItemByID($_SESSION['login'], $_GET['id_item']);
+	    
+	    $newAvailable = ($item[0]->available) - 1;
+	    $db_i -> updateAvailableQuantityByID($item[0]->id_item, $newAvailable);
+	    
+	    
+	    echo '<div class="success_msg">
+	      <img src="images/locked.png" width="16px" height="16px"></img>  The item has been asigned to you successfully.
+	    </div>
+	    <a href="operaciones.php" target="frame_operaciones">Back</a>';
+	  }
 	}else{
 	
 	  echo '

@@ -7,7 +7,7 @@
   	
   ?>
     <meta charset=utf-8 />
-   
+    <link href="js/Datatables/media/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
     <link href="css/normalize.css" rel="stylesheet" type="text/css" />
     <script src="js/Datatables/media/js/jquery.js"></script>
     <script src="js/Datatables/media/js/jquery.dataTables.js"></script>
@@ -74,8 +74,12 @@
 		<td>'.$item[0]->serial.'</td>
 	      </tr>
 	      <tr>
-		<td><p><b>ID UC3M</b></p></td>
+		<td><p><b>Inventory number</b></p></td>
 		<td>'.$item[0]->id_uc3m.'</td>
+	      </tr>
+	      <tr>
+		<td><p><b>Issues</b></p></td>
+		<td>'.$item[0]->issues.'</td>
 	      </tr>
 	    </table>
 	     </td>

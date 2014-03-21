@@ -24,11 +24,11 @@
 		    return ($item);
 		}
 
-		function insertItem ($name, $description, $manufacturer, $quantity, $serial, $id_uc3m, $image){
+		function insertItem ($name, $description, $manufacturer, $quantity, $serial, $id_uc3m, $image, $issues){
 		    global $wpdb;
 		    $available = $quantity;
 		    $wpdb->insert('wp_inventory_item',  
-		    array('name' => $name, 'description' => $description, 'manufacturer' => $manufacturer, 'quantity' => $quantity, 'available' => $available, 'serial' => $serial, 'id_uc3m' => $id_uc3m, 'image' => $image), 
+		    array('name' => $name, 'description' => $description, 'manufacturer' => $manufacturer, 'quantity' => $quantity, 'available' => $available, 'serial' => $serial, 'id_uc3m' => $id_uc3m, 'image' => $image, 'issues' => $issues), 
 		    array( '%s', '%s', '%s','%d', '%d','%d', '%d', '%s') );
 		}	
 		
@@ -36,6 +36,12 @@
 		    global $wpdb;
 		    $query ="DELETE FROM wp_inventory_item WHERE id_item =".$id_item;
 		    $wpdb->query($query);
+		}
+		
+		function updateAvailableQuantityByID ($id_item, $available){
+		    global $wpdb;
+		    $query = "UPDATE wp_inventory_item SET available = " .$available. " WHERE id_item = ".$id_item;
+		    $wpdb->query( $wpdb->prepare($query));
 		}
 		
 		function updateItemByID ($id_item, $name, $description, $manufacturer, $quantity, $serial, $id_uc3m, $image){
