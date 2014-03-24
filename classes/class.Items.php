@@ -17,6 +17,13 @@
 		    return ($items);
 		}
 		
+		function recoverManufacturers (){
+		    global $wpdb;
+		    $query = "SELECT DISTINCT manufacturer FROM wp_inventory_item";
+		    $manufacturers = $wpdb->get_results($query);
+		    return ($manufacturers);
+		}
+		
 		function recoverItemByID ($id_item){
 		    global $wpdb;
 		    $query = "SELECT * FROM wp_inventory_item WHERE id_item = ".$id_item;
@@ -44,39 +51,13 @@
 		    $wpdb->query( $wpdb->prepare($query));
 		}
 		
-		function updateItemByID ($id_item, $name, $description, $manufacturer, $quantity, $serial, $id_uc3m, $image){
+		function updateItemByID ($id_item, $name, $description, $manufacturer, $quantity, $available, $serial, $id_uc3m, $image, $issues){
 		    global $wpdb;
-		    $query = "UPDATE wp_inventory_item SET";
 		    
-		    if ($name !=null){
-		      $query = $query . " name = '" . $name . "'"; 
-		    }
 		    
-		    if ($description != null){
-		      $query = $query . ", description = '" . $description . "'"; 
-		    }
-		    
-		    if ($manufacturer != null){
-		      $query = $query . ", manufacturer = '" . $manufacturer . "'"; 
-		    }
-		    
-		    if ($quantity != null){
-		      $query = $query . ", quantity = " . $quantity; 
-		    }
-		    if ($serial != null){
-		      $query = $query . ", serial = " . $serial; 
-		    }
-		    
-		    if ($id_uc3m != null){
-		      $query = $query . ", id_uc3m = " . $id_uc3m; 
-		    }
-		    
-		    if ($image != null){
-		      $query = $query . ", image = '" . $image . "'"; 
-		    }
-		    
-		    $query = $query . " WHERE id_item = " .$id_item;
-		    
+		    $query = "UPDATE wp_inventory_item SET name = '" . $name . "',  description = '" . $description . "', manufacturer = '" . $manufacturer . "', quantity = " . $quantity . ", 
+		    serial = " . $serial . ", id_uc3m = " . $id_uc3m . ", image = '" . $image . "' , issues = '" . $issues . " WHERE id_item = " .$id_item;
+		    print $query;
 		    $wpdb->query( $wpdb->prepare($query));
 		}
 	}

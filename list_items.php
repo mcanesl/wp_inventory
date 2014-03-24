@@ -10,11 +10,16 @@
     <script src="js/Datatables/media/js/jquery.dataTables.js"></script>
     <link rel="stylesheet" href="css/wp_inventory.css" />
     
-    
-    <script>$(document).ready( function () {
-      var table = $('#list_items_table').DataTable({'iDisplayLength': 10});
-      });
-    </script>
+                <script type="text/javascript" charset="utf-8">
+                        $(document).ready(function() {
+                                $('.list_items_table').dataTable( {
+                                        "bProcessing": true,
+                                        "bServerSide": true,
+                                        "sAjaxSource": "scripts/server_processing_items.php",
+                                        "iDisplayLength": 10
+                                } );
+                        } );
+                </script>
     
   </head>
     
@@ -32,42 +37,23 @@
 	$items = $db -> recoverItems();
 	if ($items != null){	
 		      echo '
-		      <table id="list_items_table" class="display" width="100%">
+		      <table class="list_items_table" class="display" width="100%">
 			<thead>
-			  <tr>
-			    <th>ID Item</th>
-			    <th>Name</th>
-			    <th>Manufacturer</th>
-			    <th>Quantity</th>
-			    <th>Available</th>
-			    <th>Operations</th>
-			  </tr>
+				<tr>
+					<th>ID Item</th>
+					<th>Name</th>
+					<th>Manufacturer</th>
+					<th>Quantity</th>
+					<th>Available</th>
+					<th>Operations</th>
+
+				</tr>
 			</thead>
-			<tbody>';
-	
-				foreach ($items as $key => $value) {
-				    echo '
-					  <tr>
-						    <td>'.$value->id_item.'</td>
-						    <td>'.$value->name.'</td>
-						    <td>'.$value->manufacturer.'</td>
-						    <td>'.$value->quantity.'</td>
-						    <td>'.$value->available.'</td>
-						    <td>
-							<a href="item_details.php?id_item='.$value->id_item.'", target="frame_operaciones"><img src="images/zoom-in-2.png" width="16px" height="16px"></img></a>';
-						    	
-						    	if ($_SESSION['admin']){
-							  echo '<a href="edit_item.php?id_item='.$value->id_item.'", target="frame_operaciones"><img src="images/pencil.png" width="16px" height="16px"></img></a>
-							  <a href="delete_item.php?id_item='.$value->id_item.'", target="frame_operaciones"><img src="images/bin-3.png" width="16px" height="16px"></img></a>';
-							}
-							
-							echo '
-							<a href="asign_item.php?id_item='.$value->id_item.'", target="frame_operaciones"><img src="images/locked.png" width="16px" height="16px"></img></a>
-						    </td>
-					  </tr>';
-				}
-			 echo '
-				</tbody>
+			<tbody>
+				<tr>
+					<td class="dataTables_empty">Loading data from server</td>
+				</tr>
+			</tbody>
 			  </table>';
 	}else{
 			echo '<div class="error_msg">

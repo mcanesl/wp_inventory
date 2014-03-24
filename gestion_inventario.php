@@ -57,16 +57,10 @@ function wp_inventory_uninstall() {
 }
 
 function wp_inventory(){
-		//Estos valores deberian estar en la configuracion del wordpress:
-		$userbind 	= 'uid = --login--, ou=People, dc=tsc, dc=uc3m,dc=es';
-		$gtsuser	= 'cn=gts, ou=Group,DC=tsc,DC=uc3m,DC=es';
-		$gtsadmin	= 'cn=sysadmin, ou=Group,DC=tsc,DC=uc3m,DC=es';
-		$server		= 'umbriel.tsc.uc3m.es';
 
-	
 		if ( $_POST ['username'] and $_POST ['password'] and ! $_SESSION['login']) {
-			$ldap_c	= new InventoryAuth ( $server, $userbind, $gtsuser, $gtsadmin );
-			$r = $ldap_c -> userInGroup ( $_POST ['username'], $_POST ['password'], $gtsuser );	
+			$ldap_c	= new InventoryAuth ( get_option('server'), get_option('user'), get_option('gts_group'), get_option('gts_group_admin') );
+			$r = $ldap_c -> userInGroup ( $_POST ['username'], $_POST ['password'], get_option('gts_group'));	
 			if ( $r  > 0) {
 				$_SESSION['login'] = $_POST ['username'];
 				#header ("Location: mostrar.php");
@@ -75,8 +69,8 @@ function wp_inventory(){
 				$error = true;
 			}
 			
-			$r = $ldap_c -> userInGroup ( $_POST ['username'], $_POST ['password'], $gtsadmin );	
-			$r = $ldap_c -> userInGroup ( $_POST ['username'], $_POST ['password'], $gtsadmin );	
+			$r = $ldap_c -> userInGroup ( $_POST ['username'], $_POST ['password'], get_option('gts_group_admin') );	
+			$r = $ldap_c -> userInGroup ( $_POST ['username'], $_POST ['password'], get_option('gts_group_admin') );	
 			if ( $r  > 0) {
 				$_SESSION['admin'] =  true;
 			}
@@ -133,7 +127,7 @@ function options_page() {
 <div class="wrap">
 <h2>WP Inventory</h2>
 
-<form method="post" action="options.php">
+<form method="post" action="options.php" action="<?php settings_fields( 'options-group' ); ?>">
     <?php settings_fields( 'options-group' ); ?>
     <p>Some information about this admin page.</p>
     <table class="form-table">

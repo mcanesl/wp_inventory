@@ -13,7 +13,7 @@
     
         
     <script>$(document).ready( function () {
-      var table = $('#list_asignations_table').DataTable();
+      var table = $('.list_items_table').DataTable();
       });
     </script>
     
@@ -29,39 +29,84 @@
 	
       if ($_SESSION['login']){
       
-      	$db	= new Asignations();
-	$asignations = $db -> recoverAsignationsByUser($_SESSION['login']);
+      	$db_a = new Asignations();
+	$current_asignations = $db_a -> recoverCurrentAsignationsByUser($_SESSION['login']);
+	$closed_asignations = $db_a -> recoverClosedAsignationsByUser($_SESSION['login']);
 	
 	echo '<h3> User Profile</h3>
 	<p>Your personal tab with your asignations.</p>
-	    <table id="list_asignations_table" class="display" width="100%">
+	
+	<p style="border: 1px solid black"></p>
+	<p><img src="images/book-lines.png"> Current asignations</p>
+	
+	    <table class="list_items_table" class="display" width="100%">
 			<thead>
 			  <tr>
 			    <th>ID Asignation</th>
 			    <th>User</th>
 			    <th>Item</th>
 			    <th>Asignation date</th>
-			    <th>Give back</th>
+			    <th>Operations</th>
 			  </tr>
 			</thead>
 			<tbody>';
 			
-			foreach ($asignations as $key => $value) {
+			foreach ($current_asignations as $key => $value) {
+			
+				    $db_i = new Items();
+				    $item = $db_i -> recoverItemByID($value->id_item);
 				    echo '
 	
 				<tr>
 				  <td>'.$value->id_asignation.'</td>
 				  <td>'.$value->user.'</td>
-				  <td>'.$value->id_item.'</td>
+				  <td>'.$item[0]->name.'</td>
 				  <td>'.$value->asignation_date.'</td>
 				  <td>
-				      <a href="return_item.php?id_item='.$value->id_item.'", target="frame_operaciones"><img src="images/outgoing-2.png" width="16px" height="16px"></img></a>
+				      <a href="return_item.php?id_item='.$value->id_item.'&id_asignation='.$value->id_asignation.'" target="frame_operaciones"><img src="images/outgoing-2.png" width="16px" height="16px"></img></a>
 				  </td>
 				</tr>';
 			}
 			echo '	
 			</tbody>
-			</table>
+	     </table>
+	     
+			
+	<p style="border: 1px solid black; margin-top: 50px"></p>
+	<p><img src="images/book.png"> Last closed asignations</p>
+	
+	    <table class="list_items_table" class="display" width="100%">
+			<thead>
+			  <tr>
+			    <th>ID Asignation</th>
+			    <th>User</th>
+			    <th>Item</th>
+			    <th>Asignation date</th>
+			    <th>Devolution date</th>
+			    <th>Operations</th>
+			  </tr>
+			</thead>
+			<tbody>';
+			
+			foreach ($closed_asignations as $key => $value) {
+				    $db_i = new Items();
+				    $item = $db_i -> recoverItemByID($value->id_item);
+				    echo '
+	
+				<tr>
+				  <td>'.$value->id_asignation.'</td>
+				  <td>'.$value->user.'</td>
+				  <td>'.$item[0]->name.'</td>
+				  <td>'.$value->asignation_date.'</td>
+				  <td>'.$value->expiry_date.'</td>
+				  <td>
+				      <a href="item_details.php?id_item='.$value->id_item.'", target="frame_operaciones"><img src="images/zoom-in-2.png" width="16px" height="16px"></img></a>
+				  </td>
+				</tr>';
+			}
+			echo '	
+			</tbody>
+	    </table>
 	  ';
       }else{
 		echo '<div class="error_msg">

@@ -30,25 +30,70 @@
 	
 	if (isset($_POST['edit'])){
 	
+	  $name = $item[0]->name;
+	  $description = $item[0]->description;
+	  $manufacturer = $item[0]->manufacturer;
+	  $quantity = $item[0]->quantity;
+	  $available = $item[0]->available;
+	  $serial = $item[0]->serial;
+	  $id_uc3m = $item[0]->id_uc3m;
+	  $image = $item[0]->image;
+	  $issues = $item[0]->issues;
+	
 	  if (($_POST['quantity'] !=null) && !is_numeric($_POST['quantity'])) {
 		echo '<div class="error_msg">
 		      Sorry, <i>quantity</i> field has to be a numberic value... <b>Check the information provided.</b>
 	      </div>';
-	    }else if (($_POST['quantity'] !=null) && !is_numeric($_POST['serial'])) {
+	    }else if (($_POST['serial'] !=null) && !is_numeric($_POST['serial'])) {
 		echo '<div class="error_msg">
 		      Sorry, <i>serial</i> field has to be a numberic value... <b>Check the information provided.</b>
 	      </div>';
-	    }else if (($_POST['quantity'] !=null) && !is_numeric($_POST['id_uc3m'])) {
+	    }else if (($_POST['id_uc3m'] !=null) && !is_numeric($_POST['id_uc3m'])) {
 		echo '<div class="error_msg">
 		      Sorry, <i>ID UC3M</i> field has to be a numberic value... <b>Check the information provided.</b>
 	      </div>';
-	    }else if (($_POST['quantity'] !=null) && strpos($_FILES['image_file']['type'], 'image')) {
+	    }else if (($_POST['image_file'] !=null) && strpos($_FILES['image_file']['type'], 'image')) {
 		echo '<div class="error_msg">
 		      Sorry, the file uploaded has to be an image... <b>Check the type of the image file selected.</b>
 	      </div>';
-	    }else{
+	    }else{ 
+	      if($_POST['item']!=null){
+		$name = $_POST['item'];
+	      }
+	      
+	      if($_POST['description']!=null){
+		$description = $_POST['description'];
+	      }
+	      
+	      if($_POST['manufacturer']!=null){
+		$manufacturer = $_POST['manufacturer'];
+	      }
+	      
+	      if($_POST['quantity']!=null){
+		$quantity = $_POST['quantity'];
+		$available = ($_POST['quantity'] - $quantity) + $available;
+	      }
+	      
+	      if($_POST['serial']!=null){
+		$serial = $_POST['serial'];
+	      }
+	      
+	      if($_POST['id_uc3m']!=null){
+		$id_uc3m = $_POST['id_uc3m'];
+	      }
+	      
+	      if($_POST['image']!=null){
+		$image = $_POST['id_image'];
+	      }
+	      
+	      if($_POST['issues']!=null){
+		$issues = $_POST['issues'];
+	      }
+	      
+	      
 	      $db	= new Items ();
-	      $item = $db -> updateItemByID($_POST['id_item'], $_POST['item'], $_POST['description'], $_POST['manufacturer'], $_POST['quantity'], $_POST['serial'], $_POST['id_uc3m'], file_get_contents($_FILES['image_file']['tmp_name']));
+	      $image 	=  base64_encode(fread(fopen($_FILES['image_file']['tmp_name'],"r"),$_FILES['image_file']['size']));	      
+	      $item = $db -> updateItemByID($_POST['id_item'], $name, $description, $manufacturer, $quantity, $available, $serial, $id_uc3m, $image, $issues);
 	      echo '<div class="success_msg">
 		<img src="images/compose-3.png" width="16px" height="16px"></img>  The item has been edit successfully.
 	      </div>
@@ -57,7 +102,7 @@
 	}else{
 	
 	  echo '
-	  <form id="delete_item" method="post" action="#">
+	  <form id="delete_item"  enctype="multipart/form-data"  method="post" action="#">
 	  <fieldset id="inputs">
 	  <table id = "new_item_table">
 	    <tr>
@@ -82,7 +127,11 @@
 	    </tr>
 	    <tr>
 	      <td><p>ID UC3M</p></td>
-	      <td><input id="id_uc3m" name="id_uc3m" type="number" placeholder="ID '.$item[0]->id_uc3m.'" autofocus>  </td>
+	      <td><input id="id_uc3m" name="id_uc3m" type="number" placeholder="'.$item[0]->id_uc3m.'" autofocus>  </td>
+	    </tr>
+	    <tr>
+	      <td><p>Issues</p></td>
+	      <td><input id="issues" name="issues" type="text" placeholder="'.$item[0]->issues.'" autofocus>  </td>
 	    </tr>
 	  </table>
 	  </fieldset>

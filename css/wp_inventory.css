@@ -394,13 +394,10 @@ body {
   padding: 20px 20px 20px 20px;
 }
 
-#list_items_table{
+.list_items_table{
   font: 200 12px/1.5 Helvetica, Verdana, sans-serif;
 }
 
-#list_asignations_table{
-  font: 200 12px/1.5 Helvetica, Verdana, sans-serif;
-}
 
 #buttons{
   text-align: center;

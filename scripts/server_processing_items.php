@@ -1,7 +1,7 @@
 <?php
 
-	include_once('../../../../wp-config.php');
-	echo '----------' .  $DB_USER
+
+	include( '../../../../wp-config.php' );
 
 	/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 	 * Easy set variables
@@ -10,19 +10,19 @@
 	/* Array of database columns which should be read and sent back to DataTables. Use a space where
 	 * you want to insert a non-database field (for example a counter or static image)
 	 */
-	$aColumns = array( 'wordid', 'lemma', 'synsetid', 'sensekey');
+	$aColumns = array( 'id_item', 'name', 'manufacturer', 'quantity', 'available');
 	
 	/* Indexed column (used for fast and accurate table cardinality) */
-	$sIndexColumn = "wordid";
+	$sIndexColumn = "id_item";
 	
 	/* DB table to use */
-	$sTable = "wordsXsenses";
+	$sTable = "wp_inventory_item";
 	
 	/* Database connection information */
-	$gaSql['user']       = "root";
-	$gaSql['password']   = "Mpv3125";
-	$gaSql['db']         = "wordnet";
-	$gaSql['server']     = "localhost";
+	$gaSql['user']       =  DB_USER;
+	$gaSql['password']   =  DB_PASSWORD;
+	$gaSql['db']         =  DB_NAME;
+	$gaSql['server']     =  DB_HOST;
 	
 	/* REMOVE THIS LINE (it just includes my SQL connection user/pass) */
 	//include( $_SERVER['DOCUMENT_ROOT']."/datatables/mysql.php" );
@@ -187,8 +187,15 @@
 				$row[] = $aRow[ $aColumns[$i] ];
 			}
 		}
+		$row[] = '<a href="item_details.php?id_item='. $aRow[ $aColumns[0] ] . '" target="frame_operaciones"><img src="images/zoom-in-2.png" width="16px"></img></a>
+		<a href="edit_item.php?id_item='. $aRow[ $aColumns[0] ] . '" target="frame_operaciones"><img src="images/pencil.png" width="16px" height="16px"></img></a>
+		<a href="delete_item.php?id_item='. $aRow[ $aColumns[0] ] . '" target="frame_operaciones"><img src="images/bin-3.png" width="16px" height="16px"></img></a>
+		<a href="asign_item.php?id_item='. $aRow[ $aColumns[0] ] . '" target="frame_operaciones"><img src="images/locked.png" width="16px" height="16px"></img></a>';
+
 		$output['aaData'][] = $row;
+
 	}
+
 	
 	echo json_encode( $output );
 ?>

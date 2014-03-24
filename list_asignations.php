@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/wp_inventory.css" />
                 <script type="text/javascript" charset="utf-8">
                         $(document).ready(function() {
-                                $('#example').dataTable( {
+                                $('.list_items_table').dataTable( {
                                         "bProcessing": true,
                                         "bServerSide": true,
                                         "sAjaxSource": "scripts/server_processing_asignations.php",
@@ -20,19 +20,14 @@
         </head>
         <body>
         
-        
-        
-
-            
-        
-<table cellpadding="0" cellspacing="0" border="0" class="display" id="example">
+<table class="list_items_table" class="display" width="100%">
         <thead>
                 <tr>
                         <th>id_asignation</th>
                         <th>user</th>
                         <th>id_item</th>
                         <th>asignation_date</th>
-                        <th>item details</th>
+                        <th>Operations</th>
 
                 </tr>
         </thead>

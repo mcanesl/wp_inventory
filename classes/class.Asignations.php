@@ -17,23 +17,30 @@
 		    array( '%s', '%d', '%d','%d') );
 		}
 		
-		function returnItemByID ($user, $id_item){
+		function returnItemByID ($id_asignation, $date){
 		    global $wpdb;
-		    $query = "DELETE FROM wp_inventory_asignation WHERE user = '" .$user. "' AND id_item = ".$id_item;
+		    $query = "UPDATE wp_inventory_asignation SET expiry_date = '".$date."' WHERE id_asignation = ".$id_asignation;
 		    $wpdb->query($query);
 		}
 		
 		function recoverAsignationsByItem  ($item) {
 		    global $wpdb;
-		    $query = "SELECT * FROM wp_inventory_asignation WHERE id_item = '" .$item. "'";
+		    $query = "SELECT * FROM wp_inventory_asignation WHERE id_item = '" .$item. "' ORDER BY asignation_date DESC LIMIT 40";
 		    $asignations = $wpdb->get_results($query);
 		    return ($asignations);
 		
 		}
 		
-		function recoverAsignationsByUser ($user){
+		function recoverCurrentAsignationsByUser ($user){
 		    global $wpdb;
-		    $query = "SELECT * FROM wp_inventory_asignation WHERE user = '" .$user. "'";
+		    $query = "SELECT * FROM wp_inventory_asignation WHERE user = '" .$user. "' AND expiry_date = '0000-00-00 00:00:00'";
+		    $asignations = $wpdb->get_results($query);
+		    return ($asignations);
+		}
+		
+		function recoverClosedAsignationsByUser ($user){
+		    global $wpdb;
+		    $query = "SELECT * FROM wp_inventory_asignation WHERE user = '" .$user. "' AND expiry_date != '0000-00-00 00:00:00' ORDER BY expiry_date DESC LIMIT 40";
 		    $asignations = $wpdb->get_results($query);
 		    return ($asignations);
 		}

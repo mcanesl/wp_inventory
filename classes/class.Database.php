@@ -26,6 +26,7 @@
 		    user VARCHAR(15) NOT NULL,
 		    id_item INTEGER NOT NULL,
 		    asignation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+		    expiry_date TIMESTAMP,
 		    PRIMARY KEY(id_asignation),
 		    FOREIGN KEY (id_item) REFERENCES wp_inventory_item(id_item)
 		  )";

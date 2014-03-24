@@ -20,14 +20,21 @@
 	
       if ($_SESSION['login']){
       
-      	$db	= new Items ();
-	$item = $db -> recoverItemByID($_GET['id_item']);
+      	$db_i	= new Items ();
+	$item = $db_i -> recoverItemByID($_GET['id_item']);
 	
 	echo '<h3> Return Item</h3>';
 	
 	if (isset($_POST['return'])){
-	  $db	= new Asignations ();
-	  $item = $db -> returnItemByID($_SESSION['login'], $_GET['id_item']);
+	
+	  $date = date("Y-m-d H:i:s",time());
+	  print $date;
+	  $db_a	= new Asignations ();
+	  $asignation = $db_a -> returnItemByID($_GET['id_asignation'], $date);
+	  
+	  $new_available = $item[0]->available + 1;
+	  
+	  $db_i -> updateAvailableQuantityByID ($_GET['id_item'], $new_available);
 	  
 	  echo '<div class="success_msg">
 	    <img src="images/outgoing-2.png" width="16px" height="16px"></img>  The item has been returned successfully.
@@ -40,6 +47,7 @@
 	<p><b>'.$item[0]->id_item.' - '.$item[0]->name.'</b></p>
 	<p>Are you sure do you want to return it?.</p>
 	  <form id="return_item" method="post" action="#">
+	    <input type="hidden" name="id_asignation" value="'.$_GET['id_asignation'].'">
 	    <input type="hidden" name="id_item" value="'.$_GET['id_item'].'">
 	    <input class = "button wobble-to-top-right" type="submit" id="return" name="return" value="Yes, return">
 	    <a href="operaciones.php" target="frame_operaciones">Back</a>

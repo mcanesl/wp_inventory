@@ -12,6 +12,11 @@
     <script src="js/Datatables/media/js/jquery.js"></script>
     <script src="js/Datatables/media/js/jquery.dataTables.js"></script>
     <link rel="stylesheet" href="css/wp_inventory.css" />
+    
+    <script>$(document).ready( function () {
+      var table = $('.list_items_table').DataTable();
+      });
+    </script>
   </head>
     
      <body>
@@ -90,7 +95,7 @@
 	  
 	    <p><img src="images/book-lines.png"> Asignations history.</p>
 	    
-	    <table id="list_items_table" class="display" width="100%">
+	    <table class="list_items_table" class="display" width="100%">
 			<thead>
 			  <tr>
 			    <th>ID Asignation</th>
@@ -108,7 +113,7 @@
 						    <td>'.$a->id_asignation.'</td>
     						    <td>'.$a->user.'</td>
  						    <td>'.$a->asignation_date.'</td>
-     						    <td>'. '-------'.'</td>
+     						    <td>'.$a->expiry_date.'</td>
 						    <td>
 							<a href="item_details.php", target="frame_operaciones"><img src="images/zoom-in-2.png" width="16px" height="16px"></img></a>
 						    	<img src="images/pencil.png" width="16px" height="16px"></img>
