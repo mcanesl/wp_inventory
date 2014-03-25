@@ -9,15 +9,15 @@
 		  global $wpdb;
 		  $query_item = "CREATE TABLE IF NOT EXISTS wp_inventory_item (
 		    id_item INTEGER NOT NULL AUTO_INCREMENT,
-		    name VARCHAR(15) NOT NULL,
-		    description VARCHAR(50),
-		    manufacturer VARCHAR(15) NOT NULL,
+		    name VARCHAR(50) NOT NULL,
+		    description VARCHAR(150),
+		    manufacturer VARCHAR(50) NOT NULL,
 		    quantity INTEGER NOT NULL,
 		    available INTEGER,
 		    serial INTEGER,
 		    id_uc3m INTEGER,
 		    image MEDIUMBLOB,
-		    issues VARCHAR(50),
+		    issues VARCHAR(150),
 		    PRIMARY KEY (id_item)
 		  )";
 		  

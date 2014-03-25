@@ -30,16 +30,31 @@
 	  $date = date("Y-m-d H:i:s",time());
 	  print $date;
 	  $db_a	= new Asignations ();
-	  $asignation = $db_a -> returnItemByID($_GET['id_asignation'], $date);
-	  
-	  $new_available = $item[0]->available + 1;
-	  
-	  $db_i -> updateAvailableQuantityByID ($_GET['id_item'], $new_available);
-	  
-	  echo '<div class="success_msg">
-	    <img src="images/outgoing-2.png" width="16px" height="16px"></img>  The item has been returned successfully.
-	  </div>
-	  <a href="operaciones.php" target="frame_operaciones">Back</a>';
+	  $return = $db_a -> returnItemByID($_GET['id_asignation'], $date);
+
+	if ($return == -1){
+		echo '<div class="error_msg">
+		Sorry, an error occurs. Please, check the information given.
+		</div>
+	    	<a href="operaciones.php" target="frame_operaciones"><img src="images/back.png" width="16px" height="16px"></img> Back</a>';
+	}else{
+		  
+		  $new_available = $item[0]->available + 1;
+		  
+		  $update = $db_i -> updateAvailableQuantityByID ($_GET['id_item'], $new_available);
+
+		if ($update == -1){
+				echo '<div class="error_msg">
+				Sorry, an error occurs. Please, check the information given.
+				</div>
+	    			<a href="operaciones.php" target="frame_operaciones"><img src="images/back.png" width="16px" height="16px"></img> Back</a>';
+			}else{
+				  echo '<div class="success_msg">
+				    <img src="images/outgoing-2.png" width="16px" height="16px"></img>  The item has been returned successfully.
+				  </div>
+	    			<a href="operaciones.php" target="frame_operaciones"><img src="images/back.png" width="16px" height="16px"></img> Back</a>';
+			}
+		}
 	}else{
 	
 	  echo '
@@ -50,7 +65,7 @@
 	    <input type="hidden" name="id_asignation" value="'.$_GET['id_asignation'].'">
 	    <input type="hidden" name="id_item" value="'.$_GET['id_item'].'">
 	    <input class = "button wobble-to-top-right" type="submit" id="return" name="return" value="Yes, return">
-	    <a href="operaciones.php" target="frame_operaciones">Back</a>
+	    <a href="operaciones.php" target="frame_operaciones"><img src="images/back.png" width="16px" height="16px"></img> Back</a>
 	  </form>';
 	
 	}

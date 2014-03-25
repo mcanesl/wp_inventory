@@ -69,18 +69,27 @@
 		echo '<div class="error_msg">
 		      Sorry, <i>ID UC3M</i> field has to be a numberic value... <b>Check the information provided.</b>
 	      </div>';
-	    }else if (strpos($_FILES['image_file']['type'], 'image')) {
+	    }else if (!empty($_FILES['image_file']['tmp_name']) && (strpos($_FILES['image_file']['type'],'image')===FALSE)) {
 		echo '<div class="error_msg">
 		      Sorry, the file uploaded has to be an image... <b>Check the type of the image file selected.</b>
-	      </div>';
+	      </div>
+		<a href="operaciones.php" target="frame_operaciones"><img src="images/back.png" width="16px" height="16px"></img> Back</a>';
 	    }else{
 	      $db	= new Items ();
-	      $image 	=  base64_encode(fread(fopen($_FILES['image_file']['tmp_name'],"r"),$_FILES['image_file']['size']));
-	      $items = $db -> insertItem($_POST['item'], $_POST['description'], $_POST['manufacturer'], $_POST['quantity'], $_POST['serial'], $_POST['id_uc3m'], $image, $_POST['issue']);
+		$image 	=  base64_encode(fread(fopen($_FILES['image_file']['tmp_name'],"r"),$_FILES['image_file']['size']));
+	      $insert = $db -> insertItem($_POST['item'], $_POST['description'], $_POST['manufacturer'], $_POST['quantity'], $_POST['serial'], $_POST['id_uc3m'], $image, $_POST['issue']);
 	      
-	      echo '<div class="success_msg">
-		     <img src="images/plus.png" width="16px" height="16px"></img>   The new item has been uploaded with success.
-	      </div>';
+		if ($insert ==-1){
+			echo '<div class="error_msg">
+	    		Sorry, an error occurs. Please, check the information given.
+	  		</div>
+	  		<a href="operaciones.php" target="frame_operaciones"><img src="images/back.png" width="16px" height="16px"></img> Back</a>';
+		}else{
+		      echo '<div class="success_msg">
+			     <img src="images/plus.png" width="16px" height="16px"></img>   The new item has been uploaded with success.
+		      </div>
+			<a href="operaciones.php" target="frame_operaciones"><img src="images/back.png" width="16px" height="16px"></img> Back</a>';
+		}
 	}
       }
 	  
@@ -90,13 +99,13 @@
 	  <table id = "new_item_table">
 	    <tr>
 	      <td><p>Item name (*)</p></td>
-	      <td><input id="item" name="item" type="text" placeholder="Item name" autofocus required>  </td>
+	      <td><input id="item" name="item" type="text" placeholder="Item name" autofocus required maxlength="50">  </td>
       	      <td><p>Image file</p></td>
 	      <td><input type="file"  name="image_file" id="image_file"></input></td>
 	    </tr>
 	    <tr>
 	      <td><p>Manufacturer (*)</p></td>
-	      <td><input id="manufacturer" name="manufacturer" type="text" placeholder="Manufacturer" autofocus required>  </td>
+	      <td><input id="manufacturer" name="manufacturer" type="text" placeholder="Manufacturer" autofocus required maxlength="50">  </td>
       	      <td><p>Quantity (*)</p></td>
 	      <td><input id="quantity" name="quantity" type="number" placeholder="Quantity" autofocus required>  </td>
 	    </tr>
@@ -108,9 +117,9 @@
 	    </tr>	    
     	    <tr>
       	      <td><p>Description</p></td>
-	      <td><textarea id="description" name="description" style="height:120px;" placeholder="Description" autofocus > </textarea> </td>
+	      <td><textarea id="description" name="description" style="height:120px;" placeholder="Description" autofocus maxlength="150"> </textarea> </td>
 	      <td><p>Issues</p></td>
-	      <td><textarea id="issue" name="issue" type="text"   style="height:120px;" placeholder="Issues" autofocus > </textarea> </td>
+	      <td><textarea id="issue" name="issue" type="text"   style="height:120px;" placeholder="Issues" autofocus maxlength="150"> </textarea> </td>
 
 	    </tr>	    	    
 	  </table>

@@ -12,15 +12,19 @@
 		
 		function asignItemByID ($user, $id_item){
 		    global $wpdb;
-		    $wpdb->insert('wp_inventory_asignation',  
+		    if ($wpdb->insert('wp_inventory_asignation',  
 		    array('user' => $user, 'id_item' => $id_item), 
-		    array( '%s', '%d', '%d','%d') );
+		    array( '%s', '%d', '%d','%d') ) ===FALSE){
+			return -1;
+			}
 		}
 		
 		function returnItemByID ($id_asignation, $date){
 		    global $wpdb;
 		    $query = "UPDATE wp_inventory_asignation SET expiry_date = '".$date."' WHERE id_asignation = ".$id_asignation;
-		    $wpdb->query($query);
+		    if ($wpdb->query($query) ===FALSE){
+			return -1;
+			}
 		}
 		
 		function recoverAsignationsByItem  ($item) {

@@ -33,7 +33,7 @@
 	$current_asignations = $db_a -> recoverCurrentAsignationsByUser($_SESSION['login']);
 	$closed_asignations = $db_a -> recoverClosedAsignationsByUser($_SESSION['login']);
 	
-	echo '<h3> User Profile</h3>
+	echo '<h3> User Profile <i>('.$_SESSION["login"].')</i></h3>
 	<p>Your personal tab with your asignations.</p>
 	
 	<p style="border: 1px solid black"></p>

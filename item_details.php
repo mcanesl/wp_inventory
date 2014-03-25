@@ -45,8 +45,14 @@
 	<p>Details about selected item.</p>
 	<table id="item_table">
 	<tr>
-	  <td>
-	    <div style= "width: 150px; height:150px;"> <img src="get_image.php?id=' . $item[0]->id_item . ' width="120px" height="120px"></img> </div>
+	  <td>';
+		if ($item[0]->image){
+			echo '<div> <img src="get_image.php" width="180px" height="180px"></img> </div>';
+		}else{
+			echo '<div> <img src="images/image.png" width="180px" height="180px"></img> </div>';
+		}
+
+		echo'
 	  </td>
 	  <td>
 	  <table id = "details_table">
@@ -100,25 +106,23 @@
 			  <tr>
 			    <th>ID Asignation</th>
 			    <th>User</th>
+			    <th>Item</th>
 			    <th>Asignation date</th>
-    			    <th>Expiry date</th>
-			    <th>Operations</th>
+			    <th>Devolution date</th>
 			  </tr>
 			</thead>
 			<tbody>';
 	
-				foreach ($item_asignations as $a ) {
+				foreach ($item_asignations as $value ) {
+					$db_i = new Items();
+				    $item = $db_i -> recoverItemByID($value->id_item);
 				    echo '
 					  <tr>
-						    <td>'.$a->id_asignation.'</td>
-    						    <td>'.$a->user.'</td>
- 						    <td>'.$a->asignation_date.'</td>
-     						    <td>'.$a->expiry_date.'</td>
-						    <td>
-							<a href="item_details.php", target="frame_operaciones"><img src="images/zoom-in-2.png" width="16px" height="16px"></img></a>
-						    	<img src="images/pencil.png" width="16px" height="16px"></img>
-							<img src="images/bin-3.png" width="16px" height="16px"></img>
-						    </td>
+						  <td>'.$value->id_asignation.'</td>
+						  <td>'.$value->user.'</td>
+						  <td>'.$item[0]->name.'</td>
+						  <td>'.$value->asignation_date.'</td>
+						  <td>'.$value->expiry_date.'</td>
 					  </tr>';
 				}
 			 echo '

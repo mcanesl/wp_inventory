@@ -17,16 +17,15 @@
 				 
 			echo '
 				<nav id="toolbar_button">
-					<a href="user_asignations.php" target="frame_operaciones" class="button hollow"><b><img src="images/user-4.png" width="24px" height="24px" title="User asignations"></img> Asignations</b></a>
+					<a href="user_asignations.php" target="frame_operaciones" class="button hollow"><b><img src="images/user-4.png" width="24px" height="24px" title="User asignations"></img> User asignations</b></a>
 					<a href="operaciones.php" target="frame_operaciones" class="button hollow"><b><img src="images/list.png" width="24px" height="24px" title="General lists"></img> Lists</b></a>';
 					
 					if ($_SESSION['admin']){
 					  echo '<a href="new_item.php" target="frame_operaciones" class="button hollow"><b><img src="images/compose-3.png" width="24px" height="24px" title="Add new item"></img> New item</b></a>';
 					}
 					echo '
-					<a href="about.php" target="frame_operaciones"><p class="button hollow"><b><img src="images/info.png" width="24px" height="24px" title="About"></img> About</b></p></a>
-					<a href="exit.php" target="frame_operaciones" class="button hollow"><b><img src="images/out.png" width="24px" height="24px" title="Exit"></img> exit()</b></a>
-					<p id="msgstatus">login as <b>'. $_SESSION['login'] .'	</b></p>
+					<a href="exit.php" target="frame_operaciones" class="msgstatus"><img src="images/out.png" width="16px" height="16px" title="Exit"></img></a> 
+					<a href="about.php" target="frame_operaciones" class="msgstatus"><img src="images/info.png" width="16px" height="16px" title="About"></img></p></a>
 				 </nav>';
 				 
 			echo '

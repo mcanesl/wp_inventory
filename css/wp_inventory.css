@@ -192,6 +192,8 @@ fieldset
 	  border: 1px solid #ffd100;
 	  color: #000;
 	  padding: 10px 10px 10px 38px;
+	margin-bottom: 30px;
+
 }
 
 .success_msg {
@@ -200,6 +202,7 @@ fieldset
 	  border: 1px solid #BBDCAC;
 	  color: #000;
 	  padding: 10px 10px 10px 38px;
+	margin-bottom: 30px;
 }
 
 
@@ -235,10 +238,10 @@ body {
     
 }
 
-#msgstatus {
+.msgstatus {
 	position: relative;
-	padding-top: 15px;
 	padding-right: 9px;
+	padding-top: 30px;
 	float:right;
 
 }
@@ -403,5 +406,14 @@ body {
   text-align: center;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+  -webkit-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -moz-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -o-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -ms-transition: font-size 0.3s ease, background-color 0.3s ease;
+  transition: font-size 0.3s ease, background-color 0.3s ease;
+}
 
 

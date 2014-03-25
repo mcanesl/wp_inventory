@@ -5,5 +5,5 @@
 		fclose($handle);				
 		$image = base64_decode ( $contents );
                 header('Content-Type: image/jpeg');
-                print $image;            
+                print $image;  
 ?>
