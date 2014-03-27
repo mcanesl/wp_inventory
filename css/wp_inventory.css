@@ -374,6 +374,10 @@ body {
 #details_table {
   text-align: center;
   margin: auto;
+  width: 100%;
+table-layout: fixed;
+overflow: hidden;
+word-wrap:break-word;
 }
 
 #details_table td {
@@ -391,6 +395,7 @@ body {
 #item_table{
   text-align: center;
   margin: auto;
+  width: 100%;
 }
 
 #item_table td{
@@ -414,6 +419,14 @@ a {
   -o-transition: font-size 0.3s ease, background-color 0.3s ease;
   -ms-transition: font-size 0.3s ease, background-color 0.3s ease;
   transition: font-size 0.3s ease, background-color 0.3s ease;
+}
+
+#th_short{
+	width: 10px;
+}
+
+#th_ops{
+	width: 75px;
 }
 
 

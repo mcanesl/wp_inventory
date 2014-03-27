@@ -143,28 +143,28 @@
 	    <tr>
 		<input type="hidden" name="id_item" value="'.$_GET['id_item'].'">
 	      <td><p>Item name</p></td>
-	      <td><input id="item" name="item" type="text" placeholder="Item name" autofocus maxlength="50">  
+	      <td><input id="item" name="item" type="text" placeholder="'.$item[0]->name.'" autofocus maxlength="50">  
 		</td>
       	      <td><p>Image file</p></td>
 	      <td><input type="file"  name="image_file" id="image_file"></input></td>
 	    </tr>
 	    <tr>
 	      <td><p>Manufacturer</p></td>
-	      <td><input id="manufacturer" name="manufacturer" type="text" placeholder="Manufacturer" autofocus maxlength="50">  </td>
+	      <td><input id="manufacturer" name="manufacturer" type="text" placeholder="'.$item[0]->manufacturer.'" autofocus maxlength="50">  </td>
       	      <td><p>Quantity</p></td>
-	      <td><input id="quantity" name="quantity" type="number" placeholder="Quantity" autofocus >  </td>
+	      <td><input id="quantity" name="quantity" type="number" placeholder="'.$item[0]->quantity.'" autofocus >  </td>
 	    </tr>
 	    <tr>
 	      <td><p>Serial</p></td>
-	      <td><input id="serial" name="serial" type="number" placeholder="Serial" autofocus >  </td>
+	      <td><input id="serial" name="serial" type="number" placeholder="'.$item[0]->serial.'" autofocus >  </td>
 	      <td><p>Inventory number</p></td>
-	      <td><input id="id_uc3m" name="id_uc3m" type="number" placeholder="ID UC3M" autofocus>  </td>      
+	      <td><input id="id_uc3m" name="id_uc3m" type="number" placeholder="'.$item[0]->id_uc3m.'" autofocus>  </td>      
 	    </tr>	    
     	    <tr>
       	      <td><p>Description</p></td>
-	      <td><textarea id="description" name="description" style="height:120px;" placeholder="Description" autofocus maxlength="150"> </textarea> </td>
+	      <td><textarea id="description" name="description" rows="9" cols="22" maxlength="150" placeholder="'.$item[0]->description.'"></textarea></td>
 	      <td><p>Issues</p></td>
-	      <td><textarea id="issue" name="issue" type="text"   style="height:120px;" placeholder="Issues" autofocus maxlength="150"> </textarea> </td>
+	      <td><textarea id="issues" name="issues" rows="9" cols="22" maxlength="150" placeholder="'.$item[0]->issues.'"></textarea></td>
 
 	    </tr>	    	    
 	  </table>

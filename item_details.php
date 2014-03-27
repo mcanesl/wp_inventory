@@ -104,7 +104,7 @@
 	    <table class="list_items_table" class="display" width="100%">
 			<thead>
 			  <tr>
-			    <th>ID Asignation</th>
+			    <th id="th_short">ID</th>
 			    <th>User</th>
 			    <th>Item</th>
 			    <th>Asignation date</th>

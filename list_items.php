@@ -40,12 +40,12 @@
 		      <table class="list_items_table" class="display" width="100%">
 			<thead>
 				<tr>
-					<th>ID Item</th>
+					<th id="th_short">ID</th>
 					<th>Name</th>
 					<th>Manufacturer</th>
-					<th>Quantity</th>
-					<th>Available</th>
-					<th>Operations</th>
+					<th id="th_short">Qty</th>
+					<th id="th_short">Avble</th>
+					<th id="th_ops">Operations</th>
 
 				</tr>
 			</thead>

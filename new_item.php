@@ -77,7 +77,7 @@
 	    }else{
 	      $db	= new Items ();
 		$image 	=  base64_encode(fread(fopen($_FILES['image_file']['tmp_name'],"r"),$_FILES['image_file']['size']));
-	      $insert = $db -> insertItem($_POST['item'], $_POST['description'], $_POST['manufacturer'], $_POST['quantity'], $_POST['serial'], $_POST['id_uc3m'], $image, $_POST['issue']);
+	      $insert = $db -> insertItem($_POST['item'], $_POST['description'], $_POST['manufacturer'], $_POST['quantity'], $_POST['serial'], $_POST['id_uc3m'], $image, $_POST['issues']);
 	      
 		if ($insert ==-1){
 			echo '<div class="error_msg">
@@ -117,9 +117,9 @@
 	    </tr>	    
     	    <tr>
       	      <td><p>Description</p></td>
-	      <td><textarea id="description" name="description" style="height:120px;" placeholder="Description" autofocus maxlength="150"> </textarea> </td>
+	      <td><textarea id="description" name="description" rows="9" cols="22" maxlength="150" placeholder="Description"></textarea></td>
 	      <td><p>Issues</p></td>
-	      <td><textarea id="issue" name="issue" type="text"   style="height:120px;" placeholder="Issues" autofocus maxlength="150"> </textarea> </td>
+	      <td><textarea id="issues" name="issues" rows="9" cols="22" maxlength="150" placeholder="Issues"></textarea></td>
 
 	    </tr>	    	    
 	  </table>
