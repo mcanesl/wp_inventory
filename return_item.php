@@ -36,7 +36,7 @@
 		echo '<div class="error_msg">
 		Sorry, an error occurs. Please, check the information given.
 		</div>
-	    	<a href="operaciones.php" target="frame_operaciones"><img src="images/back.png" width="16px" height="16px"></img> Back</a>';
+	    	<a href="lists.php" target="operations_frame"><img src="images/back.png" width="16px" height="16px"></img> Back</a>';
 	}else{
 		  
 		  $new_available = $item[0]->available + 1;
@@ -47,12 +47,12 @@
 				echo '<div class="error_msg">
 				Sorry, an error occurs. Please, check the information given.
 				</div>
-	    			<a href="operaciones.php" target="frame_operaciones"><img src="images/back.png" width="16px" height="16px"></img> Back</a>';
+	    			<a href="lists.php" target="operations_frame"><img src="images/back.png" width="16px" height="16px"></img> Back</a>';
 			}else{
 				  echo '<div class="success_msg">
 				    <img src="images/outgoing-2.png" width="16px" height="16px"></img>  The item has been returned successfully.
 				  </div>
-	    			<a href="operaciones.php" target="frame_operaciones"><img src="images/back.png" width="16px" height="16px"></img> Back</a>';
+	    			<a href="lists.php" target="operations_frame"><img src="images/back.png" width="16px" height="16px"></img> Back</a>';
 			}
 		}
 	}else{
@@ -65,7 +65,7 @@
 	    <input type="hidden" name="id_asignation" value="'.$_GET['id_asignation'].'">
 	    <input type="hidden" name="id_item" value="'.$_GET['id_item'].'">
 	    <input class = "button wobble-to-top-right" type="submit" id="return" name="return" value="Yes, return">
-	    <a href="operaciones.php" target="frame_operaciones"><img src="images/back.png" width="16px" height="16px"></img> Back</a>
+	    <a href="lists.php" target="operations_frame"><img src="images/back.png" width="16px" height="16px"></img> Back</a>
 	  </form>';
 	
 	}

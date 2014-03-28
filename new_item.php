@@ -73,7 +73,7 @@
 		echo '<div class="error_msg">
 		      Sorry, the file uploaded has to be an image... <b>Check the type of the image file selected.</b>
 	      </div>
-		<a href="operaciones.php" target="frame_operaciones"><img src="images/back.png" width="16px" height="16px"></img> Back</a>';
+		<a href="lists.php" target="operations_frame"><img src="images/back.png" width="16px" height="16px"></img> Back</a>';
 	    }else{
 	      $db	= new Items ();
 		$image 	=  base64_encode(fread(fopen($_FILES['image_file']['tmp_name'],"r"),$_FILES['image_file']['size']));
@@ -83,12 +83,12 @@
 			echo '<div class="error_msg">
 	    		Sorry, an error occurs. Please, check the information given.
 	  		</div>
-	  		<a href="operaciones.php" target="frame_operaciones"><img src="images/back.png" width="16px" height="16px"></img> Back</a>';
+	  		<a href="lists.php" target="operations_frame"><img src="images/back.png" width="16px" height="16px"></img> Back</a>';
 		}else{
 		      echo '<div class="success_msg">
 			     <img src="images/plus.png" width="16px" height="16px"></img>   The new item has been uploaded with success.
 		      </div>
-			<a href="operaciones.php" target="frame_operaciones"><img src="images/back.png" width="16px" height="16px"></img> Back</a>';
+			<a href="lists.php" target="operations_frame"><img src="images/back.png" width="16px" height="16px"></img> Back</a>';
 		}
 	}
       }

@@ -19,7 +19,6 @@
 			    iFrameID.height = iFrameID.contentWindow.document.body.scrollHeight + "px";
 		      }
 		  }
-
 	</script>
 
 
@@ -54,7 +53,8 @@
 					<div id="tabs-3">
 						<iframe id="operations_frame" onload="iframeLoaded()" src="./new_item.php" width="100%" seamless frameborder="0"></iframe>
 					</div>
-				</div>';				
+				</div>';
+				
 		}else {
 
 			echo '<div class="error_msg">
