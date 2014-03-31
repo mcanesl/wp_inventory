@@ -187,10 +187,10 @@
 				$row[] = $aRow[ $aColumns[$i] ];
 			}
 		}
-		$row[] = '<a href="item_details.php?id_item='. $aRow[ $aColumns[0] ] . '" target="operations_frame"><img src="images/zoom-in-2.png" width="16px"></img></a>
-		<a href="edit_item.php?id_item='. $aRow[ $aColumns[0] ] . '" target="operations_frame"><img src="images/pencil.png" width="16px" height="16px"></img></a>
-		<a href="delete_item.php?id_item='. $aRow[ $aColumns[0] ] . '" target="operations_frame"><img src="images/bin-3.png" width="16px" height="16px"></img></a>
-		<a href="asign_item.php?id_item='. $aRow[ $aColumns[0] ] . '" target="operations_frame"><img src="images/locked.png" width="16px" height="16px"></img></a>';
+		$row[] = '<a href="item_details.php?id_item='. $aRow[ $aColumns[0] ] . '" target="operations_frame"><img src="images/zoom-in-2.png" title="Details" width="16px"></img></a>
+		<a href="edit_item.php?id_item='. $aRow[ $aColumns[0] ] . '" target="operations_frame"><img src="images/pencil.png" title="Edit" width="16px" height="16px"></img></a>
+		<a href="delete_item.php?id_item='. $aRow[ $aColumns[0] ] . '" target="operations_frame"><img src="images/bin-3.png" title="Delete" width="16px" height="16px"></img></a>
+		<a href="asign_item.php?id_item='. $aRow[ $aColumns[0] ] . '" target="operations_frame"><img src="images/locked.png" title="Asign" width="16px" height="16px"></img></a>';
 
 		$output['aaData'][] = $row;
 

@@ -24,7 +24,8 @@
 			$home = network_home_url() ;
 			echo '
 				<div id="exit">
-					<img src="images/nyam-cat_grey.png" width="440px"></img>				<div id="msg_exit"> Are you sure you want to quit? </div>
+					<img src="images/nyam-cat_grey.png" width="440px"></img>				
+					<div id="msg_exit"> Are you sure you want to quit? </div>
 				</div>
 
 				<div id="msg_confirm">

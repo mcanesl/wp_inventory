@@ -83,7 +83,7 @@
 		echo '<div class="error_msg">
 		      Sorry, the file uploaded has to be an image... <b>Check the type of the image file selected.</b>
 	      </div>
-		<a href="lists.php" target="frame_lists"><img src="images/back.png" width="16px" height="16px"></img> Back</a>';
+		<a href="lists.php" target="operations_frame"><img src="images/back.png" width="16px" height="16px"></img> Back</a>';
 	    }else{ 
 	      if($_POST['item']!=null){
 		$name = $_POST['item'];
@@ -99,6 +99,7 @@
 
 	      if($_POST['quantity']!=null){
 		$available = ($_POST['quantity'] - $quantity) + $available;
+		$quantity = $_POST['quantity'];
 	      }
 	      
 	      if($_POST['serial']!=null){
@@ -125,13 +126,13 @@
 			echo '<div class="error_msg">
 			Sorry, an error occurs. Please, check the information given.
 			</div>
-	    		<a href="lists.php" target="frame_lists"><img src="images/back.png" width="16px" height="16px"></img> Back</a>';
+	    		<a href="lists.php" target="operations_frame"><img src="images/back.png" width="16px" height="16px"></img> Back</a>';
 		}else{
 
 		      echo '<div class="success_msg">
 			<img src="images/compose-3.png" width="16px" height="16px"></img>  The item has been edit successfully.
 		      </div>
-	    		<a href="lists.php" target="frame_lists"><img src="images/back.png" width="16px" height="16px"></img> Back</a>';
+	    		<a href="lists.php" target="operations_frame"><img src="images/back.png" width="16px" height="16px"></img> Back</a>';
 		}
 	    }
 	}else{
@@ -172,7 +173,7 @@
 
 	<div id="buttons">
 	    <input class = "button wobble-to-top-right" type="submit" id="edit" name="edit" value="Edit item">
-	    <a href="lists.php" target="frame_lists"><img src="images/back.png" width="16px" height="16px"></img> Back</a>
+	    <a href="lists.php" target="operations_frame"><img src="images/back.png" width="16px" height="16px"></img> Back</a>
 	</div>
 	  </form>';
 	

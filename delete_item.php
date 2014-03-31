@@ -31,12 +31,12 @@
 			echo '<div class="error_msg">
 	    		An error occurs. The item has not been deleted. Check if there are asignations related to this item.
 	  		</div>
-	    		<a href="lists.php" target="frame_lists"><img src="images/back.png" width="16px" height="16px"></img> Back</a>';
+	    		<a href="lists.php" target="operations_frame"><img src="images/back.png" width="16px" height="16px"></img> Back</a>';
 		}else{
 			echo '<div class="success_msg">
 	    		<img src="images/bin-3.png" width="16px" height="16px"></img>  The item has been deleted successfully.
 	  		</div>
-	  		<a href="lists.php" target="frame_lists"><img src="images/back.png" width="16px" height="16px"></img> Back</a>';
+	  		<a href="lists.php" target="operations_frame"><img src="images/back.png" width="16px" height="16px"></img> Back</a>';
 		}
 	}else{
 	
@@ -47,7 +47,7 @@
 	  <form id="delete_item" method="post" action="#">
 	    <input type="hidden" name="id_item" value="'.$_GET['id_item'].'">
 	    <input class = "button wobble-to-top-right" type="submit" id="delete" name="delete" value="Yes, delete">
-	    <a href="lists.php" target="frame_lists"><img src="images/back.png" width="16px" height="16px"></img> Back</a>
+	    <a href="lists.php" target="operations_frame"><img src="images/back.png" width="16px" height="16px"></img> Back</a>
 	  </form>';
 	
 	}

@@ -253,16 +253,14 @@ body {
 	border:0px;
 	width:100%;
 	min-height:200px;
-	height:600px !important;
+	height:700px !important;
 
 }
 
 
-
-
 #frame_principal {
 	border:0px;
-	height:700px !important;
+	height:800px !important;
 }
 
 
@@ -404,6 +402,7 @@ word-wrap:break-word;
 
 .list_items_table{
   font: 200 12px/1.5 Helvetica, Verdana, sans-serif;
+width: 80%;
 }
 
 
@@ -426,7 +425,10 @@ a {
 }
 
 #th_ops{
-	width: 75px;
+	width: 80px;
 }
 
+.ionTabs__body{
+	width: 99%;
+}
 
