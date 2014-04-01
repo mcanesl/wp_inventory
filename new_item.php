@@ -107,13 +107,13 @@
 	      <td><p>Manufacturer (*)</p></td>
 	      <td><input id="manufacturer" name="manufacturer" type="text" placeholder="Manufacturer" autofocus required maxlength="50">  </td>
       	      <td><p>Quantity (*)</p></td>
-	      <td><input id="quantity" name="quantity" type="number" placeholder="Quantity" autofocus required>  </td>
+	      <td><input id="quantity" name="quantity" type="number" placeholder="Quantity" autofocus required maxlength="5">  </td>
 	    </tr>
 	    <tr>
 	      <td><p>Serial</p></td>
-	      <td><input id="serial" name="serial" type="number" placeholder="Serial" autofocus >  </td>
+	      <td><input id="serial" name="serial" type="number" placeholder="Serial" autofocus maxlength="10">  </td>
 	      <td><p>Inventory number</p></td>
-	      <td><input id="id_uc3m" name="id_uc3m" type="number" placeholder="ID UC3M" autofocus>  </td>      
+	      <td><input id="id_uc3m" name="id_uc3m" type="number" placeholder="ID UC3M" autofocus maxlength="10">  </td>      
 	    </tr>	    
     	    <tr>
       	      <td><p>Description</p></td>
