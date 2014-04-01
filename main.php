@@ -6,13 +6,30 @@
     <link rel="stylesheet" href="css/jquery-ui.css " />
     <script src="js/jquery/jquery-2.1.0.min.js"></script>
     <script src="js/jquery/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 
 	 <script>
 		$(function() {
 			$('#tabs').tabs();
 			
 		});
-
+		 $(function() {
+			$('#dialog-confirm').dialog({
+			autoOpen: false,
+			resizable: false,
+			height:230,
+			modal: true,
+				buttons: {
+					"Yes, I'm sure": function() {
+						window.location.assign("exit.php")
+						$( this ).dialog( "close" );
+					},
+					Cancel: function() {
+						$( this ).dialog( "close" );
+					}
+				}
+			});
+		 });
 
 		function iframeLoaded() {
 		      var iFrameID = document.getElementById('operations_frame');
@@ -38,21 +55,8 @@
 
 
 		function dialog() {
-			$( "#dialog-confirm" ).dialog({
-			resizable: false,
-			height:230,
-			modal: true,
-				buttons: {
-					"Yes, I'm sure": function() {
-					$( this ).dialog( "close" );
-					},
-					Cancel: function() {
-						$( this ).dialog( "close" );
-					}
-				}
-			});
+      			$( "#dialog-confirm" ).dialog( "open" );
 		}
-
 	</script>
 
 
@@ -88,10 +92,6 @@
 					<div id="tabs-3">
 						<iframe id="operations_frame" name="operations_frame" onload="iframeLoaded()" src="./new_item.php" width="100%" seamless frameborder="0"></iframe>
 					</div>
-				</div>
-
-				<div id="dialog-confirm" title="Exit">
-				<p>Are you sure do you want to exit?</p>
 				</div>';
 				
 		}else {
@@ -100,6 +100,10 @@
 					User not registered in the system.  Go to login window.
 			       </div>';
 		}
+
+	echo '			<div id="dialog-confirm" title="Exit">
+					<p>Are you sure do you want to exit?</p>
+				</div>';
 		
 
 	?>

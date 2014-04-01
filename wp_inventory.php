@@ -15,7 +15,7 @@ add_shortcode( 'gestion', 'wp_inventory');
 register_activation_hook(__FILE__,'wp_inventory_install');
 
 // run the uninstall script upon plugin deletion
-register_deactivation_hook(__FILE__,'wp_inventory_uninstall');
+register_uninstall_hook(__FILE__,'wp_inventory_uninstall');
 
 // create custom plugin settings menu
 add_action('admin_menu', 'create_options_menu');
