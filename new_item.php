@@ -61,34 +61,35 @@
 		echo '<div class="error_msg">
 		      Sorry, <i>quantity</i> field has to be a numberic value... <b>Check the information provided.</b>
 	      </div>';
-	    }else if (!empty($_POST['serial']) && !is_numeric($_POST['serial'])) {
-		echo '<div class="error_msg">
-		      Sorry, <i>serial</i> field has to be a numberic value... <b>Check the information provided.</b>
-	      </div>';
-	    }else if (!empty($_POST['id_uc3m']) && !is_numeric($_POST['id_uc3m'])) {
-		echo '<div class="error_msg">
-		      Sorry, <i>ID UC3M</i> field has to be a numberic value... <b>Check the information provided.</b>
-	      </div>';
 	    }else if (!empty($_FILES['image_file']['tmp_name']) && (strpos($_FILES['image_file']['type'],'image')===FALSE)) {
 		echo '<div class="error_msg">
 		      Sorry, the file uploaded has to be an image... <b>Check the type of the image file selected.</b>
 	      </div>
-		<a href="new_item.php" target="operations_frame"><img src="images/back.png" width="16px" height="16px"></img> Back</a>';
+		<a href="new_item.php" target="operations_frame3"><img src="images/back.png" width="16px" height="16px"></img> Back</a>';
 	    }else{
 	      $db	= new Items ();
-		$image 	=  base64_encode(fread(fopen($_FILES['image_file']['tmp_name'],"r"),$_FILES['image_file']['size']));
-	      $insert = $db -> insertItem($_POST['item'], $_POST['description'], $_POST['manufacturer'], $_POST['quantity'], $_POST['serial'], $_POST['id_uc3m'], $image, $_POST['issues']);
+	      $image 	=  base64_encode(fread(fopen($_FILES['image_file']['tmp_name'],"r"),$_FILES['image_file']['size']));
+
+		$replace_desc=$_POST['description'];
+		$replace_desc=str_replace("\r","<br>",$replace_desc);
+		$description = $replace_desc;
+
+		$replace_iss=$_POST['issues'];
+		$replace_iss=str_replace("\r","<br>",$replace_iss);
+		$issues = $replace_iss;
+
+	      $insert = $db -> insertItem($_POST['item'], $description, $_POST['manufacturer'], $_POST['quantity'], $_POST['serial'], $_POST['id_uc3m'], $_POST['attendant'], $_POST['location'], $image, $issues);
 	      
 		if ($insert ==-1){
 			echo '<div class="error_msg">
 	    		Sorry, an error occurs. Please, check the information given.
 	  		</div>
-	  		<a href="new_item.php" target="operations_frame"><img src="images/back.png" width="16px" height="16px"></img> Back</a>';
+	  		<a href="new_item.php" target="operations_frame3"><img src="images/back.png" width="16px" height="16px"></img> Back</a>';
 		}else{
 		      echo '<div class="success_msg">
 			     <img src="images/plus.png" width="16px" height="16px"></img>   The new item has been uploaded with success.
 		      </div>
-			<a href="new_item.php" target="operations_frame"><img src="images/back.png" width="16px" height="16px"></img> Back</a>';
+			<a href="new_item.php" target="operations_frame3"><img src="images/back.png" width="16px" height="16px"></img> Back</a>';
 		}
 	}
       }
@@ -111,9 +112,15 @@
 	    </tr>
 	    <tr>
 	      <td><p>Serial</p></td>
-	      <td><input id="serial" name="serial" type="number" placeholder="Serial" autofocus maxlength="10">  </td>
+	      <td><input id="serial" name="serial" type="text" placeholder="Serial" autofocus maxlength="25">  </td>
 	      <td><p>Inventory number</p></td>
-	      <td><input id="id_uc3m" name="id_uc3m" type="number" placeholder="ID UC3M" autofocus maxlength="10">  </td>      
+	      <td><input id="id_uc3m" name="id_uc3m" type="text" placeholder="ID UC3M" autofocus maxlength="25">  </td>      
+	    </tr>
+	    <tr>
+	      <td><p>Attendant</p></td>
+	      <td><input id="attendant" name="attendant" type="text" placeholder="Attendant" autofocus maxlength="25">  </td>
+	      <td><p>Location</p></td>
+	      <td><input id="location" name="location" type="text" placeholder="Location" autofocus maxlength="25">  </td>      
 	    </tr>	    
     	    <tr>
       	      <td><p>Description</p></td>

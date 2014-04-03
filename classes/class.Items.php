@@ -31,12 +31,12 @@
 		    return ($item);
 		}
 
-		function insertItem ($name, $description, $manufacturer, $quantity, $serial, $id_uc3m, $image, $issues){
+		function insertItem ($name, $description, $manufacturer, $quantity, $serial, $id_uc3m, $attendant, $location, $image, $issues){
 		    global $wpdb;
 		    $available = $quantity;
 		    if ($wpdb->insert('wp_inventory_item',  
-		    array('name' => $name, 'description' => $description, 'manufacturer' => $manufacturer, 'quantity' => $quantity, 'available' => $available, 'serial' => $serial, 'id_uc3m' => $id_uc3m, 'image' => $image, 'issues' => $issues), 
-		    array( '%s', '%s', '%s','%d', '%d','%d', '%d', '%s') ) ===FALSE){
+		    array('name' => $name, 'description' => $description, 'manufacturer' => $manufacturer, 'quantity' => $quantity, 'available' => $available, 'serial' => $serial, 'id_uc3m' => $id_uc3m, 'attendant' => $attendant, 'location' => $location, 'image' => $image, 'issues' => $issues), 
+		    array( '%s', '%s', '%s','%d', '%s','%s', '%s', '%s' , '%s' , '%s', '%s') ) ===FALSE){
 			return -1;
 			}
 		}	
@@ -57,9 +57,9 @@
 			}
 		}
 		
-		function updateItemByID ($id_item, $name, $description, $manufacturer, $quantity, $available, $serial, $id_uc3m, $image, $issues){
+		function updateItemByID ($id_item, $name, $description, $manufacturer, $quantity, $available, $serial, $id_uc3m, $attendant, $location, $image, $issues){
 		    global $wpdb;	    
-		    $query = "UPDATE wp_inventory_item SET name = '" . $name . "',  description = '" . $description . "', manufacturer = '" . $manufacturer . "', quantity = " . $quantity . ", available = " . $available . ",  serial = " . $serial . ", id_uc3m = " . $id_uc3m . ", image = '" . $image . "' , issues = '" . $issues . "' WHERE id_item = " .$id_item;
+		    $query = "UPDATE wp_inventory_item SET name = '" . $name . "',  description = '" . $description . "', manufacturer = '" . $manufacturer . "', quantity = " . $quantity . ", available = " . $available . ",  serial = '" . $serial . "', id_uc3m = '" . $id_uc3m . "', attendant = '" . $attendant . "' , location = '" . $location . "', image = '" . $image . "' , issues = '" . $issues . "' WHERE id_item = " .$id_item;
 		    if ($wpdb->query($query)===FALSE){
 			print $query;
 			return -1;

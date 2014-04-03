@@ -31,7 +31,7 @@
 	    echo '<div class="error_msg">
 	      Sorry, there is no available item units.
 	    </div>
-	    <a href="lists.php" target="operations_frame"><img src="images/back.png" width="16px" height="16px"></img> Back</a>';
+	    <a href="lists.php" target="operations_frame2"><img src="images/back.png" width="16px" height="16px"></img> Back</a>';
 	  }else{
 	    $db_a	= new Asignations ();
 	    $asignation = $db_a -> asignItemByID($_SESSION['login'], $_GET['id_item']);
@@ -40,7 +40,7 @@
 			echo '<div class="error_msg">
 	    		Sorry, an error occurs. Please, check the information given.
 	  		</div>
-	  		<a href="lists.php" target="operations_frame"><img src="images/back.png" width="16px" height="16px"></img> Back</a>';
+	  		<a href="lists.php" target="operations_frame2"><img src="images/back.png" width="16px" height="16px"></img> Back</a>';
 		}else{
 	    
 		    $newAvailable = ($item[0]->available) - 1;
@@ -50,12 +50,12 @@
 				echo '<div class="error_msg">
 		    		Sorry, an error occurs. Please, check the information given.
 		  		</div>
-		  		<a href="lists.php" target="operations_frame"><img src="images/back.png" width="16px" height="16px"></img> Back</a>';
+		  		<a href="lists.php" target="operations_frame2"><img src="images/back.png" width="16px" height="16px"></img> Back</a>';
 			}else{
 				 echo '<div class="success_msg">
 				      <img src="images/locked.png" width="16px" height="16px"></img>  The item has been asigned to you successfully.
 				    </div>
-				    <a href="lists.php" target="operations_frame"><img src="images/back.png" width="16px" height="16px"></img> Back</a>';
+				    <a href="lists.php" target="operations_frame2"><img src="images/back.png" width="16px" height="16px"></img> Back</a>';
 			}
 		}
 	}
@@ -68,7 +68,7 @@
 	  <form id="asign_item" method="post" action="#">
 	    <input type="hidden" name="id_item" value="'.$_GET['id_item'].'">
 	    <input class = "button wobble-to-top-right" type="submit" id="asign" name="asign" value="Yes, asign to me">
-	    <a href="lists.php" target="operations_frame"><img src="images/back.png" width="16px" height="16px"></img> Back</a>
+	    <a href="lists.php" target="operations_frame2"><img src="images/back.png" width="16px" height="16px"></img> Back</a>
 	  </form>';
 	
 	}

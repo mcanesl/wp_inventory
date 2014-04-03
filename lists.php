@@ -19,6 +19,13 @@
 			ifr.src = ifr.src;
 		});
 
+		function iframeLoaded() {
+		      var iFrameID = document.getElementById('list_items_frame');
+		      if(iFrameID) {
+			    iFrameID.height = iFrameID.contentWindow.document.body.scrollHeight + "px";
+		      }
+		  }
+
 	</script>
 
 
@@ -36,13 +43,13 @@
 				  </ul>
 				  <div class="ionTabs__body">
 				      <div class="ionTabs__item" data-name="Tab_1_name">
-					    <iframe id="list_items_frame" name="list_items_frame" src="./list_items.php" width="100%" height= "580px" seamless frameborder="0"></iframe>
+					    <iframe id="list_items_frame" name="list_items_frame" onload="iframeLoaded1()" src="./list_items.php" width="100%" height="500" seamless frameborder="0"></iframe>
 				      </div>
       				      <div class="ionTabs__item" data-name="Tab_2_name" >
-					    <iframe id="list_items_frame" name="list_items_frame"  src="./list_asignations.php" width="100%" height= "580px" seamless  frameborder="0"></iframe>
+					    <iframe id="list_items_frame" name="list_items_frame"  onload="iframeLoaded1()" src="./list_asignations.php" height="500" width="100%" seamless  frameborder="0"></iframe>
 				      </div>				      
       				      <div class="ionTabs__item" data-name="Tab_3_name">
-					    <iframe id="list_items_frame" name="list_items_frame"  src="./list_users.php" width="100%" height= "580px" seamless frameborder="0" ></iframe>
+					    <iframe id="list_items_frame" name="list_items_frame"  onload="iframeLoaded1()" src="./list_users.php" height="500" width="100%" seamless frameborder="0" ></iframe>
 				      </div>
 				      <div class="ionTabs__preloader"></div>
 				  </div>

@@ -187,7 +187,7 @@
 				$row[] = $aRow[ $aColumns[$i] ];
 			}
 		}
-		$row[] = '<a href="item_details.php?id_item='. $aRow[ $aColumns[2] ] . '" target="operations_frame"><img src="images/zoom-in-2.png" title="Details" width="16px"></img></a>';
+		$row[] = '<a href="item_details.php?id_item='. $aRow[ $aColumns[2] ] . '" target="operations_frame2"><img src="images/zoom-in-2.png" title="Details" width="16px"></img></a>';
 
 		$output['aaData'][] = $row;
 

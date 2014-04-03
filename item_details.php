@@ -43,59 +43,60 @@
 
 	echo '<h3> Item details</h3>
 	<p>Details about selected item.</p>
-	<table id="item_table">
-	<tr>
-	  <td>';
-		if ($item[0]->image){
-			echo '<div> <img src="get_image.php" width="180px" height="180px"></img> </div>';
-		}else{
-			echo '<div> <img src="images/image.png" width="180px" height="180px"></img> </div>';
-		}
-
-		echo'
-	  </td>
-	  <td>
-	  <table id = "details_table">
+	 <table id = "details_table">
 	      <tr>
-		<td><p><b>Item ID</b></p></td>
-		<td>'.$item[0]->id_item.'</td>
+		<td id="td_dark" style="width: 200px"><p><b>ID Item</b></p></td>
+		<td id="td_medium">'.$item[0]->id_item.'</td>
 	      </tr>
 	      <tr>
-		<td><p><b>Item name</b></p></td>
+		<td id="td_medium"><p><b>Item name</b></p></td>
 		<td>'.$item[0]->name.'</td>
 	      </tr>
 	      <tr>
-		<td><p><b>Description</b></p></td>
-		<td>'.$item[0]->description.'</td>
+		<td id="td_dark"><p><b>Manufacturer</b></p></td>
+		<td id="td_medium">'.$item[0]->manufacturer.'</td>
 	      </tr>
 	      <tr>
-		<td><p><b>Manufacturer</b></p></td>
-		<td>'.$item[0]->manufacturer.'</td>
-	      </tr>
-	      <tr>
-		<td><p><b>Quantity</b></p></td>
+		<td id="td_medium"><p><b>Quantity</b></p></td>
 		<td>'.$item[0]->quantity.' pieces</td>
 	      </tr>
 	      <tr>
-		<td><p><b>Available</b></p></td>
-		<td>'.$item[0]->available.' pieces</td>
+		<td id="td_dark"><p><b>Available</b></p></td>
+		<td id="td_medium">'.$item[0]->available.' pieces</td>
 	      </tr>
 	      <tr>
-		<td><p><b>Serial</b></p></td>
+		<td id="td_medium"><p><b>Serial</b></p></td>
 		<td>'.$item[0]->serial.'</td>
 	      </tr>
 	      <tr>
-		<td><p><b>Inventory number</b></p></td>
-		<td>'.$item[0]->id_uc3m.'</td>
+		<td id="td_dark"><p><b>Inventory number</b></p></td>
+		<td id="td_medium">'.$item[0]->id_uc3m.'</td>
 	      </tr>
 	      <tr>
-		<td><p><b>Issues</b></p></td>
-		<td>'.$item[0]->issues.'</td>
+		<td id="td_medium"><p><b>Attendant</b></p></td>
+		<td>'.$item[0]->attendant.'</td>
+	      </tr>
+	      <tr>
+		<td id="td_dark"><p><b>Location</b></p></td>
+		<td id="td_medium">'.$item[0]->location.'</td>
+	      </tr>
+	      <tr>
+		<td id="td_medium"><p><b>Description</b></p></td>
+		<td>'.$item[0]->description.'</td>
+	      </tr>
+	      <tr>
+		<td id="td_dark"><p><b>Issues</b></p></td>
+		<td id="td_medium">'.$item[0]->issues.'</td>
+	      </tr>
+	      <tr>
+		<td colspan="2" id="td_image">'; if ($item[0]->image){
+				echo '<div> <img src="get_image.php" width="150px" height="150px" style="margin-top: 30px"></img> </div>';
+			}else{
+				echo '<div> <img src="images/image.png" width="150px" height="150px" style="margin-top: 30px"></img> </div>';
+			}
+		echo '</td>
 	      </tr>
 	    </table>
-	     </td>
-	    </tr>
-	  </table>
 	  
 	  <p style="border: 1px solid black"></p>
 	  

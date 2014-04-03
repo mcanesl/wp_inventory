@@ -63,6 +63,8 @@
 	  $available = $item[0]->available;
 	  $serial = $item[0]->serial;
 	  $id_uc3m = $item[0]->id_uc3m;
+	  $attendant = $item[0]->attendant;
+	  $location = $item[0]->location;
 	  $image = $item[0]->image;
 	  $issues = $item[0]->issues;
 
@@ -70,27 +72,22 @@
 	  if (($_POST['quantity'] !=null) && !is_numeric($_POST['quantity'])) {
 		echo '<div class="error_msg">
 		      Sorry, <i>quantity</i> field has to be a numberic value... <b>Check the information provided.</b>
-	      </div>';
-	    }else if (($_POST['serial'] !=null) && !is_numeric($_POST['serial'])) {
-		echo '<div class="error_msg">
-		      Sorry, <i>serial</i> field has to be a numberic value... <b>Check the information provided.</b>
-	      </div>';
-	    }else if (($_POST['id_uc3m'] !=null) && !is_numeric($_POST['id_uc3m'])) {
-		echo '<div class="error_msg">
-		      Sorry, <i>ID UC3M</i> field has to be a numberic value... <b>Check the information provided.</b>
-	      </div>';
+	      </div>
+	      <a href="lists.php" target="operations_frame2"><img src="images/back.png" width="16px" height="16px"></img> Back</a>';
 	    }else if (!empty($_FILES['image_file']['tmp_name']) && (strpos($_FILES['image_file']['type'],'image')===FALSE)) {
 		echo '<div class="error_msg">
 		      Sorry, the file uploaded has to be an image... <b>Check the type of the image file selected.</b>
 	      </div>
-		<a href="lists.php" target="operations_frame"><img src="images/back.png" width="16px" height="16px"></img> Back</a>';
+		<a href="lists.php" target="operations_frame2"><img src="images/back.png" width="16px" height="16px"></img> Back</a>';
 	    }else{ 
 	      if($_POST['item']!=null){
 		$name = $_POST['item'];
 	      }
 	      
 	      if($_POST['description']!=null){
-		$description = $_POST['description'];
+		$replace=$_POST['description'];
+		$replace=str_replace("\r","<br>",$replace);
+		$description = $replace;
 	      }
 	      
 	      if($_POST['manufacturer']!=null){
@@ -109,30 +106,40 @@
 	      if($_POST['id_uc3m']!=null){
 		$id_uc3m = $_POST['id_uc3m'];
 	      }
+
+	      if($_POST['attendant']!=null){
+		$attendant = $_POST['attendant'];
+	      }
+
+	      if($_POST['location']!=null){
+		$location = $_POST['location'];
+	      }
 	      
 	      if($_FILES['image_file']['tmp_name']!=null){
 		$image 	=  base64_encode(fread(fopen($_FILES['image_file']['tmp_name'],"r"),$_FILES['image_file']['size']));
 	      }
 	      
 	      if($_POST['issues']!=null){
-		$issues = $_POST['issues'];
+		$replace=$_POST['issues'];
+		$replace=str_replace("\r","<br>",$replace);
+		$issues = $replace;
 	      }
 	      
 	      
 	      $db	= new Items ();	      
-	      $update = $db -> updateItemByID($_POST['id_item'], $name, $description, $manufacturer, $quantity, $available, $serial, $id_uc3m, $image, $issues);
+	      $update = $db -> updateItemByID($_POST['id_item'], $name, $description, $manufacturer, $quantity, $available, $serial, $id_uc3m, $attendant, $location, $image, $issues);
 
 		if ($update == -1){
 			echo '<div class="error_msg">
 			Sorry, an error occurs. Please, check the information given.
 			</div>
-	    		<a href="lists.php" target="operations_frame"><img src="images/back.png" width="16px" height="16px"></img> Back</a>';
+	    		<a href="lists.php" target="operations_frame2"><img src="images/back.png" width="16px" height="16px"></img> Back</a>';
 		}else{
 
 		      echo '<div class="success_msg">
 			<img src="images/compose-3.png" width="16px" height="16px"></img>  The item has been edit successfully.
 		      </div>
-	    		<a href="lists.php" target="operations_frame"><img src="images/back.png" width="16px" height="16px"></img> Back</a>';
+	    		<a href="lists.php" target="operations_frame2"><img src="images/back.png" width="16px" height="16px"></img> Back</a>';
 		}
 	    }
 	}else{
@@ -157,10 +164,16 @@
 	    </tr>
 	    <tr>
 	      <td><p>Serial</p></td>
-	      <td><input id="serial" name="serial" type="number" placeholder="'.$item[0]->serial.'" autofocus maxlength="10">  </td>
+	      <td><input id="serial" name="serial" type="text" placeholder="'.$item[0]->serial.'" autofocus maxlength="25">  </td>
 	      <td><p>Inventory number</p></td>
-	      <td><input id="id_uc3m" name="id_uc3m" type="number" placeholder="'.$item[0]->id_uc3m.'" autofocus maxlength="10">  </td>      
-	    </tr>	    
+	      <td><input id="id_uc3m" name="id_uc3m" type="text" placeholder="'.$item[0]->id_uc3m.'" autofocus maxlength="25">  </td>      
+	    </tr>	
+	    <tr>
+	      <td><p>Attendant</p></td>
+	      <td><input id="attendant" name="attendant" type="text" placeholder="'.$item[0]->attendant.'" autofocus maxlength="25">  </td>
+	      <td><p>Location</p></td>
+	      <td><input id="location" name="location" type="text" placeholder="'.$item[0]->location.'" autofocus maxlength="25">  </td>      
+	    </tr>    
     	    <tr>
       	      <td><p>Description</p></td>
 	      <td><textarea id="description" name="description" rows="9" cols="22" maxlength="150" placeholder="'.$item[0]->description.'"></textarea></td>
@@ -173,7 +186,7 @@
 
 	<div id="buttons">
 	    <input class = "button wobble-to-top-right" type="submit" id="edit" name="edit" value="Edit item">
-	    <a href="lists.php" target="operations_frame"><img src="images/back.png" width="16px" height="16px"></img> Back</a>
+	    <a href="lists.php" target="operations_frame2"><img src="images/back.png" width="16px" height="16px"></img> Back</a>
 	</div>
 	  </form>';
 	

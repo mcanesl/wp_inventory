@@ -63,7 +63,7 @@
 				  <td>'.$item[0]->name.'</td>
 				  <td>'.$value->asignation_date.'</td>
 				  <td>
-				      <a href="return_item.php?id_item='.$value->id_item.'&id_asignation='.$value->id_asignation.'" target="operations_frame"><img src="images/outgoing-2.png" title="Give back" width="16px" height="16px"></img></a>
+				      <a href="return_item.php?id_item='.$value->id_item.'&id_asignation='.$value->id_asignation.'" target="operations_frame1"><img src="images/outgoing-2.png" title="Give back" width="16px" height="16px"></img></a>
 				  </td>
 				</tr>';
 			}
@@ -100,7 +100,7 @@
 				  <td>'.$value->asignation_date.'</td>
 				  <td>'.$value->expiry_date.'</td>
 				  <td>
-				      <a href="item_details.php?id_item='.$value->id_item.'", target="operations_frae"><img src="images/zoom-in-2.png" title="Details" width="16px" height="16px"></img></a>
+				      <a href="item_details.php?id_item='.$value->id_item.'", target="operations_frame1"><img src="images/zoom-in-2.png" title="Details" width="16px" height="16px"></img></a>
 				  </td>
 				</tr>';
 			}

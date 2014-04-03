@@ -249,15 +249,6 @@ body {
 
 /**** Frame principal ****/
 
-#operations_frame {
-	border:0px;
-	width:100%;
-	min-height:200px;
-	height:700px !important;
-
-}
-
-
 #frame_principal {
 	border:0px;
 	height:800px !important;
@@ -370,18 +361,28 @@ body {
 }
 
 #details_table {
-  text-align: center;
+font: 200 12px/1.5 Helvetica,Verdana,sans-serif;
   margin: auto;
-  width: 100%;
+  width: 98%;
 table-layout: fixed;
 overflow: hidden;
 word-wrap:break-word;
 }
 
 #details_table td {
-  text-align: center;
-  font-size: 14px;
-  padding: 10px 10px 10px 10px;
+  padding: 5px 5px 5px 5px;
+}
+
+#td_dark{
+	background-color: rgb(211, 214, 255);
+}
+
+#td_medium{
+ 	background-color: rgb(233, 235, 255);
+}
+
+#td_image{
+ 	text-align: center;
 }
 
 #details_table input {
@@ -402,7 +403,7 @@ word-wrap:break-word;
 
 .list_items_table{
   font: 200 12px/1.5 Helvetica, Verdana, sans-serif;
-width: 80%;
+width: 98% !important;
 }
 
 
@@ -421,14 +422,24 @@ a {
 }
 
 #th_short{
-	width: 10px;
+	width: 10px !important;
+	overflow: hidden;             
+  	text-overflow:ellipsis;
 }
 
 #th_ops{
-	width: 80px;
+	width: 80px !important;
+	overflow: hidden;             
+  	text-overflow:ellipsis;
+}
+
+#th_long{
+	overflow: hidden;             
+  	text-overflow:ellipsis;
 }
 
 .ionTabs__body{
 	width: 99%;
 }
+
 

@@ -26,6 +26,14 @@
 			return -1;
 			}
 		}
+
+		function recoverAsignations  () {
+		    global $wpdb;
+		    $query = "SELECT * FROM wp_inventory_asignation";
+		    $asignations = $wpdb->get_results($query);
+		    return ($asignations);
+		
+		}
 		
 		function recoverAsignationsByItem  ($item) {
 		    global $wpdb;

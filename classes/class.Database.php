@@ -14,8 +14,10 @@
 		    manufacturer VARCHAR(50) NOT NULL,
 		    quantity INTEGER NOT NULL,
 		    available INTEGER,
-		    serial INTEGER,
-		    id_uc3m INTEGER,
+		    serial VARCHAR(25),
+		    id_uc3m VARCHAR(25),
+		    attendant VARCHAR(25),
+		    location VARCHAR(25),
 		    image MEDIUMBLOB,
 		    issues VARCHAR(150),
 		    PRIMARY KEY (id_item)

@@ -41,8 +41,8 @@
 			<thead>
 				<tr>
 					<th id="th_short">ID</th>
-					<th>Name</th>
-					<th>Manufacturer</th>
+					<th id="th_long">Name</th>
+					<th id="th_long">Manufacturer</th>
 					<th id="th_short">Qty</th>
 					<th id="th_short">Avble</th>
 					<th id="th_ops">Operations</th>
