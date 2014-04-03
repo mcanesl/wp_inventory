@@ -4,8 +4,8 @@ Plugin Name: WP Inventory
 Plugin URI: 
 Description: Plugin para la gestión de inventario. Permite añadir, modificar, eliminar y visualizar asignaciones usuario-item.
 Author: Marta Canes
-Version: 0.1
-Author URI: 
+Version: 1.4
+Author URI: https://github.com/mcanesl
 */
 
 //Plugin shortcode
@@ -15,7 +15,7 @@ add_shortcode( 'gestion', 'wp_inventory');
 register_activation_hook(__FILE__,'wp_inventory_install');
 
 // run the uninstall script upon plugin deletion
-register_deactivation_hook(__FILE__,'wp_inventory_uninstall');
+register_uninstall_hook(__FILE__,'wp_inventory_uninstall');
 
 // create custom plugin settings menu
 add_action('admin_menu', 'create_options_menu');
@@ -126,9 +126,9 @@ function options_page() {
 <div class="wrap">
 <h2>WP Inventory</h2>
 
-<form method="post" action="options.php" action="<?php settings_fields( 'options-group' ); ?>">
+<form method="post" action="options.php">
     <?php settings_fields( 'options-group' ); ?>
-    <p>Some information about this admin page.</p>
+    <p>Introduce LDAP information</p>
     <table class="form-table">
         <tr valign="top">
         <th scope="row">LDAP Server</th>
