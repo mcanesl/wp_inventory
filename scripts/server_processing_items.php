@@ -141,7 +141,9 @@
 		$sOrder
 		$sLimit
 		";
-	$rResult = mysql_query( $sQuery, $gaSql['link'] ) or fatal_error( 'MySQL Error: ' . mysql_errno() );
+	mysql_query("SET character_set_results=utf8", $gaSql['link']);
+	$rResult = mysql_query( $sQuery ) or fatal_error( 'MySQL Error: ' . mysql_errno() );
+	#$rResult = mysql_query( $sQuery, $gaSql['link'] ) or fatal_error( 'MySQL Error: ' . mysql_errno() );
 	
 	/* Data set length after filtering */
 	$sQuery = "
@@ -196,6 +198,5 @@
 
 	}
 
-	
-	echo json_encode( $output );
+	echo json_encode($output);
 ?>

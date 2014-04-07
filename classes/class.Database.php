@@ -3,7 +3,7 @@
 	
 		function __construct() {
 			global $wpdb;
-			$wpdb->query("ALTER DATABASE wordpress CHARACTER SET utf8");
+			$wpdb->query("ALTER DATABASE " .$wpdb->dbname. " CHARACTER SET utf8");
 		}
 		
 		
