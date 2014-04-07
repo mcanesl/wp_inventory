@@ -2,6 +2,8 @@
 	class Database {
 	
 		function __construct() {
+			global $wpdb;
+			$wpdb->query("ALTER DATABASE wordpress CHARACTER SET utf8");
 		}
 		
 		

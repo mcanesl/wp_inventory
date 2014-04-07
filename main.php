@@ -95,7 +95,7 @@
 							<li><a id="refresh-3" href="#tabs-3"><img src="images/compose-3.png" width="24px" height="24px" title="Add new item"></img> New item</a></li>';
 						}
 					echo '
-						<img class="msgstatus" src="images/out.png" onclick="dialog()" width="16px" height="16px" title="Exit"></img>	
+						<img class="msgstatus" src="images/outgoing-2.png" onclick="dialog()" width="16px" height="16px" title="Exit"></img>	
 					</ul>
 					<div id="tabs-1">
 						<iframe id="operations_frame1" name="operations_frame1" onload="iframeLoaded1()" src="./user_asignations.php" width="100%" seamless frameborder="0"></iframe>

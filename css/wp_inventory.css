@@ -438,6 +438,11 @@ a {
   	text-overflow:ellipsis;
 }
 
+#link_right{
+	display: block;
+	float: right;
+}
+
 .ionTabs__body{
 	width: 99%;
 }

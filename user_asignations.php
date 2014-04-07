@@ -34,10 +34,10 @@
 	$closed_asignations = $db_a -> recoverClosedAsignationsByUser($_SESSION['login']);
 	
 	echo '<h3> User Profile <i>('.$_SESSION["login"].')</i></h3>
-	<p>Your personal tab with your asignations.</p>
+	<p>Your personal tab with your assignations.</p>
 	
 	<p style="border: 1px solid black"></p>
-	<p><img src="images/book-lines.png"> Current asignations</p>
+	<p><img src="images/book-lines.png"> Current assignations</p>
 	
 	    <table class="list_items_table" class="display" width="100%">
 			<thead>
@@ -45,7 +45,7 @@
 			    <th id="th_short">ID</th>
 			    <th>User</th>
 			    <th>Item</th>
-			    <th>Asignation date</th>
+			    <th>Assignation date</th>
 			    <th id="th_ops">Operations</th>
 			  </tr>
 			</thead>
@@ -63,7 +63,7 @@
 				  <td>'.$item[0]->name.'</td>
 				  <td>'.$value->asignation_date.'</td>
 				  <td>
-				      <a href="return_item.php?id_item='.$value->id_item.'&id_asignation='.$value->id_asignation.'" target="operations_frame1"><img src="images/outgoing-2.png" title="Give back" width="16px" height="16px"></img></a>
+				      <a href="return_item.php?id_item='.$value->id_item.'&id_asignation='.$value->id_asignation.'" target="operations_frame1"><img src="images/unlocked.png" title="Give back" width="16px" height="16px"></img></a>
 				  </td>
 				</tr>';
 			}
@@ -73,7 +73,7 @@
 	     
 			
 	<p style="border: 1px solid black; margin-top: 50px"></p>
-	<p><img src="images/book.png"> Last closed asignations</p>
+	<p><img src="images/book.png"> Last closed assignations</p>
 	
 	    <table class="list_items_table" class="display" width="100%">
 			<thead>
@@ -81,7 +81,7 @@
 			    <th id="th_short">ID</th>
 			    <th>User</th>
 			    <th>Item</th>
-			    <th>Asignation date</th>
+			    <th>Assignation date</th>
 			    <th>Devolution date</th>
 			    <th id="th_ops">Operations</th>
 			  </tr>

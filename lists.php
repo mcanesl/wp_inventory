@@ -38,7 +38,7 @@
 			      <div class="ionTabs" id="tabs_1" data-name="Tabs_Group_name">
 				  <ul class="ionTabs__head">
 				      <li id="refresh" class="ionTabs__tab" data-target="Tab_1_name">Items list</li>
-				      <li id="refresh" class="ionTabs__tab" data-target="Tab_2_name">Asignations list</li>
+				      <li id="refresh" class="ionTabs__tab" data-target="Tab_2_name">Assignations list</li>
 				      <li id="refresh" class="ionTabs__tab" data-target="Tab_3_name">Users list</li>
 				  </ul>
 				  <div class="ionTabs__body">

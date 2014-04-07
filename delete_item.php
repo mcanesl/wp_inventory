@@ -29,7 +29,7 @@
 	  $deletion = $db -> deleteItemByID($_GET['id_item']);
 		if ($deletion==-1){
 			echo '<div class="error_msg">
-	    		An error occurs. The item has not been deleted. Check if there are asignations related to this item.
+	    		An error occurs. The item has not been deleted. Check if there are assignations related to this item.
 	  		</div>
 	    		<a href="lists.php" target="operations_frame2"><img src="images/back.png" width="16px" height="16px"></img> Back</a>';
 		}else{

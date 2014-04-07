@@ -23,7 +23,7 @@
       	$db_i	= new Items ();
 	$item = $db_i -> recoverItemByID($_GET['id_item']);
 	
-	echo '<h3> Asign item</h3>';
+	echo '<h3> Assign item</h3>';
 	
 	if (isset($_POST['asign'])){
 	
@@ -53,7 +53,7 @@
 		  		<a href="lists.php" target="operations_frame2"><img src="images/back.png" width="16px" height="16px"></img> Back</a>';
 			}else{
 				 echo '<div class="success_msg">
-				      <img src="images/locked.png" width="16px" height="16px"></img>  The item has been asigned to you successfully.
+				      <img src="images/locked.png" width="16px" height="16px"></img>  The item has been assigned to you successfully.
 				    </div>
 				    <a href="lists.php" target="operations_frame2"><img src="images/back.png" width="16px" height="16px"></img> Back</a>';
 			}
@@ -67,7 +67,7 @@
 	<p>Are you sure do you want to take it?.</p>
 	  <form id="asign_item" method="post" action="#">
 	    <input type="hidden" name="id_item" value="'.$_GET['id_item'].'">
-	    <input class = "button wobble-to-top-right" type="submit" id="asign" name="asign" value="Yes, asign to me">
+	    <input class = "button wobble-to-top-right" type="submit" id="asign" name="asign" value="Yes, assign to me">
 	    <a href="lists.php" target="operations_frame2"><img src="images/back.png" width="16px" height="16px"></img> Back</a>
 	  </form>';
 	

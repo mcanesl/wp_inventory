@@ -34,14 +34,15 @@
 
 	echo '
         
-		<table class="list_items_table" class="display" width="100%">
+		<table class="list_items_table" class="display">
 			<thead>
 				<tr>
-				        <th>id_asignation</th>
-				        <th>user</th>
-				        <th>id_item</th>
-				        <th>asignation_date</th>
-				        <th>Operations</th>
+				        <th id="th_short">ID</th>
+				        <th id="th_short">User</th>
+				        <th id="th_short">Item</th>
+				        <th id="th_long">Assignation date</th>
+					<th id="th_long">Devoution date</th>
+				        <th id="th_short">Ops</th>
 
 				</tr>
 			</thead>
@@ -55,7 +56,7 @@
 
 	}else{
 			echo '<div class="error_msg">
-					No asignations found... <b>Use the menu to insert new items and asign them.</b>
+					No assignations found... <b>Use the menu to insert new items and assign them.</b>
 			       </div>';
       	}
       }else{

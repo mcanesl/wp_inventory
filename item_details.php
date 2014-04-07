@@ -42,7 +42,8 @@
 	
 
 	echo '<h3> Item details</h3>
-	<p>Details about selected item.</p>
+	<p>Details about selected item.
+	<a id="link_right" href="lists.php" target="operations_frame2"><img src="images/back.png" width="16px" height="16px"></img> Back</a></p>
 	 <table id = "details_table">
 	      <tr>
 		<td id="td_dark" style="width: 200px"><p><b>ID Item</b></p></td>
@@ -100,7 +101,7 @@
 	  
 	  <p style="border: 1px solid black"></p>
 	  
-	    <p><img src="images/book-lines.png"> Asignations history.</p>
+	    <p><img src="images/book-lines.png"> Assignations history.</p>
 	    
 	    <table class="list_items_table" class="display" width="100%">
 			<thead>
@@ -108,7 +109,7 @@
 			    <th id="th_short">ID</th>
 			    <th>User</th>
 			    <th>Item</th>
-			    <th>Asignation date</th>
+			    <th>Assignation date</th>
 			    <th>Devolution date</th>
 			  </tr>
 			</thead>
