@@ -7,6 +7,7 @@
     <script src="js/Datatables/media/js/jquery.js"></script>
     <script src="js/Datatables/media/js/jquery.dataTables.js"></script>
     <link rel="stylesheet" href="css/wp_inventory.css" />
+
     
   </head>
   <body>
@@ -19,18 +20,20 @@
     
     <?php
 	require_once("classes/class.InventoryAuth.php");
+	require_once('../../../wp-includes/option.php');
 	
 	session_start ();
     	if ($_SESSION['login']){
-		//Estos valores deberian estar en la configuracion del wordpress:
-		$userbind 	= 'uid = --login--, ou=People, dc=tsc, dc=uc3m,dc=es';
-		$gtsuser	= 'cn=gts, ou=Group,DC=tsc,DC=uc3m,DC=es';
-		$gtsadmin	= 'cn=gts, ou=Group,DC=tsc,DC=uc3m,DC=es';
-		$server		= 'umbriel.tsc.uc3m.es';
+		$userbind 	=  get_option('user');
+		$gtsuser	=  get_option('gts_group');
+		$gtsadmin	=  get_option('gts_admin');
+		$server		=  get_option('server');
 
 		$ldap_c	= new InventoryAuth ( $server, $userbind, $gtsuser, $gtsadmin );
 		
-		$users = $ldap_c -> UsersInGroup ( $gtsuser );    		
+		$users =  $ldap_c -> UsersInGroup ( $gtsuser  ); 
+
+		array_shift( $users );
 	
 		if ($users != null){
 			echo '

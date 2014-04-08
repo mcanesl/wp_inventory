@@ -141,9 +141,9 @@
 		$sOrder
 		$sLimit
 		";
-	mysql_query("SET character_set_results=utf8", $gaSql['link']);
-	$rResult = mysql_query( $sQuery ) or fatal_error( 'MySQL Error: ' . mysql_errno() );
-	#$rResult = mysql_query( $sQuery, $gaSql['link'] ) or fatal_error( 'MySQL Error: ' . mysql_errno() );
+	#mysql_query("SET character_set_results=utf8", $gaSql['link']);
+	#$rResult = mysql_query( $sQuery ) or fatal_error( 'MySQL Error: ' . mysql_errno() );
+	$rResult = mysql_query( $sQuery, $gaSql['link'] ) or fatal_error( 'MySQL Error: ' . mysql_errno() );
 	
 	/* Data set length after filtering */
 	$sQuery = "
@@ -181,12 +181,12 @@
 			if ( $aColumns[$i] == "version" )
 			{
 				/* Special output formatting for 'version' column */
-				$row[] = ($aRow[ $aColumns[$i] ]=="0") ? '-' : $aRow[ $aColumns[$i] ];
+				$row[] = ($aRow[ $aColumns[$i] ]=="0") ? '-' : stripslashes(utf8_decode($aRow[ $aColumns[$i] ]));
 			}
 			else if ( $aColumns[$i] != ' ' )
 			{
 				/* General output */
-				$row[] = $aRow[ $aColumns[$i] ];
+				$row[] = stripslashes(utf8_decode($aRow[ $aColumns[$i] ]));
 			}
 		}
 		$row[] = '<a href="item_details.php?id_item='. $aRow[ $aColumns[0] ] . '" target="operations_frame2"><img src="images/zoom-in-2.png" title="Details" width="16px"></img></a>

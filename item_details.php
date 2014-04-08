@@ -51,7 +51,7 @@
 	      </tr>
 	      <tr>
 		<td id="td_medium"><p><b>Item name</b></p></td>
-		<td>'.utf8_decode($item[0]->name).'</td>
+		<td>'.stripslashes(utf8_decode($item[0]->name)).'</td>
 	      </tr>
 	      <tr>
 		<td id="td_dark"><p><b>Manufacturer</b></p></td>
