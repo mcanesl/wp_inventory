@@ -151,34 +151,34 @@
 	    <tr>
 		<input type="hidden" name="id_item" value="'.$_GET['id_item'].'">
 	      <td><p>Item name</p></td>
-	      <td><input id="item" name="item" type="text" placeholder="'.$item[0]->name.'" autofocus maxlength="50">  
+	      <td><input id="item" name="item" type="text" placeholder="'.utf8_decode($item[0]->name).'" autofocus maxlength="50">  
 		</td>
       	      <td><p>Image file</p></td>
 	      <td><input type="file"  name="image_file" id="image_file"></input></td>
 	    </tr>
 	    <tr>
 	      <td><p>Manufacturer</p></td>
-	      <td><input id="manufacturer" name="manufacturer" type="text" placeholder="'.$item[0]->manufacturer.'" autofocus maxlength="50">  </td>
+	      <td><input id="manufacturer" name="manufacturer" type="text" placeholder="'.utf8_decode($item[0]->manufacturer).'" autofocus maxlength="50">  </td>
       	      <td><p>Quantity</p></td>
 	      <td><input id="quantity" name="quantity" type="number" placeholder="'.$item[0]->quantity.'" autofocus maxlength="5">  </td>
 	    </tr>
 	    <tr>
 	      <td><p>Serial</p></td>
-	      <td><input id="serial" name="serial" type="text" placeholder="'.$item[0]->serial.'" autofocus maxlength="25">  </td>
+	      <td><input id="serial" name="serial" type="text" placeholder="'.utf8_decode($item[0]->serial).'" autofocus maxlength="25">  </td>
 	      <td><p>Inventory number</p></td>
-	      <td><input id="id_uc3m" name="id_uc3m" type="text" placeholder="'.$item[0]->id_uc3m.'" autofocus maxlength="25">  </td>      
+	      <td><input id="id_uc3m" name="id_uc3m" type="text" placeholder="'.utf8_decode($item[0]->id_uc3m).'" autofocus maxlength="25">  </td>      
 	    </tr>	
 	    <tr>
 	      <td><p>Attendant</p></td>
-	      <td><input id="attendant" name="attendant" type="text" placeholder="'.$item[0]->attendant.'" autofocus maxlength="25">  </td>
+	      <td><input id="attendant" name="attendant" type="text" placeholder="'.utf8_decode($item[0]->attendant).'" autofocus maxlength="25">  </td>
 	      <td><p>Location</p></td>
-	      <td><input id="location" name="location" type="text" placeholder="'.$item[0]->location.'" autofocus maxlength="25">  </td>      
+	      <td><input id="location" name="location" type="text" placeholder="'.utf8_decode($item[0]->location).'" autofocus maxlength="25">  </td>      
 	    </tr>    
     	    <tr>
       	      <td><p>Description</p></td>
-	      <td><textarea id="description" name="description" rows="9" cols="22" maxlength="150" placeholder="'.$item[0]->description.'"></textarea></td>
+	      <td><textarea id="description" name="description" rows="9" cols="22" maxlength="150" placeholder="'.utf8_decode($item[0]->description).'"></textarea></td>
 	      <td><p>Issues</p></td>
-	      <td><textarea id="issues" name="issues" rows="9" cols="22" maxlength="150" placeholder="'.$item[0]->issues.'"></textarea></td>
+	      <td><textarea id="issues" name="issues" rows="9" cols="22" maxlength="150" placeholder="'.utf8_decode($item[0]->issues).'"></textarea></td>
 
 	    </tr>	    	    
 	  </table>
