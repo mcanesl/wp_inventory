@@ -112,9 +112,9 @@
 	    </tr>
 	    <tr>
 	      <td><p>Serial</p></td>
-	      <td><input id="serial" name="serial" type="text" placeholder="Serial" autofocus maxlength="25">  </td>
+	      <td><input id="serial" name="serial" type="text" placeholder="Serial" autofocus maxlength="15">  </td>
 	      <td><p>Inventory number</p></td>
-	      <td><input id="id_uc3m" name="id_uc3m" type="text" placeholder="ID UC3M" autofocus maxlength="25">  </td>      
+	      <td><input id="id_uc3m" name="id_uc3m" type="text" placeholder="ID UC3M" autofocus maxlength="15">  </td>      
 	    </tr>
 	    <tr>
 	      <td><p>Attendant</p></td>

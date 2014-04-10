@@ -164,9 +164,9 @@
 	    </tr>
 	    <tr>
 	      <td><p>Serial</p></td>
-	      <td><input id="serial" name="serial" type="text" placeholder="'.stripslashes(utf8_decode($item[0]->serial)).'" autofocus maxlength="25">  </td>
+	      <td><input id="serial" name="serial" type="text" placeholder="'.stripslashes(utf8_decode($item[0]->serial)).'" autofocus maxlength="15">  </td>
 	      <td><p>Inventory number</p></td>
-	      <td><input id="id_uc3m" name="id_uc3m" type="text" placeholder="'.stripslashes(utf8_decode($item[0]->id_uc3m)).'" autofocus maxlength="25">  </td>      
+	      <td><input id="id_uc3m" name="id_uc3m" type="text" placeholder="'.stripslashes(utf8_decode($item[0]->id_uc3m)).'" autofocus maxlength="15">  </td>      
 	    </tr>	
 	    <tr>
 	      <td><p>Attendant</p></td>
