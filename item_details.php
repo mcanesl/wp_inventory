@@ -122,7 +122,7 @@
 					  <tr>
 						  <td>'.$value->id_asignation.'</td>
 						  <td>'.$value->user.'</td>
-						  <td>'.$item[0]->name.'</td>
+						  <td>'.stripslashes(utf8_decode($item[0]->name)).'</td>
 						  <td>'.$value->asignation_date.'</td>
 						  <td>'.$value->expiry_date.'</td>
 					  </tr>';

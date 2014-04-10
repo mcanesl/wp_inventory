@@ -60,7 +60,7 @@
 				<tr>
 				  <td>'.$value->id_asignation.'</td>
 				  <td>'.$value->user.'</td>
-				  <td>'.$item[0]->name.'</td>
+				  <td>'.stripslashes(utf8_decode($item[0]->name)).'</td>
 				  <td>'.$value->asignation_date.'</td>
 				  <td>
 				      <a href="return_item.php?id_item='.$value->id_item.'&id_asignation='.$value->id_asignation.'" target="operations_frame1"><img src="images/unlocked.png" title="Give back" width="16px" height="16px"></img></a>
@@ -96,7 +96,7 @@
 				<tr>
 				  <td>'.$value->id_asignation.'</td>
 				  <td>'.$value->user.'</td>
-				  <td>'.$item[0]->name.'</td>
+				  <td>'.stripslashes(utf8_decode($item[0]->name)).'</td>
 				  <td>'.$value->asignation_date.'</td>
 				  <td>'.$value->expiry_date.'</td>
 				  <td>
