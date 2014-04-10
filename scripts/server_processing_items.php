@@ -181,12 +181,12 @@
 			if ( $aColumns[$i] == "version" )
 			{
 				/* Special output formatting for 'version' column */
-				$row[] = ($aRow[ $aColumns[$i] ]=="0") ? '-' : stripslashes(utf8_decode($aRow[ $aColumns[$i] ]));
+				$row[] = ($aRow[ $aColumns[$i] ]=="0") ? '-' : $aRow[ $aColumns[$i] ];
 			}
 			else if ( $aColumns[$i] != ' ' )
 			{
 				/* General output */
-				$row[] = stripslashes(utf8_decode($aRow[ $aColumns[$i] ]));
+				$row[] = $aRow[ $aColumns[$i] ];
 			}
 		}
 		$row[] = '<a href="item_details.php?id_item='. $aRow[ $aColumns[0] ] . '" target="operations_frame2"><img src="images/zoom-in-2.png" title="Details" width="16px"></img></a>

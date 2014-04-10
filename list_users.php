@@ -20,7 +20,8 @@
     
     <?php
 	require_once("classes/class.InventoryAuth.php");
-	require_once('../../../wp-includes/option.php');
+	require_once('../../../wp-config.php');
+	require_once('../../../wp-includes/wp-db.php');
 	
 	session_start ();
     	if ($_SESSION['login']){

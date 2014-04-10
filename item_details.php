@@ -55,7 +55,7 @@
 	      </tr>
 	      <tr>
 		<td id="td_dark"><p><b>Manufacturer</b></p></td>
-		<td id="td_medium">'.utf8_decode($item[0]->manufacturer).'</td>
+		<td id="td_medium">'.stripslashes(utf8_decode($item[0]->manufacturer)).'</td>
 	      </tr>
 	      <tr>
 		<td id="td_medium"><p><b>Quantity</b></p></td>
@@ -67,27 +67,27 @@
 	      </tr>
 	      <tr>
 		<td id="td_medium"><p><b>Serial</b></p></td>
-		<td>'.utf8_decode($item[0]->serial).'</td>
+		<td>'.stripslashes(utf8_decode($item[0]->serial)).'</td>
 	      </tr>
 	      <tr>
 		<td id="td_dark"><p><b>Inventory number</b></p></td>
-		<td id="td_medium">'.utf8_decode($item[0]->id_uc3m).'</td>
+		<td id="td_medium">'.stripslashes(utf8_decode($item[0]->id_uc3m)).'</td>
 	      </tr>
 	      <tr>
 		<td id="td_medium"><p><b>Attendant</b></p></td>
-		<td>'.utf8_decode($item[0]->attendant).'</td>
+		<td>'.stripslashes(utf8_decode($item[0]->attendant)).'</td>
 	      </tr>
 	      <tr>
 		<td id="td_dark"><p><b>Location</b></p></td>
-		<td id="td_medium">'.utf8_decode($item[0]->location).'</td>
+		<td id="td_medium">'.stripslashes(utf8_decode($item[0]->location)).'</td>
 	      </tr>
 	      <tr>
 		<td id="td_medium"><p><b>Description</b></p></td>
-		<td>'.utf8_decode($item[0]->description).'</td>
+		<td>'.stripslashes(utf8_decode($item[0]->description)).'</td>
 	      </tr>
 	      <tr>
 		<td id="td_dark"><p><b>Issues</b></p></td>
-		<td id="td_medium">'.utf8_decode($item[0]->issues).'</td>
+		<td id="td_medium">'.stripslashes(utf8_decode($item[0]->issues)).'</td>
 	      </tr>
 	      <tr>
 		<td colspan="2" id="td_image">'; if ($item[0]->image){
