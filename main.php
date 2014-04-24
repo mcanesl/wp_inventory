@@ -87,7 +87,7 @@
 			echo '
 				<div id="tabs">
 					<ul>
-						<li ><a id="refresh-1" href="#tabs-1"><img src="images/user-4.png" width="24px" height="24px" title="User asignations"></img> User asignations</a></li>
+						<li ><a id="refresh-1" href="#tabs-1"><img src="images/user-4.png" width="24px" height="24px" title="User asignations"></img> User assignations</a></li>
 						<li><a id="refresh-2" href="#tabs-2"><img src="images/list.png" width="24px" height="24px" title="General lists"></img> Lists</a></li>';
 
 						if ($_SESSION['admin']){
