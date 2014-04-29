@@ -15,8 +15,11 @@
 	/* Indexed column (used for fast and accurate table cardinality) */
 	$sIndexColumn = "id_asignation";
 	
+	global $wpdb;
+		  
+	$prefix = $wpdb->prefix;	
 	/* DB table to use */
-	$sTable = "wp_inventory_asignation_user";
+	$sTable = $prefix . "inventory_asignation_user";
 	
 	/* Database connection information */
 	$gaSql['user']       =  DB_USER;

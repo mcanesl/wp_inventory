@@ -16,21 +16,21 @@ require_once( dirname ( dirname ( dirname ( dirname ( dirname(__FILE__) ) ) ) ) 
 
 		function recoverItems (){
 		    global $wpdb;
-		    $query = "SELECT * FROM wp_inventory_item";
+		    $query = "SELECT * FROM " . $wpdb->prefix . "inventory_item";
 		    $items = $wpdb->get_results($query);
 		    return ($items);
 		}
 		
 		function recoverManufacturers (){
 		    global $wpdb;
-		    $query = "SELECT DISTINCT manufacturer FROM wp_inventory_item";
+		    $query = "SELECT DISTINCT manufacturer FROM " . $wpdb->prefix . "inventory_item";
 		    $manufacturers = $wpdb->get_results($query);
 		    return ($manufacturers);
 		}
 		
 		function recoverItemByID ($id_item){
 		    global $wpdb;
-		    $query = "SELECT * FROM wp_inventory_item WHERE id_item = ".$id_item;
+		    $query = "SELECT * FROM " . $wpdb->prefix . "inventory_item WHERE id_item = ".$id_item;
 		    $item = $wpdb->get_results($query);
 		    return ($item);
 		}
@@ -46,7 +46,7 @@ require_once( dirname ( dirname ( dirname ( dirname ( dirname(__FILE__) ) ) ) ) 
 		    $id_uc3m = stripslashes(utf8_encode($id_uc3m));
 		    $location = stripslashes(utf8_encode($location));
 		    $issues = stripslashes(utf8_encode($issues));
-		    if ($wpdb->insert('wp_inventory_item',  
+		    if ($wpdb->insert($wpdb->prefix . 'inventory_item',  
 		    array('name' => $name, 'description' => $description, 'manufacturer' => $manufacturer, 'quantity' => $quantity, 'available' => $available, 'serial' => $serial, 'id_uc3m' => $id_uc3m, 'attendant' => $attendant, 'location' => $location, 'image' => $image, 'issues' => $issues), 
 		    array( '%s', '%s', '%s','%d', '%s','%s', '%s', '%s' , '%s' , '%s', '%s') ) ===FALSE){
 			return -1;
@@ -55,7 +55,7 @@ require_once( dirname ( dirname ( dirname ( dirname ( dirname(__FILE__) ) ) ) ) 
 		
 		function deleteItemByID ($id_item){
 		    global $wpdb;
-		    $query ="DELETE FROM wp_inventory_item WHERE id_item =".$id_item;
+		    $query ="DELETE FROM " . $wpdb->prefix . "inventory_item WHERE id_item =".$id_item;
 		    if ($wpdb->query($query)===FALSE){
 				return -1;
 			}
@@ -63,7 +63,7 @@ require_once( dirname ( dirname ( dirname ( dirname ( dirname(__FILE__) ) ) ) ) 
 		
 		function updateAvailableQuantityByID ($id_item, $available){
 		    global $wpdb;
-		    $query = "UPDATE wp_inventory_item SET available = " .$available. " WHERE id_item = ".$id_item;
+		    $query = "UPDATE " . $wpdb->prefix . "inventory_item SET available = " .$available. " WHERE id_item = ".$id_item;
 		    if ($wpdb->query($query) ===FALSE){	
 				return -1;
 			}
@@ -79,7 +79,7 @@ require_once( dirname ( dirname ( dirname ( dirname ( dirname(__FILE__) ) ) ) ) 
 		    $id_uc3m = stripslashes(utf8_encode($id_uc3m));
 		    $location = stripslashes(utf8_encode($location));
 		    $issues = stripslashes(utf8_encode($issues));
-		    $query = "UPDATE wp_inventory_item SET name = '" . $name . "',  description = '" . $description . "', manufacturer = '" . $manufacturer . "', quantity = " . $quantity . ", available = " . $available . ",  serial = '" . $serial . "', id_uc3m = '" . $id_uc3m . "', attendant = '" . $attendant . "' , location = '" . $location . "', image = '" . $image . "' , issues = '" . $issues . "' WHERE id_item = " .$id_item;
+		    $query = "UPDATE " . $wpdb->prefix . "inventory_item SET name = '" . $name . "',  description = '" . $description . "', manufacturer = '" . $manufacturer . "', quantity = " . $quantity . ", available = " . $available . ",  serial = '" . $serial . "', id_uc3m = '" . $id_uc3m . "', attendant = '" . $attendant . "' , location = '" . $location . "', image = '" . $image . "' , issues = '" . $issues . "' WHERE id_item = " .$id_item;
 		    if ($wpdb->query($query)===FALSE){
 			return -1;
 			}

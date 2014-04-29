@@ -20,7 +20,7 @@ echo 'patata';
 		
 		function asignItemByID ($user, $id_item){
 		    global $wpdb;
-		    if ($wpdb->insert('wp_inventory_asignation',  
+		    if ($wpdb->insert($wpdb->prefix . 'inventory_asignation',  
 		    array('user' => $user, 'id_item' => $id_item), 
 		    array( '%s', '%d', '%d','%d') ) ===FALSE){
 			return -1;
@@ -29,7 +29,7 @@ echo 'patata';
 		
 		function returnItemByID ($id_asignation, $date){
 		    global $wpdb;
-		    $query = "UPDATE wp_inventory_asignation SET expiry_date = '".$date."' WHERE id_asignation = ".$id_asignation;
+		    $query = "UPDATE " . $wpdb->prefix . "inventory_asignation SET expiry_date = '".$date."' WHERE id_asignation = ".$id_asignation;
 		    if ($wpdb->query($query) ===FALSE){
 			return -1;
 			}
@@ -37,7 +37,7 @@ echo 'patata';
 
 		function recoverAsignations  () {
 		    global $wpdb;
-		    $query = "SELECT * FROM wp_inventory_asignation";
+		    $query = "SELECT * FROM " . $wpdb->prefix . "inventory_asignation";
 		    $asignations = $wpdb->get_results($query);
 		    return ($asignations);
 		
@@ -45,7 +45,7 @@ echo 'patata';
 		
 		function recoverAsignationsByItem  ($item) {
 		    global $wpdb;
-		    $query = "SELECT * FROM wp_inventory_asignation WHERE id_item = '" .$item. "' ORDER BY asignation_date DESC LIMIT 40";
+		    $query = "SELECT * FROM " . $wpdb->prefix . "inventory_asignation WHERE id_item = '" .$item. "' ORDER BY asignation_date DESC LIMIT 40";
 		    $asignations = $wpdb->get_results($query);
 		    return ($asignations);
 		
@@ -53,14 +53,14 @@ echo 'patata';
 		
 		function recoverCurrentAsignationsByUser ($user){
 		    global $wpdb;
-		    $query = "SELECT * FROM wp_inventory_asignation WHERE user = '" .$user. "' AND expiry_date = '0000-00-00 00:00:00'";
+		    $query = "SELECT * FROM " . $wpdb->prefix . "inventory_asignation WHERE user = '" .$user. "' AND expiry_date = '0000-00-00 00:00:00'";
 		    $asignations = $wpdb->get_results($query);
 		    return ($asignations);
 		}
 		
 		function recoverClosedAsignationsByUser ($user){
 		    global $wpdb;
-		    $query = "SELECT * FROM wp_inventory_asignation WHERE user = '" .$user. "' AND expiry_date != '0000-00-00 00:00:00' ORDER BY expiry_date DESC LIMIT 40";
+		    $query = "SELECT * FROM " . $wpdb->prefix . "inventory_asignation WHERE user = '" .$user. "' AND expiry_date != '0000-00-00 00:00:00' ORDER BY expiry_date DESC LIMIT 40";
 		    $asignations = $wpdb->get_results($query);
 		    return ($asignations);
 		}

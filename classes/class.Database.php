@@ -40,26 +40,26 @@
 		  )';
 		  
 
-		$query_asignation_item = 'CREATE VIEW ' . $prefix . 'inventory_asignation_user AS (select id_asignation, ' . $prefix . 'inventory_asignation.id_item, name, user,DATE_FORMAT (asignation_date,\'%d/%m/%Y\') AS asignation_date, DATE_FORMAT ( expiry_date,\'%d/%m/%Y\') AS expiry_date  from ' . $prefix . 'inventory_asignation, ' . $prefix . 'inventory_item  where ' . $prefix . 'inventory_item.id_item = ' . $prefix . 'inventory_asignation.id_item)';
+		$query_asignation_user = 'CREATE VIEW ' . $prefix . 'inventory_asignation_user AS (select id_asignation, ' . $prefix . 'inventory_asignation.id_item, name, user,DATE_FORMAT (asignation_date,\'%d/%m/%Y\') AS asignation_date, DATE_FORMAT ( expiry_date,\'%d/%m/%Y\') AS expiry_date  from ' . $prefix . 'inventory_asignation, ' . $prefix . 'inventory_item  where ' . $prefix . 'inventory_item.id_item = ' . $prefix . 'inventory_asignation.id_item)';
 		  
 		  
 		  $wpdb->query($query_item);
-		  //$wpdb->query($query_user);
 		  $wpdb->query($query_asignation);
-  		  $wpdb->query($query_asignation_item);
+  		  $wpdb->query($query_asignation_user);
 			
 		}
 		
 		function dropDatabase (){
 		  global $wpdb;
-		  
-		  $query_item = "DROP TABLE IF EXISTS ' . $prefix . 'inventory_item";
-		  $query_user = "DROP TABLE IF EXISTS ' . $prefix . 'inventory_user";
-		  $query_asignation = "DROP TABLE IF EXISTS ' . $prefix . 'inventory_asignation";
+		  $prefix = $wpdb->prefix;
+
+		  $query_asignation_user = 'DROP VIEW IF EXISTS ' . $prefix . 'inventory_asignation_user';
+		  $query_item = 'DROP TABLE IF EXISTS ' . $prefix . 'inventory_item';
+		  $query_asignation = 'DROP TABLE IF EXISTS ' . $prefix . 'inventory_asignation';
 		  
 		  $wpdb->query($query_asignation);
 		  $wpdb->query($query_item);
-		  $wpdb->query($query_user);
+		  $wpdb->query($query_asignation_user);
 		  
 		}
 	}
