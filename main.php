@@ -6,8 +6,7 @@
     <link rel="stylesheet" href="css/jquery-ui.css " />
     <script src="js/jquery/jquery-2.1.0.min.js"></script>
     <script src="js/jquery/jquery-ui.js"></script>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-
+    <link href="css/jquery-ui.css" rel="stylesheet" type="text/css" />
 	 <script>
 		$(function() {
 			$('#tabs').tabs();
@@ -87,7 +86,7 @@
 			echo '
 				<div id="tabs">
 					<ul>
-						<li ><a id="refresh-1" href="#tabs-1"><img src="images/user-4.png" width="24px" height="24px" title="User asignations"></img> User asignations</a></li>
+						<li ><a id="refresh-1" href="#tabs-1"><img src="images/user-4.png" width="24px" height="24px" title="User asignations"></img> User assignations</a></li>
 						<li><a id="refresh-2" href="#tabs-2"><img src="images/list.png" width="24px" height="24px" title="General lists"></img> Lists</a></li>';
 
 						if ($_SESSION['admin']){

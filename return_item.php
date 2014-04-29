@@ -58,7 +58,7 @@
 	
 	  echo '
 	<p>You are going to return the item: </p>
-	<p><b>'.$item[0]->id_item.' - '.$item[0]->name.'</b></p>
+	<p><b>'.$item[0]->id_item.' - '.stripslashes(utf8_decode($item[0]->name)).'</b></p>
 	<p>Are you sure do you want to return it?.</p>
 	  <form id="return_item" method="post" action="#">
 	    <input type="hidden" name="id_asignation" value="'.$_GET['id_asignation'].'">
