@@ -6,8 +6,7 @@
     <link rel="stylesheet" href="css/jquery-ui.css " />
     <script src="js/jquery/jquery-2.1.0.min.js"></script>
     <script src="js/jquery/jquery-ui.js"></script>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-
+    <link href="css/jquery-ui.css" rel="stylesheet" type="text/css" />
 	 <script>
 		$(function() {
 			$('#tabs').tabs();

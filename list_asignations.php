@@ -37,11 +37,12 @@
 		<table class="list_items_table" class="display">
 			<thead>
 				<tr>
-				        <th id="th_short">ID</th>
-				        <th id="th_short">User</th>
-				        <th id="th_short">Item</th>
+				        <th id="th_short">Id</th>
+       				        <th id="th_short">User</th>
+					<th id="th_short">Item</th>				        
+				        <th id="th_short">Item name</th>
 				        <th id="th_long">Assignation date</th>
-					<th id="th_long">Devoution date</th>
+					<th id="th_long">Devolution date</th>
 				        <th id="th_short">Ops</th>
 
 				</tr>

@@ -1,13 +1,21 @@
 <?php
+require_once( dirname ( dirname ( dirname ( dirname ( dirname(__FILE__) ) ) ) ) . '/wp-config.php');
+require_once( dirname ( dirname ( dirname ( dirname ( dirname(__FILE__) ) ) ) ) .  '/wp-includes/wp-db.php');
+
+
 	class Asignations {
 		private $database;
 
 		function __construct(  ) {
+
 		    global $wpdb, $table_prefix;
-		    if(!isset($wpdb)){
-		      require_once('../../../wp-config.php');
-		      require_once('../../../wp-includes/wp-db.php');
-		    }
+		    /*if(!isset($wpdb)){
+echo 'patata';
+
+		     require_once('../../../wp-config.php');
+		     require_once('../../../wp-includes/wp-db.php');
+		    }*/
+
 		}
 		
 		function asignItemByID ($user, $id_item){

@@ -26,10 +26,10 @@
       		session_start(); 
       
 	
-	
       if ($_SESSION['login']){
-      
+ 
       	$db_a = new Asignations();
+
 	$current_asignations = $db_a -> recoverCurrentAsignationsByUser($_SESSION['login']);
 	$closed_asignations = $db_a -> recoverClosedAsignationsByUser($_SESSION['login']);
 	

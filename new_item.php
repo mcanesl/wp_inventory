@@ -9,11 +9,9 @@
     <link href="css/uploadbar.css" rel="stylesheet" type="text/css" />
     <link href="css/hover-min.css" rel="stylesheet" type="text/css" />
     <link href="css/jquery-ui.css" rel="stylesheet" type="text/css" />
-    <script src='"; echo plugin_dir_url( __FILE__ ) . "js/jquery/jquery-2.1.0.min.js"; echo "'></script>
-    <script src="//code.jquery.com/jquery-1.9.1.js"></script>
-    <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     <script src="js/uploadbar.js"></script>
-    
+    <script src="js/jquery/jquery-2.1.0.min.js"></script>
+    <script src="js/ui/jquery-ui.js"></script> 
     
   </head>
   <body>
@@ -21,6 +19,11 @@
     <div class="container">
     
       <?php
+/*
+    <script src="//code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+*/
       	session_start(); 
 
       if ($_SESSION['admin']){
